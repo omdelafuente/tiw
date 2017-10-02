@@ -12,5 +12,7 @@
 <body>
 
 ¡Bienvenido! <%= ((UserBean)request.getAttribute("user")).getEmail() %>
+
+Eres mega feo
 </body>
 </html>
