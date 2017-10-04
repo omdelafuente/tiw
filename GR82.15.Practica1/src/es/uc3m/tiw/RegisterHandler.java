@@ -23,10 +23,8 @@ public class RegisterHandler implements IRequestHandler {
 		user.setSurname(request.getParameter("surname"));
 		user.setEmail(request.getParameter("email"));
 		user.setPassword(request.getParameter("psw"));
-		System.out.println("a");
-		request.setAttribute("user", user);
 		
-		return "success.jsp";
+		return "index.jsp";
 	}
 
 }

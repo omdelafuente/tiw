@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="es.uc3m.tiw.*"%>
+ 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <meta charset="UTF-8">
@@ -18,7 +19,11 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 <body class="w3-content" style="max-width:1200px">
 
 <!-- Sidebar/menu -->
-<jsp:include page="sidebar.jsp"/>
+<% if (session.getAttribute("loggedUser") != null) { %>
+    <jsp:include page="sidebarLogged.jsp"/>
+<% } else {%>
+  	<jsp:include page="sidebarNotLogged.jsp"/>
+<% } %>
 
 <!-- Top menu on small screens -->
 <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
@@ -128,14 +133,6 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
 <script>
 
-function searchAccordion() {
-    var x = document.getElementById("searchMenu");
-    if (x.className.indexOf("w3-show") == -1) {
-        x.className += " w3-show";
-    } else {
-        x.className = x.className.replace(" w3-show", "");
-    }
-}
 // Script to open and close sidebar
 function w3_open() {
     document.getElementById("sidebar").style.display = "block";

@@ -10,7 +10,7 @@
 </head>
 <body class="w3-content" style="max-width:1200px">
 
-<jsp:include page="sidebar.jsp"/>
+<jsp:include page="sidebarNotLogged.jsp"/>
 
 <!-- Top menu on small screens -->
 <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
@@ -54,14 +54,6 @@
 
 <script>
 
-function searchAccordion() {
-    var x = document.getElementById("searchMenu");
-    if (x.className.indexOf("w3-show") == -1) {
-        x.className += " w3-show";
-    } else {
-        x.className = x.className.replace(" w3-show", "");
-    }
-}
 // Script to open and close sidebar
 function w3_open() {
     document.getElementById("sidebar").style.display = "block";
