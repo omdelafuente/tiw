@@ -47,14 +47,15 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   </div>
   <br>
 	<div class="w3-row">
-		<div class="w3-col s9 w3-center w3-purple">
-			<h4 class="w3-jumbo">Kase-O en concierto</h4>
+		<div class="w3-col s9 w3-center" style="padding-top:0.25em">
+			<h1>Kase-O en concierto</h1>
 		</div>
-		<div class="w3-col s3 w3-center w3-green">
-			<a class="w3-tag w3-large w3-padding-large w3-orange w3-center">
-			<strong>COMPRAR<br>ENTRADAS</strong></a>
+		<div class="w3-col s3 w3-center">
+			<span class="w3-tag w3-large w3-padding-large w3-light-grey w3-center">
+			<strong>COMPRAR<br>ENTRADAS</strong></span>
 		</div>
 	</div>
+	<hr style="border:1px solid grey; width: 90%; margin-left: 5%">
   <!-- End page content -->
 </div>
 
