@@ -208,3 +208,10 @@ hr{border:0;border-top:1px solid #eee;margin:20px 0}
 .w3-border-white,.w3-hover-border-white:hover{border-color:#fff!important}
 .w3-border-black,.w3-hover-border-black:hover{border-color:#000!important}
 .w3-border-grey,.w3-hover-border-grey:hover,.w3-border-gray,.w3-hover-border-gray:hover{border-color:#bbb!important}
+.event-img {-webkit-transition: all .2s ease-in-out;-moz-transition: all .2s ease-in-out;-o-transition: all .2s ease-in-out;-ms-transition: all .2s ease-in-out;}
+.event-img:hover{cursor:pointer; opacity:0.7}
+.transition {-webkit-transform: scale(1.025); -moz-transform: scale(1.025);-o-transform: scale(1.025);transform: scale(1.025);}
+
+
+
+

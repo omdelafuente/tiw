@@ -26,6 +26,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   	<p class="w3-bar-item"> ¡Hola, <%= ((UserBean)session.getAttribute("loggedUser")).getName()%>!</p>
   	<a href="#" class="w3-bar-item w3-button"><i class="fa fa-gear w3-margin-right"></i>Configuración</a>
     <a href="#" class="w3-bar-item w3-button"><i class="fa fa-ticket w3-margin-right"></i>Cartera de entradas</a>
+    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-plus-square w3-margin-right"></i>Crear un evento</a>
     <a onclick="document.getElementById('searchModal').style.display='block'"class="w3-button w3-block w3-left-align" id="searchMenuBtn"><i class="fa fa-search w3-margin-right"></i>
       Búsqueda avanzada &nbsp;&nbsp;<i class="fa fa-caret-right"></i>
     </a>

@@ -12,20 +12,8 @@
 
 <jsp:include page="sidebarNotLogged.jsp"/>
 
-<!-- Top menu on small screens -->
-<header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
-  <div class="w3-bar-item w3-padding-24 w3-wide">INSTATICKET</div>
-  <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></a>
-</header>
-
-<!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="overlay"></div>
-
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:250px">
-
-  <!-- Push down content on small screens -->
-  <div class="w3-hide-large" style="margin-top:83px"></div>
   
     <!-- Top header -->
   <header class="w3-container w3-xlarge">
@@ -51,19 +39,5 @@
    			<a href="register.jsp">¿Aún no estás registrado? Clic aquí para darte de alta</a>
 	</div>
 
-
-<script>
-
-// Script to open and close sidebar
-function w3_open() {
-    document.getElementById("sidebar").style.display = "block";
-    document.getElementById("overlay").style.display = "block";
-}
- 
-function w3_close() {
-    document.getElementById("sidebar").style.display = "none";
-    document.getElementById("overlay").style.display = "none";
-}
-</script>
 </body>
 </html>
