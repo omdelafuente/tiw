@@ -46,16 +46,44 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     <img src="resources/kaseo.jpg" alt="Jeans" style="width:100%">
   </div>
   <br>
+  <div class="w3-main">
 	<div class="w3-row">
 		<div class="w3-col s9 w3-center" style="padding-top:0.25em">
 			<h1>Kase-O en concierto</h1>
 		</div>
 		<div class="w3-col s3 w3-center">
-			<span class="w3-tag w3-large w3-padding-large w3-light-grey w3-center">
+			<span class="w3-tag w3-large w3-padding-large w3-light-grey w3-center w3-hover-orange" style="cursor:pointer">
 			<strong>COMPRAR<br>ENTRADAS</strong></span>
 		</div>
 	</div>
 	<hr style="border:1px solid grey; width: 90%; margin-left: 5%">
+	
+	<div class="w3-row w3-padding-16" style="width: 90%; margin-left: 5%">
+    	<div class="w3-twothird w3-container">
+      		<h5>Descripción</h5>
+     		<p style="text-align:justify">Gira EL CÍRCULO 2016-2017<br>
+			   KASE.O llega a conquistar el mítico Palacio de los Deportes de Madrid. 
+			   Después de batir todos los records en la gira más importante de la historia de HIP-HOP en España, 
+			   KASE.O quiere reunir a todos sus seguidores en un concierto mítico con colabos y sorpresas que se irán anunciando, 
+			   y que será el colofón de su TOUR EL CÍRCULO 2017.
+			   <br>
+			   La apertura de puertas será a las 19:30 horas, EL MOMO 20:30 horas y el inicio del concierto de KASE.O a las 21:30 horas.</p>
+    	</div>
+    	<div class="w3-third w3-container">
+    		<h5>Información del evento</h5>
+    		<label>Categoría</label>
+    		<p class="w3-border w3-padding-large w3-padding-16 w3-center">Conciertos</p>
+    		<label>Precio</label>
+      		<p class="w3-border w3-padding-large w3-padding-16 w3-center">16,00 €</p>
+      		<label>Fecha y hora</label>
+      		<p class="w3-border w3-padding-large w3-padding-16 w3-center">02 DIC 2017<br>19:30h</p>
+      		<label>Lugar</label>
+      		<p class="w3-border w3-padding-large w3-padding-16 w3-center">WiZink Center, Madrid</p>
+    	</div>
+  </div>
+	
+	
+  </div>
   <!-- End page content -->
 </div>
 
