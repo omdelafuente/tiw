@@ -23,6 +23,7 @@ public class Controller extends HttpServlet {
 		
 		handlerHash.put("/login", new LoginHandler());
 		handlerHash.put("/register", new RegisterHandler());
+		handlerHash.put("")
 	}
 
 	/**
