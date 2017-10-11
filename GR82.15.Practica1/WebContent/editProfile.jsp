@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="resources/css/indexStyle.css" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link href="resources/css/w3.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="resources/css/fonts.css">
 <title>Edit Profile</title>
 </head>
 
@@ -40,13 +40,13 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     		<input class="w3-input w3-border w3-light-grey" style="width:30%; display:inline-block" type="text" name="name" value="" /><br>
     		<p>Apellidos:</p>
     		<input class="w3-input w3-border w3-light-grey" style="width:30%; display:inline-block" type="text" name="surname" value="" /><br>
-    		<p>ContraseÃ±a anterior:</p>
+    		<p>Contraseña anterior:</p>
    			<input class="w3-input w3-border w3-light-grey" style="width:30%; display:inline-block" type="password" name="psw" value=""/><br>
-    		<p>Nueva contraseÃ±a:</p>
+    		<p>Nueva contraseña:</p>
    			<input class="w3-input w3-border w3-light-grey" style="width:30%; display:inline-block" type="newPassword" name="npsw" value=""/><br>
-   			<p>ConfirmaciÃ³n de la nueva contraseÃ±a:</p>
+   			<p>Confirmación de la nueva contraseña:</p>
    			<input class="w3-input w3-border w3-light-grey" style="width:30%; display:inline-block" type="newPassword" name="checknpsw" value=""/><br>
-   			<p>Correo electrÃ³nico:</p>
+   			<p>Correo electrónico:</p>
    			<input class="w3-input w3-border w3-light-grey" style="width:30%; display:inline-block" type="email" name="email"><br>
    			<p><button class="w3-button w3-theme w3-grey" type="submit">Confirmar cambios</button><p>
 		</form>

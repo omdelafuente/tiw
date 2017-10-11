@@ -1,14 +1,13 @@
-<%@ page language="java" contentType="text/html"
-    import="es.uc3m.tiw.*" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" import="es.uc3m.tiw.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="resources/css/w3.css" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="resources/css/fonts.css">
+<link rel="stylesheet" href="resources/css/iconFont.css">
 </head>
 <style>
 .w3-sidebar a {font-family: "Roboto", sans-serif}
@@ -23,14 +22,14 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     <h3 class="w3-wide"><b>INSTATICKET</b></h3>
   </div>
   <div class="w3-padding-32 w3-large w3-text-grey" style="font-weight:bold">
-  	<p class="w3-bar-item"> ¡Hola, <%= ((UserBean)session.getAttribute("loggedUser")).getName()%>!</p>
+  	<p class="w3-bar-item"> ¡Hola, <%= session.getAttribute("loggedUser")%>!</p>
   	<a href="#" class="w3-bar-item w3-button"><i class="fa fa-gear w3-margin-right"></i>Configuración</a>
     <a href="#" class="w3-bar-item w3-button"><i class="fa fa-ticket w3-margin-right"></i>Cartera de entradas</a>
     <a href="#" class="w3-bar-item w3-button"><i class="fa fa-plus-square w3-margin-right"></i>Crear un evento</a>
     <a onclick="document.getElementById('searchModal').style.display='block'"class="w3-button w3-block w3-left-align" id="searchMenuBtn"><i class="fa fa-search w3-margin-right"></i>
       Búsqueda avanzada &nbsp;&nbsp;<i class="fa fa-caret-right"></i>
     </a>
-    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-sign-out w3-margin-right"></i>Cerrar sesión</a>
+    <a href="logOut" class="w3-bar-item w3-button"><i class="fa fa-sign-out w3-margin-right"></i>Cerrar sesión</a>
   </div>
 </nav>
 

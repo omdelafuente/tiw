@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" import="es.uc3m.tiw.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="resources/css/indexStyle.css" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+<link rel="stylesheet" href="resources/css/fonts.css">
 <title>Sign in</title>
 </head>
 
@@ -21,9 +21,6 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:250px">
 
-  <!-- Push down content on small screens -->
-  <div class="w3-hide-large" style="margin-top:83px"></div>
-  
     <!-- Top header -->
   <header class="w3-container w3-xlarge">
     <p class="w3-left">Registrarse</p>
@@ -35,22 +32,29 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
    		</p>
     </form>
   </header>
+  
+  
+  
+
 	<div class="w3-container w3-center">
+	
 		<p>Por favor, ingresa tus datos para crear una cuenta:</p>
 		<form method="post" action="register">
     		<p>Nombre:</p>
-    		<input class="w3-input w3-border w3-light-grey" style="width:30%; display:inline-block" type="text" name="name" value="" /><br>
+    		<input class="w3-input w3-border w3-light-grey" style="width:30%; display:inline-block" type="text" name="name" value="" required/><br>
     		<p>Apellidos:</p>
-    		<input class="w3-input w3-border w3-light-grey" style="width:30%; display:inline-block" type="text" name="surname" value="" /><br>
-    		<p>ContraseÃ±a:</p>
-   			<input class="w3-input w3-border w3-light-grey" style="width:30%; display:inline-block" type="password" name="psw" value=""/><br>
-   			<p>ConfirmaciÃ³n de la contraseÃ±a:</p>
-   			<input class="w3-input w3-border w3-light-grey" style="width:30%; display:inline-block" type="password" name="checkpsw" value=""/><br>
-   			<p>Correo electrÃ³nico:</p>
-   			<input class="w3-input w3-border w3-light-grey" style="width:30%; display:inline-block" type="email" name="email"><br>
+    		<input class="w3-input w3-border w3-light-grey" style="width:30%; display:inline-block" type="text" name="surname" value="" required /><br>
+    		<p>Contraseña:</p>
+   			<input class="w3-input w3-border w3-light-grey" style="width:30%; display:inline-block" type="password" name="psw" value="" required/><br>
+   			<p>Confirmación de la contraseña:</p>
+   			<input class="w3-input w3-border w3-light-grey" style="width:30%; display:inline-block" type="password" name="checkpsw" value="" required/><br>
+   			<p>Correo electrónico:</p>
+   			<input class="w3-input w3-border w3-light-grey" style="width:30%; display:inline-block" type="email" name="email" required><br>
    			<p><button class="w3-button w3-theme w3-grey" type="submit">Registrarse</button><p>
 		</form>
 	</div>
+	
+</div>
 
 </body>
 </html>

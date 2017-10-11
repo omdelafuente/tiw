@@ -1,14 +1,13 @@
-<%@ page language="java" contentType="text/html"
-    import="es.uc3m.tiw.*" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" import="es.uc3m.tiw.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="resources/css/w3.css" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="resources/css/fonts.css">
+<link rel="stylesheet" href="resources/css/iconFont.css">
 </head>
 <style>
 .w3-sidebar a {font-family: "Roboto", sans-serif}
