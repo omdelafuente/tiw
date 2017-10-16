@@ -38,6 +38,14 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
 	<div class="w3-container w3-center">
 	
+		<% if((Boolean)request.getAttribute("success") != null) {
+			if((Boolean)request.getAttribute("success") == false) { %>
+		<div class="w3-panel w3-red w3-card-4">
+ 			 <p><%= request.getAttribute("errorMessage")%></p>
+		</div>
+		<%} }%>
+	
+	
 		<p>Por favor, ingresa tus datos para crear una cuenta:</p>
 		<form method="post" action="register">
     		<p>Nombre:</p>

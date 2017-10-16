@@ -1,6 +1,7 @@
 package es.uc3m.tiw;
 
 import java.io.IOException;
+
 import java.util.HashMap;
 
 import javax.servlet.ServletConfig;
@@ -46,16 +47,16 @@ public class Controller extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		
 		IRequestHandler rh = (IRequestHandler) handlerHash.get(request.getServletPath());
-		
+			
 		if (rh == null) {
 			response.sendError(HttpServletResponse.SC_NOT_FOUND);
 		} else {
-			
+				
 			String url = rh.handleRequest(request, response);
-			
+				
 			if (url == null) {
 				response.sendError(HttpServletResponse.SC_NOT_FOUND);
 			} else {
@@ -63,6 +64,9 @@ public class Controller extends HttpServlet {
 			}
 			
 		}
+		
+		
+
 	}
 
 }
