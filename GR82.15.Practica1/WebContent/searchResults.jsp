@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="es.uc3m.tiw.*, java.util.ArrayList, java.util.Date, java.awt.image.*, javax.imageio.ImageIO, java.io.*"%>
+    pageEncoding="UTF-8" import="es.uc3m.tiw.model.*, java.util.ArrayList, java.util.Date, java.awt.image.*, javax.imageio.ImageIO, java.io.*"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

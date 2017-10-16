@@ -1,16 +1,12 @@
-package es.uc3m.tiw;
+package es.uc3m.tiw.controller;
 
+import es.uc3m.tiw.model.*;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
 
 public class RegisterHandler implements IRequestHandler {
 
@@ -19,36 +15,24 @@ public class RegisterHandler implements IRequestHandler {
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		String email = request.getParameter("email");
-		String psw = request.getParameter("psw");
 		String name = request.getParameter("name");
 		String surname = request.getParameter("surname");
+		String password = request.getParameter("psw");
+		String email = request.getParameter("email");
 		
+
 		String errorMessage = null;
 		boolean success = true;
 		
-		InitialContext context;
-		DataSource ds;
-		Connection con;
+		UserBean user = new UserBean(name,surname,password,email);
+		
+		UserDAO registerDAO = new UserDAO();
+		
+		
 		try {
 			
-			context = new InitialContext();
-			ds = (DataSource) context.lookup("jdbc/tiw");	
-			con = ds.getConnection();
+			registerDAO.insertUser(user);
 			
-			PreparedStatement registerStatement = con.prepareStatement("INSERT INTO user (name, surname, email, password) VALUES (?,?,?,?)");
-			registerStatement.setString(1, name);
-			registerStatement.setString(2, surname);
-			registerStatement.setString(3, email);
-			registerStatement.setString(4, psw);
-			
-			registerStatement.executeUpdate();
-			
-			registerStatement.close();
-			con.close();
-			
-		} catch (NamingException e) {	
-			System.out.println(e);
 		} catch (SQLException sqlException) {
 			while (sqlException != null) {
 				System.out.println("Error: " + sqlException.getErrorCode());
@@ -62,6 +46,7 @@ public class RegisterHandler implements IRequestHandler {
 				}
 				sqlException = sqlException.getNextException();
 			}
+			
 		}
 		
 		if(success){

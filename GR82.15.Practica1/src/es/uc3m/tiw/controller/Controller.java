@@ -1,4 +1,4 @@
-package es.uc3m.tiw;
+package es.uc3m.tiw.controller;
 
 import java.io.IOException;
 
@@ -32,14 +32,14 @@ public class Controller extends HttpServlet {
 	 * @see Servlet#destroy()
 	 */
 	public void destroy() {
-		// TODO Auto-generated method stub
+
 	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		doPost(request, response);
 	}
 

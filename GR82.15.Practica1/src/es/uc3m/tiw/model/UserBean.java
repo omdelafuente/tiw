@@ -1,4 +1,4 @@
-package es.uc3m.tiw;
+package es.uc3m.tiw.model;
 
 public class UserBean {
 	

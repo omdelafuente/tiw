@@ -1,4 +1,4 @@
-package es.uc3m.tiw;
+package es.uc3m.tiw.controller;
 
 import java.io.IOException;
 

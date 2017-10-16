@@ -1,4 +1,4 @@
-package es.uc3m.tiw;
+package es.uc3m.tiw.controller;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -12,6 +12,8 @@ import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import es.uc3m.tiw.model.EventBean;
 
 
 public class SearchHandler implements IRequestHandler {
