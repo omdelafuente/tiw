@@ -51,29 +51,17 @@ public class RegisterHandler implements IRequestHandler {
 		
 		
 		//insert user into database
-		
-		if(success){
-			UserDAO registerDAO = new UserDAO();
-		
-			try {
 			
-				registerDAO.insertUser(user);
+		UserDAO registerDAO = new UserDAO();
 			
-			} catch (SQLException sqlException) {
-				while (sqlException != null) {
-					System.out.println("Error: " + sqlException.getErrorCode());
-					System.out.println("Descripcion: " + sqlException.getMessage());
-					System.out.println("SQLstate: " + sqlException.getSQLState());	
-					if(sqlException.getErrorCode() == 1062){
-					
-						success = false;
-						errorMessages.add("Ya existe una cuenta con esa dirección de correo, por favor use otra.");
-					
-					}
-					sqlException = sqlException.getNextException();
-				}
+		if(registerDAO.readUser(email) == null){
+				
+			success = false;
+			errorMessages.add("Ya existe una cuenta con esa dirección de correo, por favor use otra.");
+				
+		}else {
 			
-			}
+			registerDAO.insertUser(user);
 		}
 		
 		request.setAttribute("success", success);

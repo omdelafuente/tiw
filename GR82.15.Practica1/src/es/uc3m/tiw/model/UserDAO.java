@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 
 public class UserDAO {
 	
-	public void insertUser(UserBean user) throws SQLException{
+	public void insertUser(UserBean user){
 		
 		String name = user.getName();
 		String surname = user.getSurname();
@@ -22,78 +22,128 @@ public class UserDAO {
 		Connection con = connectDatabase();	
 
 			
-		PreparedStatement userStatement = con.prepareStatement("INSERT INTO user (name, surname, email, password) VALUES (?,?,?,?)");
-		userStatement.setString(1, name);
-		userStatement.setString(2, surname);
-		userStatement.setString(3, email);		
-		userStatement.setString(4, psw);
+		PreparedStatement userStatement;
+		try {
+			userStatement = con.prepareStatement("INSERT INTO user (name, surname, email, password) VALUES (?,?,?,?)");
+			userStatement.setString(1, name);
+			userStatement.setString(2, surname);
+			userStatement.setString(3, email);		
+			userStatement.setString(4, psw);
+			
+			userStatement.executeUpdate();
+					
+			userStatement.close();
+			con.close();
+		} catch (SQLException sqlException) {
+			
+			while (sqlException != null) {
+				System.out.println("Error: " + sqlException.getErrorCode());
+				System.out.println("Descripcion: " + sqlException.getMessage());
+				System.out.println("SQLstate: " + sqlException.getSQLState());	
+				sqlException = sqlException.getNextException();
+			}
+		}
+
+			
+	}
+	
+	public void deleteUser(UserBean user){
 		
-		userStatement.executeUpdate();
+		String email = user.getEmail();
+		
+		Connection con = connectDatabase();	
+
+		try {
+		
+			PreparedStatement userStatement = con.prepareStatement("DELETE FROM user WHERE email=?");
+			userStatement.setString(1, email);
+			
+			userStatement.executeUpdate();
+			
+			userStatement.close();
+			con.close();
+		} catch (SQLException sqlException) {
+			while (sqlException != null) {
+				System.out.println("Error: " + sqlException.getErrorCode());
+				System.out.println("Descripcion: " + sqlException.getMessage());
+				System.out.println("SQLstate: " + sqlException.getSQLState());	
+				sqlException = sqlException.getNextException();
+			}
+			
+		}
+		
+	}
+	
+	public void updateUser(UserBean user){
+		
+		String name = user.getName();
+		String surname = user.getSurname();
+		String email = user.getEmail();
+		String psw = user.getPassword();
+		
+		Connection con = connectDatabase();	
+		
+		try {
+			
+			PreparedStatement userStatement = con.prepareStatement("UPDATE user SET name=?, surname=?, password=? WHERE email=?");			
+			userStatement.setString(1, name);
+			userStatement.setString(2, surname);
+			userStatement.setString(3, psw);
+			userStatement.setString(4, email);
 				
-		userStatement.close();
-		con.close();
+			userStatement.executeUpdate();
+				
+			userStatement.close();
+			con.close();
+		} catch (SQLException sqlException) {
+			while (sqlException != null) {
+				System.out.println("Error: " + sqlException.getErrorCode());
+				System.out.println("Descripcion: " + sqlException.getMessage());
+				System.out.println("SQLstate: " + sqlException.getSQLState());	
+				sqlException = sqlException.getNextException();
+			}
 			
-	}
-	
-	public void deleteUser(UserBean user) throws SQLException{
-		
-		String email = user.getEmail();
-		
-		Connection con = connectDatabase();	
-
-
-		PreparedStatement userStatement = con.prepareStatement("DELETE FROM user WHERE email=?");
-		userStatement.setString(1, email);
-			
-		userStatement.executeUpdate();
-			
-		userStatement.close();
-		con.close();
-		
-	}
-	
-	public void updateUser(UserBean user) throws SQLException{
-		
-		String name = user.getName();
-		String surname = user.getSurname();
-		String email = user.getEmail();
-		String psw = user.getPassword();
-		
-		Connection con = connectDatabase();	
-		
-		
-		PreparedStatement userStatement = con.prepareStatement("UPDATE user SET name=?, surname=?, password=? WHERE email=?");			
-		userStatement.setString(1, name);
-		userStatement.setString(2, surname);
-		userStatement.setString(3, psw);
-		userStatement.setString(4, email);
-			
-		userStatement.executeUpdate();
-			
-		userStatement.close();
-		con.close();
+		}
 
 	}
 	
-	public UserBean readUser(String email) throws SQLException{
+	public UserBean readUser(String email){
 		
 		Connection con = connectDatabase();	
 		Statement stmnt = null;
 		UserBean user = new UserBean();
-
-			
-		stmnt = con.createStatement();
-		ResultSet rs = stmnt.executeQuery("SELECT * FROM user WHERE email="+email);
-				
-		user.setEmail(email);
-		user.setName(rs.getString("name"));
-		user.setPassword(rs.getString("password"));
-		user.setSurname(rs.getString("surname"));
 		
+		
+		try {
 			
-		stmnt.close();
-		con.close();
-
+			stmnt = con.createStatement();
+			ResultSet rs = stmnt.executeQuery("SELECT * FROM user WHERE email='"+email+"'");
+			
+			if(rs.next()){
+				
+				return null;
+				
+			} else {
+				
+				user.setEmail(email);
+				user.setName(rs.getString("name"));
+				user.setPassword(rs.getString("password"));
+				user.setSurname(rs.getString("surname"));
+				
+			}
+			
+			stmnt.close();
+			con.close();
+		
+		} catch (SQLException sqlException) {
+			while (sqlException != null) {
+				System.out.println("Error: " + sqlException.getErrorCode());
+				System.out.println("Descripcion: " + sqlException.getMessage());
+				System.out.println("SQLstate: " + sqlException.getSQLState());	
+				sqlException = sqlException.getNextException();
+			}
+			
+		}
 		
 		return user;
 	}
