@@ -3,6 +3,7 @@ package es.uc3m.tiw.controller;
 import es.uc3m.tiw.model.*;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,43 +19,70 @@ public class RegisterHandler implements IRequestHandler {
 		String name = request.getParameter("name");
 		String surname = request.getParameter("surname");
 		String password = request.getParameter("psw");
+		String checkPassword = request.getParameter("checkpsw");
 		String email = request.getParameter("email");
 		
 
-		String errorMessage = null;
+		ArrayList<String> errorMessages = new ArrayList<String>();
 		boolean success = true;
 		
 		UserBean user = new UserBean(name,surname,password,email);
 		
-		UserDAO registerDAO = new UserDAO();
+		//user data validation
 		
-		
-		try {
+		if(!password.equals(checkPassword)){
 			
-			registerDAO.insertUser(user);
+			success = false;
+			errorMessages.add("La contraseña y la confirmación deben coincidir.");
 			
-		} catch (SQLException sqlException) {
-			while (sqlException != null) {
-				System.out.println("Error: " + sqlException.getErrorCode());
-				System.out.println("Descripcion: " + sqlException.getMessage());
-				System.out.println("SQLstate: " + sqlException.getSQLState());
-				if(sqlException.getErrorCode() == 1062){
-					
-					success = false;
-					errorMessage = "Ya existe una cuenta con esa dirección de correo, por favor use otra.";
-					
-				}
-				sqlException = sqlException.getNextException();
-			}
+		}
+		if(password.length() < 6){
+			
+			success = false;
+			errorMessages.add("La contraseña debe tener mínimo 6 números o letras.");
 			
 		}
 		
+		if(!name.matches("[a-zA-Z]+") || !surname.matches("[a-zA-Z]+")){
+			
+			success = false;
+			errorMessages.add("Los nombres y apellidos solo pueden contener letras.");
+		}
+		
+		
+		//insert user into database
+		
 		if(success){
-			return "index.jsp";
+			UserDAO registerDAO = new UserDAO();
+		
+			try {
+			
+				registerDAO.insertUser(user);
+			
+			} catch (SQLException sqlException) {
+				while (sqlException != null) {
+					System.out.println("Error: " + sqlException.getErrorCode());
+					System.out.println("Descripcion: " + sqlException.getMessage());
+					System.out.println("SQLstate: " + sqlException.getSQLState());	
+					if(sqlException.getErrorCode() == 1062){
+					
+						success = false;
+						errorMessages.add("Ya existe una cuenta con esa dirección de correo, por favor use otra.");
+					
+					}
+					sqlException = sqlException.getNextException();
+				}
+			
+			}
+		}
+		
+		request.setAttribute("success", success);
+		
+		if(success){
+			return "login.jsp";
 		} else {
 			
-			request.setAttribute("success", success);
-			request.setAttribute("errorMessage", errorMessage);
+			request.setAttribute("errorMessages", errorMessages);
 			return "register.jsp";
 		}
 		

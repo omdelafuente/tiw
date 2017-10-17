@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="resources/css/w3.css" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="resources/css/fonts.css">
+<script src="lib/jquery-3.2.1.min.js"></script>
 <title>Log in</title>
 </head>
 
@@ -37,17 +38,26 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 	<div class="w3-container w3-center">
 	
 	
-	<% if((Boolean)request.getAttribute("failedLogin") != null) {%>
+	<% if((Boolean)request.getAttribute("success") != null) {
+		if((Boolean)request.getAttribute("success") == true) { %>
+
 	
-		<div class="w3-panel w3-red w3-card-4">
- 			 <p>La contraseña o el usuario son incorrectos.</p>
-		</div>
-	<%} %>
-	<!--	
-	 		<div class="w3-panel w3-red w3-card-4">
- 			 	<p></p>
-			</div>
-		-->
+			<div id="registerSuccess" class="w3-modal">
+			    <div class="w3-modal-content w3-animate-zoom">
+    	  			<div class="w3-container">
+        				<span onclick="document.getElementById('registerSuccess').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        				<p>!Enhorabuena¡ Te has registrado en Instaticket con éxito.</p>
+      				</div>
+   				</div>
+  			</div>
+  				
+			<script>
+			$(document).ready(function() {
+			   $("#registerSuccess").css("display","block");
+			   $("#registerSuccess").delay(2500).fadeOut();
+			});
+			</script>
+	<%} } %>
 		
 		
 		<p>Por favor, ingresa tus datos de acceso:</p>
