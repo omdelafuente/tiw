@@ -38,10 +38,10 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
 	<div class="w3-container w3-center">
 	
-		<% if((Boolean)request.getAttribute("success") != null) {
-			if((Boolean)request.getAttribute("success") == false) { 
+		<% if((Boolean)request.getAttribute("registerSuccess") != null) {
+			if((Boolean)request.getAttribute("registerSuccess") == false) { 
 			
-			ArrayList<String> errList = (ArrayList<String>)request.getAttribute("errorMessages");%>		
+			ArrayList<String> errList = (ArrayList<String>)request.getAttribute("errorRegister");%>		
 			
 		<div class="w3-panel w3-red w3-card-4">
 			<%for(int i = 0; i < errList.size(); i++) {%>

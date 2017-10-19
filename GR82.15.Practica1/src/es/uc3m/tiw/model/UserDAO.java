@@ -121,14 +121,14 @@ public class UserDAO {
 			
 			if(rs.next()){
 				
-				return null;
-				
-			} else {
-				
 				user.setEmail(email);
 				user.setName(rs.getString("name"));
 				user.setPassword(rs.getString("password"));
 				user.setSurname(rs.getString("surname"));
+				
+			} else {
+
+				return null;
 				
 			}
 			

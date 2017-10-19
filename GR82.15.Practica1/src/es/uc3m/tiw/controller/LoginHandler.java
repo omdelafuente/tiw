@@ -2,36 +2,55 @@ package es.uc3m.tiw.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import es.uc3m.tiw.model.*;
+
 public class LoginHandler implements IRequestHandler {
-	
-	private final String userAddress = "user@gmail.com";
-	private final String userPassword = "password";
-	
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		String user = request.getParameter("email");
-		String psw = request.getParameter("psw");
+		String email = request.getParameter("email");
+		String password = request.getParameter("psw");
 		
-		if(psw.equals(userPassword) && user.equals(userAddress)){
+		ArrayList<String> errorLogin = new ArrayList<String>();
+		boolean loginSuccess = true;
+		
+		UserDAO loginDAO = new UserDAO();
+		
+		UserBean user = loginDAO.readUser(email);
+		
+		if(user == null){
 			
-			request.getSession().setAttribute("loggedUser", "Alfredo");
-			return "index.jsp";
+			loginSuccess = false;
+			errorLogin.add("No se encontró ninguna cuenta con ese e-mail, por favor regístrate si no lo has hecho o introduce una cuenta existente.");
+		} else {
+			
+			if(!user.getPassword().equals(password)){
+				
+				loginSuccess = false;
+				errorLogin.add("La contraseña introducida es incorrecta.");
+				
+			}
 			
 		}
-		else{
+		
+		request.setAttribute("loginSuccess", loginSuccess);
+		
+		if(loginSuccess){
 			
-			request.setAttribute("failedLogin", true);
+			request.getSession().setAttribute("loggedUser", user);
+			return "index.jsp";
+		} else {
+			
+			request.setAttribute("errorLogin", errorLogin);
 			return "login.jsp";
-			
-			
 		}
 		
 	}

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" import="java.util.ArrayList"%>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -38,8 +38,8 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 	<div class="w3-container w3-center">
 	
 	
-	<% if((Boolean)request.getAttribute("success") != null) {
-		if((Boolean)request.getAttribute("success") == true) { %>
+	<% if((Boolean)request.getAttribute("registerSuccess") != null) {
+		if((Boolean)request.getAttribute("registerSuccess") == true) { %>
 
 	
 			<div id="registerSuccess" class="w3-modal">
@@ -57,15 +57,25 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 			   $("#registerSuccess").delay(2500).fadeOut();
 			});
 			</script>
-	<%} } %>
+	<%} }%>
+	<% if((Boolean)request.getAttribute("loginSuccess") != null) {
+		if((Boolean)request.getAttribute("loginSuccess") == false) {
+		ArrayList<String> errList = (ArrayList<String>)request.getAttribute("errorLogin");%>		
+			
+		<div class="w3-panel w3-red w3-card-4">
+			<%for(int i = 0; i < errList.size(); i++) {%>
+ 				<p><%= errList.get(i)%></p>
+ 			<%} %>
+		</div>
+		<%} }%>
 		
 		
 		<p>Por favor, ingresa tus datos de acceso:</p>
 		<form method="post" action="login">
      		<p>Correo electrónico:</p>
-   			<input class="w3-input w3-border w3-light-grey" style="width:30%; display:inline-block" type="email" name="email"><br>
+   			<input class="w3-input w3-border w3-light-grey" style="width:30%; display:inline-block" maxlength="30" type="email" name="email" required><br>
      		<p>Contraseña:</p>
-   			<input class="w3-input w3-border w3-light-grey" style="width:30%; display:inline-block" type="password" name="psw" value=""/><br>
+   			<input class="w3-input w3-border w3-light-grey" style="width:30%; display:inline-block" maxlength="30" type="password" name="psw" value="" required/><br>
    			<p><button class="w3-button w3-theme w3-grey" type="submit">Acceder</button><p>
 		</form>
    			

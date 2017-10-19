@@ -13,6 +13,8 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 </style>
 
 <body>
-ERROR: NO ENCONTRADO
+<div style="background-color:black; height:25px"></div><br>
+Error: el recurso solicitado no ha sido encontrado.<br>
+<br><div style="background-color:black; height:25px"></div>
 </body>
 </html>

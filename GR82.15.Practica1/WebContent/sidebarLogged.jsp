@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" import="es.uc3m.tiw.model.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,7 +22,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     <a href="index.jsp"  style="text-decoration:none"><h3 class="w3-wide"><b>INSTATICKET</b></h3></a>
   </div>
   <div class="w3-padding-32 w3-large w3-text-grey" style="font-weight:bold">
-  	<p class="w3-bar-item"> ¡Hola, <%= session.getAttribute("loggedUser")%>!</p>
+  	<p class="w3-bar-item"> ¡Hola, <%= ((UserBean)session.getAttribute("loggedUser")).getName()%>!</p>
   	<a href="#" class="w3-bar-item w3-button"><i class="fa fa-gear w3-margin-right"></i>Configuración</a>
     <a href="#" class="w3-bar-item w3-button"><i class="fa fa-ticket w3-margin-right"></i>Cartera de entradas</a>
     <a href="#" class="w3-bar-item w3-button"><i class="fa fa-plus-square w3-margin-right"></i>Crear un evento</a>
