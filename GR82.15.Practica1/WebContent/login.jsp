@@ -28,8 +28,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     <p class="w3-left">Acceder</p>
     <form method="post">
     	<p class="w3-right">
-    		<a class="w3-bar-item w3-button w3-hover-grey" style="float:left" href="index.jsp"><i class="fa fa-home"></i></a>
-      		<button class="w3-bar-item w3-button w3-hover-grey" type="submit"><i class="fa fa-search"></i></button>
+    		<button class="w3-bar-item w3-button w3-hover-grey" type="submit"><i class="fa fa-search"></i></button>
       		<input class="w3-border" type="text" name="search" style="padding: 8px; font-size:15px; float:left" placeholder="Buscar eventos...">
    		</p>
     </form>
@@ -45,7 +44,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 			<div id="registerSuccess" class="w3-modal">
 			    <div class="w3-modal-content w3-animate-zoom">
     	  			<div class="w3-container">
-        				<span onclick="document.getElementById('registerSuccess').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        				<i onclick="document.getElementById('registerSuccess').style.display='none'" class="fa fa-remove w3-right w3-button w3-transparent w3-large"></i>
         				<p>!Enhorabuena¡ Te has registrado en Instaticket con éxito.</p>
       				</div>
    				</div>
