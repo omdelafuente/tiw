@@ -64,8 +64,8 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 	<hr style="border:1px solid grey; width: 90%; margin-left: 5%">
 	<div class="w3-container w3-center">
 		<p>Si quieres dejar de ser miembro de Instaticket...</p>
-		<p><button class="w3-button w3-theme w3-red">Darse de baja</button><p>
-		
+		<form method="post" id="dropOutForm" action="dropOut">
+		</form><p><button class="w3-button w3-theme w3-red" onclick="document.getElementById('confirmBox2').style.display='block'">Darse de baja</button><p>
 	</div>
 
 </div>
@@ -80,12 +80,16 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 	</div>
 </div>
 
-<script>
+<div id="confirmBox2" class="w3-modal">
+	<div class="w3-modal-content w3-animate-opacity w3-center" style="padding:16px">
+		<p>¿Estás seguro de que quieres abandonarnos?</p>
+		<div class="w3-row">
+			<button class="w3-button w3-theme w3-grey w3-medium" type="submit" form="dropOutForm">Sí</button>
+			<button class="w3-button w3-theme w3-red w3-medium" onclick="document.getElementById('confirmBox2').style.display='none'">No</button>
+		</div>
+	</div>
+</div>
 
-
-
-
-</script>
 
 </body>
 </html>

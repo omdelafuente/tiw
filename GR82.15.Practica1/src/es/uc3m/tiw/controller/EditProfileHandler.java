@@ -27,11 +27,6 @@ public class EditProfileHandler implements IRequestHandler {
 		ArrayList<String> errorEdit = new ArrayList<String>();
 		boolean editSuccess = true;
 		
-		if(!oldPassword.equals(user.getPassword())){
-			editSuccess = false;
-			errorEdit.add("Es necesario que indiques tu contraseña antigua para hacer modificaciones.");
-		}
-		
 		request.setAttribute("editSuccess", editSuccess);
 		
 		if(editSuccess){

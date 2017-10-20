@@ -25,6 +25,24 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   	<jsp:include page="sidebarNotLogged.jsp"/>
 <% } %>
 
+<% if((Boolean)request.getAttribute("dropOutSuccess") != null) {
+if((Boolean)request.getAttribute("dropOutSuccess") == true) { %>
+	<div id="dropOutSuccess" class="w3-modal">
+		<div class="w3-modal-content w3-animate-opacity">
+    		<div class="w3-container">
+        		<i onclick="document.getElementById('dropOutSuccess').style.display='none'" class="fa fa-remove w3-right w3-button w3-transparent w3-large"></i>
+        		<p>Tu cuenta ha sido eliminada. Sentimos que te vayas y esperamos volver a verte.</p>
+      		</div>
+   		</div>
+ 	</div>
+ 	<script>
+		$(document).ready(function() {
+			$("#dropOutSuccess").css("display","block");
+			$("#dropOutSuccess").delay(5000).fadeOut();
+		});
+	</script>
+	<%} }%>
+
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:250px">
   
