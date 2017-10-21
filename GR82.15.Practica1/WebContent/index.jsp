@@ -41,7 +41,25 @@ if((Boolean)request.getAttribute("dropOutSuccess") == true) { %>
 			$("#dropOutSuccess").delay(5000).fadeOut();
 		});
 	</script>
-	<%} }%>
+<%} }%>
+
+<% if((Boolean)request.getAttribute("editSuccess") != null) {
+if((Boolean)request.getAttribute("editSuccess") == true) { %>
+	<div id="editSuccess" class="w3-modal">
+		<div class="w3-modal-content w3-animate-opacity">
+    		<div class="w3-container">
+        		<i onclick="document.getElementById('editSuccess').style.display='none'" class="fa fa-remove w3-right w3-button w3-transparent w3-large"></i>
+        		<p>Tus datos han sido cambiados correctamente.</p>
+      		</div>
+   		</div>
+ 	</div>
+ 	<script>
+		$(document).ready(function() {
+			$("#editSuccess").css("display","block");
+			$("#editSuccess").delay(2500).fadeOut();
+		});
+	</script>
+<%} }%>
 
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:250px">
