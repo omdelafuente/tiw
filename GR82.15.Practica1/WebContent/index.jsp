@@ -49,11 +49,10 @@ if((Boolean)request.getAttribute("dropOutSuccess") == true) { %>
   <!-- Top header -->
   <header class="w3-xlarge w3-container">
     <p class="w3-left">Eventos destacados</p>
-    <form method="post">
     <p class="w3-right">
     	<input class="w3-border" type="text" name="search" style="padding: 8px; font-size:15px; float:left" placeholder="Buscar eventos...">
-    	<button class="w3-bar-item w3-button w3-hover-grey" type="submit"><i class="fa fa-search"></i></button>
-    </p></form>
+    	<button class="w3-bar-item w3-button w3-hover-grey"><i class="fa fa-search"></i></button>
+    </p>
  
   </header>
 

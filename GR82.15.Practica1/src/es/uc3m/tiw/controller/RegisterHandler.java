@@ -40,7 +40,7 @@ public class RegisterHandler implements IRequestHandler {
 			
 		}
 		
-		if(!name.matches("[a-zA-Z]+") || !surname.matches("[a-zA-Z]+")){
+		if(!name.matches("[a-zA-Z]+") || !surname.matches("^[ A-Za-z]+$")){
 			
 			registerSuccess = false;
 			errorRegister.add("Los nombres y apellidos solo pueden contener letras.");
