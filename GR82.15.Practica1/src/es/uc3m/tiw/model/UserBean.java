@@ -1,6 +1,9 @@
 package es.uc3m.tiw.model;
 
-public class UserBean {
+import java.io.Serializable;
+
+public class UserBean implements Serializable{
+	private static final long serialVersionUID = 1L;
 	
 	private String name;
 	private String surname;

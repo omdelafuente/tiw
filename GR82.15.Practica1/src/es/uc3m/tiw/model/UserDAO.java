@@ -24,7 +24,7 @@ public class UserDAO {
 			
 		PreparedStatement userStatement;
 		try {
-			userStatement = con.prepareStatement("INSERT INTO user (name, surname, email, password) VALUES (?,?,?,?)");
+			userStatement = con.prepareStatement("INSERT INTO User (name, surname, email, password) VALUES (?,?,?,?)");
 			userStatement.setString(1, name);
 			userStatement.setString(2, surname);
 			userStatement.setString(3, email);		
@@ -55,7 +55,7 @@ public class UserDAO {
 
 		try {
 		
-			PreparedStatement userStatement = con.prepareStatement("DELETE FROM user WHERE email=?");
+			PreparedStatement userStatement = con.prepareStatement("DELETE FROM User WHERE email=?");
 			userStatement.setString(1, email);
 			
 			userStatement.executeUpdate();
@@ -85,7 +85,7 @@ public class UserDAO {
 		
 		try {
 			
-			PreparedStatement userStatement = con.prepareStatement("UPDATE user SET name=?, surname=?, password=? WHERE email=?");			
+			PreparedStatement userStatement = con.prepareStatement("UPDATE User SET name=?, surname=?, password=? WHERE email=?");			
 			userStatement.setString(1, name);
 			userStatement.setString(2, surname);
 			userStatement.setString(3, psw);
@@ -117,7 +117,7 @@ public class UserDAO {
 		try {
 			
 			stmnt = con.createStatement();
-			ResultSet rs = stmnt.executeQuery("SELECT * FROM user WHERE email='"+email+"'");
+			ResultSet rs = stmnt.executeQuery("SELECT * FROM User WHERE email='"+email+"'");
 			
 			if(rs.next()){
 				

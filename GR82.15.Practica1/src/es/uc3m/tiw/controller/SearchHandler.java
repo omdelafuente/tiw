@@ -13,12 +13,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import es.uc3m.tiw.model.EventBean;
+import es.uc3m.tiw.model.Event;
 
 
 public class SearchHandler implements IRequestHandler {
 
-	private static ArrayList<EventBean> EventList = new ArrayList<EventBean>();
+	private static ArrayList<Event> EventList = new ArrayList<Event>();
 	
 	static{
 		
@@ -30,7 +30,7 @@ public class SearchHandler implements IRequestHandler {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		EventList.add(new EventBean("Kase-O en concierto","Conciertos",18.00f, date[0], 
+/*		EventList.add(new EventBean("Kase-O en concierto","Conciertos",18.00f, date[0], 
 				null, "resources/kaseo.jpg", "WiZink Center, Madrid", "Gira EL CÍRCULO 2016-2017 "
 						+ "KASE.O llega a conquistar el mítico Palacio de los Deportes de Madrid. "
 			   +"Después de batir todos los records en la gira más importante de la historia de HIP-HOP en España, KASE.O quiere reunir a todos sus seguidores en un concierto mítico con colabos y sorpresas que se irán anunciando, y que será el colofón de su TOUR EL CÍRCULO 2017."
@@ -47,14 +47,14 @@ public class SearchHandler implements IRequestHandler {
 			   +"La apertura de puertas será a las 19:30 horas, EL MOMO 20:30 horas y el inicio del concierto de KASE.O a las 21:30 horas.", 500, "Disponible"));
 		
 		
-	
+	*/
 	}
 	
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		ArrayList<EventBean> results = new ArrayList<EventBean>();
+		ArrayList<Event> results = new ArrayList<Event>();
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 		
 		for(int i = 0; i < EventList.size(); i++){

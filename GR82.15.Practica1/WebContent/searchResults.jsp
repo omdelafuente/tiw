@@ -51,7 +51,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
       	<%for(int i = 0; i < events.size(); i++){ %>
       	<div class="w3-container">
       		<div class="w3-display-container">
-      			<img class="event-img" src="<%= events.get(i).getImagePath() %>" style="width:100%">
+      			<img class="event-img" src="<%=  %>" style="width:100%">
       			<div class="w3-display-middle w3-display-hover">
       				<button class="w3-button w3-black">Información del evento</button>
       			</div>
