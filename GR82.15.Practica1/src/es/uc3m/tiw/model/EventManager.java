@@ -3,7 +3,6 @@ package es.uc3m.tiw.model;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-import jhc.Persona;
 
 public class EventManager {
 	
@@ -29,7 +28,7 @@ public class EventManager {
 		return emf.createEntityManager();
 	}
 	
-	public String createPersona(Event event) throws Exception {
+	public String createEvent(Event event) throws Exception {
 		EntityManager em = getEntityManager();
 		try {
 			em.getTransaction().begin();
@@ -51,7 +50,7 @@ public class EventManager {
 		return "";
 	}
 
-	public String deletePersona(Event event) throws Exception {
+	public String deleteEvent(Event event) throws Exception {
 		EntityManager em = getEntityManager();
 		try {
 			em.getTransaction().begin();
@@ -74,7 +73,7 @@ public class EventManager {
 		return "";
 	}
 
-	public String updatePersona(Event event) throws Exception {
+	public String updateEvent(Event event) throws Exception {
 		EntityManager em = getEntityManager();
 		try {
 			em.getTransaction().begin();
@@ -109,9 +108,9 @@ public class EventManager {
 
 	public Event getNewEvent() {
 
-		Event persona = new Event();
+		Event event = new Event();
 
-		return persona;
+		return event;
 	}
 
 }

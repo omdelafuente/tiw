@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="es.uc3m.tiw.model.Event"%>
  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -45,7 +45,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   <div class="w3-main">
 	<div class="w3-row">
 		<div class="w3-col s9 w3-center" style="padding-top:0.25em">
-			<h1>Kase-O en concierto</h1>
+			<h1><%= ((Event)request.getAttribute("event")).getTitle() %></h1>
 		</div>
 		<div class="w3-col s3 w3-center">
 			<span class="w3-tag w3-large w3-padding-large w3-light-grey w3-center w3-hover-orange" style="cursor:pointer">

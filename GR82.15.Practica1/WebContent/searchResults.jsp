@@ -41,7 +41,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 <br><br>
 <div class="w3-row">
 
-	<% ArrayList<EventBean> events = (ArrayList<EventBean>)request.getAttribute("retrievedEvents");
+	<% ArrayList<Event> events = (ArrayList<Event>)request.getAttribute("retrievedEvents");
 	
 	%>
 	<div class="w3-col s4 w3-center">      <p></p>    

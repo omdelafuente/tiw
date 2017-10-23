@@ -27,6 +27,6 @@ CREATE TABLE Ticket
 (
 event INT NOT NULL,
 client VARCHAR(30) NOT NULL,
-FOREIGN KEY event REFERENCES Event(id),
-FOREIGN KEY client REFERENCES User(email)
+FOREIGN KEY (event) REFERENCES Event(id),
+FOREIGN KEY (client) REFERENCES User(email)
 );

@@ -2,8 +2,9 @@ package es.uc3m.tiw.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -18,7 +19,8 @@ public class Event implements Serializable{
 	private String category;
 	private byte[] image;
 	private BigDecimal price;
-	private Timestamp date;
+	@Convert(converter = LocalDateTimeAttributeConverter.class)
+	private LocalDateTime date;
 	private String place;
 	private String description;
 	private int availableTickets;
@@ -26,7 +28,7 @@ public class Event implements Serializable{
 	private UserBean creator;
 
 
-	public Event(int id, String title, String category, byte[] image, BigDecimal price, Timestamp date,
+	public Event(int id, String title, String category, byte[] image, BigDecimal price, LocalDateTime date,
 			String place, String description, int availableTickets, String state, UserBean creator) {
 		super();
 		this.id = id;
@@ -97,12 +99,12 @@ public class Event implements Serializable{
 	}
 
 
-	public Timestamp getDate() {
+	public LocalDateTime getDate() {
 		return date;
 	}
 
 
-	public void setDate(Timestamp date) {
+	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
 
