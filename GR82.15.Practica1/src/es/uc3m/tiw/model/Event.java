@@ -7,6 +7,8 @@ import java.time.LocalDateTime;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,23 +22,25 @@ public class Event implements Serializable{
 	private byte[] image;
 	private BigDecimal price;
 	@Convert(converter = LocalDateTimeAttributeConverter.class)
-	private LocalDateTime date;
+	private LocalDateTime eventDate;
 	private String place;
 	private String description;
 	private int availableTickets;
 	private String state;
-	private UserBean creator;
+	@ManyToOne
+	@JoinColumn(name = "creator")
+	private Usr creator;
 
 
-	public Event(int id, String title, String category, byte[] image, BigDecimal price, LocalDateTime date,
-			String place, String description, int availableTickets, String state, UserBean creator) {
+	public Event(int id, String title, String category, byte[] image, BigDecimal price, LocalDateTime eventDate,
+			String place, String description, int availableTickets, String state, Usr creator) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.category = category;
 		this.image = image;
 		this.price = price;
-		this.date = date;
+		this.eventDate = eventDate;
 		this.place = place;
 		this.description = description;
 		this.availableTickets = availableTickets;
@@ -99,13 +103,13 @@ public class Event implements Serializable{
 	}
 
 
-	public LocalDateTime getDate() {
-		return date;
+	public LocalDateTime getEventDate() {
+		return eventDate;
 	}
 
 
-	public void setDate(LocalDateTime date) {
-		this.date = date;
+	public void setEventDate(LocalDateTime eventDate) {
+		this.eventDate = eventDate;
 	}
 
 	public String getPlace() {
@@ -148,12 +152,12 @@ public class Event implements Serializable{
 	}
 
 
-	public UserBean getCreator() {
+	public Usr getCreator() {
 		return creator;
 	}
 
 
-	public void setCreator(UserBean creator) {
+	public void setCreator(Usr creator) {
 		this.creator = creator;
 	}
 	

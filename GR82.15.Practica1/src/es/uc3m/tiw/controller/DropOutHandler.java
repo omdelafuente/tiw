@@ -14,7 +14,7 @@ public class DropOutHandler implements IRequestHandler{
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		UserBean user = (UserBean)request.getSession().getAttribute("loggedUser");
+		Usr user = (Usr)request.getSession().getAttribute("loggedUser");
 		UserDAO userDAO = new UserDAO();
 		
 		userDAO.deleteUser(user);

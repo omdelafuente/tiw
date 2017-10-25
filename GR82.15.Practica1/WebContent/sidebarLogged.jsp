@@ -22,14 +22,14 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     <a href="index.jsp"  style="text-decoration:none"><h3 class="w3-wide"><b>INSTATICKET</b></h3></a>
   </div>
   <div class="w3-padding-32 w3-large w3-text-grey" style="font-weight:bold">
-  	<p class="w3-bar-item"> ¡Hola, <%= ((UserBean)session.getAttribute("loggedUser")).getName()%>!</p>
-  	<a href="editProfile.jsp" class="w3-bar-item w3-button"><i class="fa fa-gear w3-margin-right"></i>Configuración</a>
-    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-ticket w3-margin-right"></i>Cartera de entradas</a>
-    <a href="createEvent.jsp" class="w3-bar-item w3-button"><i class="fa fa-plus-square w3-margin-right"></i>Crear un evento</a>
-    <a onclick="document.getElementById('searchModal').style.display='block'"class="w3-button w3-block w3-left-align" id="searchMenuBtn"><i class="fa fa-search w3-margin-right"></i>
+  	<p class="w3-bar-item"> ¡Hola, <%= ((Usr)session.getAttribute("loggedUser")).getName()%>!</p>
+  	<a href="editProfile.jsp" class="w3-bar-item w3-button">Configuración</a>
+    <a href="#" class="w3-bar-item w3-button">Cartera de entradas</a>
+    <a href="createEvent.jsp" class="w3-bar-item w3-button">Crear un evento</a>
+    <a onclick="document.getElementById('searchModal').style.display='block'"class="w3-button w3-block w3-left-align" id="searchMenuBtn">
       Búsqueda avanzada &nbsp;&nbsp;<i class="fa fa-caret-right"></i>
     </a>
-    <a href="logOut" class="w3-bar-item w3-button"><i class="fa fa-sign-out w3-margin-right"></i>Cerrar sesión</a>
+    <a href="logOut" class="w3-bar-item w3-button">Cerrar sesión</a>
   </div>
 </nav>
 

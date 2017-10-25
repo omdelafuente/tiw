@@ -3,11 +3,12 @@
 	<persistence-unit name="GR82.15.Practica1">
 		<class>es.uc3m.tiw.model.Event</class>
 		<class>es.uc3m.tiw.model.LocalDateTimeAttributeConverter</class>
+		<class>es.uc3m.tiw.model.Usr</class>
 		<properties>
 	         <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/tiw"/>
 	         <property name="javax.persistence.jdbc.user" value="root"/>
 	         <property name="javax.persistence.jdbc.password" value="admin"/>
 	         <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-	      </properties>
+	    </properties>
 	</persistence-unit>
 </persistence>

@@ -32,19 +32,19 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
 	<div class="w3-container w3-center">
 		<p>Por favor, rellena el siguiente formulario para crear un nuevo evento:</p>
-		<form method="post" action="createEvent" id="createEventForm">
+		<form method="post" action="createEvent" id="createEventForm" enctype="multipart/form-data">
 			<p>Título:</p>
-    		<input class="w3-input w3-border w3-light-grey" style="width:50%; display:inline-block" type="text" name="title" maxlength="30" required/><br>
+    		<input class="w3-input w3-border w3-light-grey" style="width:50%; display:inline-block" type="text" name="title" placeholder="Mínimo un texto descriptivo de 8 letras" minlength="5" maxlength="30" required/><br>
     		<p>Categoría del evento:</p>
     		<select name="category" class="w3-select w3-border w3-light-grey" style="width:50%; display:inline-block" required>
       			<option value="" disabled selected>Escoge una categoría</option>
-    			<option value="cine">Cine</option>
-   	 			<option value="teather">Teatro</option>
-    			<option value="concerts">Conciertos</option>
-    			<option value="festivals">Festivales</option>
-    			<option value="art">Arte</option>
-    			<option value="sports">Deportes</option>
-    			<option value="others">Otros</option>
+    			<option value="Cine">Cine</option>
+   	 			<option value="Teatro">Teatro</option>
+    			<option value="Conciertos">Conciertos</option>
+    			<option value="Festivales">Festivales</option>
+    			<option value="Arte">Arte</option>
+    			<option value="Deportes">Deportes</option>
+    			<option value="Otros">Otros</option>
       		</select>
       		<p>Imagen del evento:</p>
       		<input class="w3-input w3-border w3-light-grey" style="width:50%; display:inline-block" type="file" name="image" accept="image/*" required/><br>
@@ -53,7 +53,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
       		<p>Fecha y hora:</p>
       		<input class="w3-input w3-border w3-light-grey" style="width:50%; display:inline-block" type="datetime-local" name="date" required/><br>
       		<p>Sala, recinto o lugar:</p>
-    		<input class="w3-input w3-border w3-light-grey" style="width:50%; display:inline-block" type="text" name="place" maxlength="25" required/><br>
+    		<input class="w3-input w3-border w3-light-grey" style="width:50%; display:inline-block" type="text" name="place" placeholder="Mínimo un texto descriptivo de 8 letras" minlength="8" maxlength="25" required/><br>
     		<p>Entradas disponibles:</p>
       		<input class="w3-input w3-border w3-light-grey" style="width:50%; display:inline-block" type="number" name="availableTickets" min="0" max="999999"required/><br>
     		<p>Descripción:</p>

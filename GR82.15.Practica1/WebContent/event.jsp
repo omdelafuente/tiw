@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="es.uc3m.tiw.model.Event"%>
+    pageEncoding="UTF-8" import="es.uc3m.tiw.model.Event, java.time.LocalDateTime, org.apache.commons.codec.binary.StringUtils, org.apache.commons.codec.binary.Base64;"%>
  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -39,7 +39,10 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
   <!-- Image header -->
   <div class="w3-container">
-    <img src="resources/kaseo.jpg" alt="Jeans" style="width:100%">
+    <img src="<% StringBuilder sb = new StringBuilder();
+						sb.append("data:image/png;base64,");
+						sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(((Event)request.getAttribute("event")).getImage(), false)));
+						out.print(sb.toString()); %>" style="width:100%">
   </div>
   <br>
   <div class="w3-main">
@@ -56,25 +59,22 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 	
 	<div class="w3-row w3-padding-16" style="width: 90%; margin-left: 5%">
     	<div class="w3-twothird w3-container">
+    		<% String description =  ((Event)request.getAttribute("event")).getDescription();
+    		description = description.replaceAll("(\r\n|\r|\n|\n\r)", "<br>");%>
       		<h5>Descripción</h5>
-     		<p style="text-align:justify">Gira EL CÍRCULO 2016-2017<br>
-			   KASE.O llega a conquistar el mítico Palacio de los Deportes de Madrid. 
-			   Después de batir todos los records en la gira más importante de la historia de HIP-HOP en España, 
-			   KASE.O quiere reunir a todos sus seguidores en un concierto mítico con colabos y sorpresas que se irán anunciando, 
-			   y que será el colofón de su TOUR EL CÍRCULO 2017.
-			   <br>
-			   La apertura de puertas será a las 19:30 horas, EL MOMO 20:30 horas y el inicio del concierto de KASE.O a las 21:30 horas.</p>
+     		<p style="text-align:justify"><%=description%></p>
     	</div>
     	<div class="w3-third w3-container">
     		<h5>Información del evento</h5>
     		<label>Categoría</label>
-    		<p class="w3-border w3-padding-large w3-padding-16 w3-center">Conciertos</p>
+    		<p class="w3-border w3-padding-large w3-padding-16 w3-center"><%=((Event)request.getAttribute("event")).getCategory()%></p>
     		<label>Precio</label>
-      		<p class="w3-border w3-padding-large w3-padding-16 w3-center">16,00 €</p>
+      		<p class="w3-border w3-padding-large w3-padding-16 w3-center"><%=((Event)request.getAttribute("event")).getPrice()%>€</p>
       		<label>Fecha y hora</label>
-      		<p class="w3-border w3-padding-large w3-padding-16 w3-center">02 DIC 2017<br>19:30h</p>
+      		<% LocalDateTime dateTime =  ((Event)request.getAttribute("event")).getEventDate();%>
+      		<p class="w3-border w3-padding-large w3-padding-16 w3-center"><%=dateTime.toLocalDate() %><br><%=dateTime.toLocalTime() %>h</p>
       		<label>Lugar</label>
-      		<p class="w3-border w3-padding-large w3-padding-16 w3-center">WiZink Center, Madrid</p>
+      		<p class="w3-border w3-padding-large w3-padding-16 w3-center"><%=((Event)request.getAttribute("event")).getPlace()%></p>
     	</div>
   </div>
 	

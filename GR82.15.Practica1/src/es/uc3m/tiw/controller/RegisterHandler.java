@@ -23,7 +23,7 @@ public class RegisterHandler implements IRequestHandler {
 		ArrayList<String> errorRegister = new ArrayList<String>();
 		boolean registerSuccess = true;
 		
-		UserBean user = new UserBean(name,surname,password,email);
+		Usr user = new Usr(name,surname,password,email);
 		
 		//user data validation
 		

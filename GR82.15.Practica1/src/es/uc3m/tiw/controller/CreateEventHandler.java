@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -21,6 +22,9 @@ public class CreateEventHandler implements IRequestHandler {
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		ArrayList<String> errorEvent = new ArrayList<String>();
+		boolean eventSuccess = true;
+		
 		String title = request.getParameter("title");
 		String category = request.getParameter("category");
 		Part filePart = request.getPart("image");
@@ -30,8 +34,8 @@ public class CreateEventHandler implements IRequestHandler {
 	    String inputDate = request.getParameter("date"); 
 	    LocalDateTime date = null;
 	    try {
-	    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYY-MM-DD'T'hh:mm");
-	    	 date = LocalDateTime.parse(inputDate, formatter);
+	    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+	    	date = LocalDateTime.parse(inputDate, formatter);
 	    }
 	    catch(DateTimeParseException exc){
 	    	System.out.println(exc.getMessage());
@@ -39,14 +43,16 @@ public class CreateEventHandler implements IRequestHandler {
 	    String place = request.getParameter("place");
 	    String description = request.getParameter("description");
 	    int availableTickets = Integer.parseInt(request.getParameter("availableTickets"));
-	    UserBean creator = (UserBean)request.getSession().getAttribute("loggedUser");
+	    Usr creator = (Usr)request.getSession().getAttribute("loggedUser");
 		
+	    
+	    
 		Event newEvent = new Event();
 		newEvent.setTitle(title);
 		newEvent.setCategory(category);
 		newEvent.setImage(image);
 		newEvent.setPrice(price);
-		newEvent.setDate(date);
+		newEvent.setEventDate(date);
 		newEvent.setPlace(place);
 		newEvent.setDescription(description);
 		newEvent.setAvailableTickets(availableTickets);
@@ -63,9 +69,8 @@ public class CreateEventHandler implements IRequestHandler {
 		} catch (Exception e){
 			System.out.println("Descripcion: " + e.getMessage());
 		}
-
-		request.setAttribute("event", newEvent);
-		return "event.jsp";
+		
+		return "event?id="+newEvent.getId();
 	}
 
 }

@@ -24,7 +24,7 @@ public class LoginHandler implements IRequestHandler {
 		
 		UserDAO loginDAO = new UserDAO();
 		
-		UserBean user = loginDAO.readUser(email);
+		Usr user = loginDAO.readUser(email);
 		
 		if(user == null){
 			

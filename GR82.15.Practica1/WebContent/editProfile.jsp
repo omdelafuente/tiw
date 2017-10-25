@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="java.util.ArrayList" import="es.uc3m.tiw.model.UserBean"%>
+    pageEncoding="ISO-8859-1" import="java.util.ArrayList" import="es.uc3m.tiw.model.Usr"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -47,9 +47,9 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 		<p>Edita los campos que desees modificar:</p>
 		<form method="post" action="edit" id="editForm">
 			<p>Nombre:</p>
-	    	<input class="w3-input w3-border w3-light-grey" style="width:30%; display:inline-block" type="text" name="name" value="<%=((UserBean)request.getSession().getAttribute("loggedUser")).getName()%>"/><br>
+	    	<input class="w3-input w3-border w3-light-grey" style="width:30%; display:inline-block" type="text" name="name" value="<%=((Usr)request.getSession().getAttribute("loggedUser")).getName()%>"/><br>
 	    	<p>Apellidos:</p>
-	    	<input class="w3-input w3-border w3-light-grey" style="width:30%; display:inline-block" type="text" name="surname" value="<%=((UserBean)request.getSession().getAttribute("loggedUser")).getSurname()%>"/><br>
+	    	<input class="w3-input w3-border w3-light-grey" style="width:30%; display:inline-block" type="text" name="surname" value="<%=((Usr)request.getSession().getAttribute("loggedUser")).getSurname()%>"/><br>
 	    	<p>Contraseña actual:</p>
 	   		<input class="w3-input w3-border w3-light-grey" style="width:30%; display:inline-block" type="password" name="psw"/><br>
 	    	<p>Nueva contraseña:</p>

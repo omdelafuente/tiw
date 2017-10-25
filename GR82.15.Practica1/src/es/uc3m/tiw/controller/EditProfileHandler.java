@@ -22,8 +22,8 @@ public class EditProfileHandler implements IRequestHandler {
 		String newPassword = request.getParameter("npsw");
 		String checkNewPassword = request.getParameter("checknpsw");
 		
-		UserBean user = (UserBean)request.getSession().getAttribute("loggedUser");
-		UserBean updatedUser = new UserBean();
+		Usr user = (Usr)request.getSession().getAttribute("loggedUser");
+		Usr updatedUser = new Usr();
 		updatedUser.setEmail(user.getEmail());
 		UserDAO userDAO = new UserDAO();
 		
