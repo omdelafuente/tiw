@@ -22,9 +22,6 @@ public class CreateEventHandler implements IRequestHandler {
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		ArrayList<String> errorEvent = new ArrayList<String>();
-		boolean eventSuccess = true;
-		
 		String title = request.getParameter("title");
 		String category = request.getParameter("category");
 		Part filePart = request.getPart("image");

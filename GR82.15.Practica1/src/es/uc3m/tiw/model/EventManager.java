@@ -1,7 +1,10 @@
 package es.uc3m.tiw.model;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 
 
 public class EventManager {
@@ -104,6 +107,21 @@ public class EventManager {
 			em.close();
 		}
 		return event;
+	}
+	
+	public List<Event> findEventsByCreator(Usr creator){
+		
+		List<Event> events = null;
+		EntityManager em = getEntityManager();
+		try {
+			Query query = em.createQuery("SELECT c FROM Event c WHERE c.creator = :creator");
+			query.setParameter("creator", creator);
+			events = (List<Event>)query.getResultList();
+			
+		} finally {
+			em.close();
+		}
+		return events;
 	}
 
 	public Event getNewEvent() {

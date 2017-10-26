@@ -8,7 +8,7 @@
 <link href="resources/css/w3.css" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="resources/css/fonts.css">
 <link rel="stylesheet" href="resources/css/font-awesome-4.7.0/css/font-awesome.min.css">
-<title>Instaticket</title>
+<title>Evento</title>
 
 <style>
 .w3-sidebar a {font-family: "Roboto", sans-serif}
@@ -70,6 +70,8 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     		<p class="w3-border w3-padding-large w3-padding-16 w3-center"><%=((Event)request.getAttribute("event")).getCategory()%></p>
     		<label>Precio</label>
       		<p class="w3-border w3-padding-large w3-padding-16 w3-center"><%=((Event)request.getAttribute("event")).getPrice()%>€</p>
+      		<label>Entradas disponibles</label>
+      		<p class="w3-border w3-padding-large w3-padding-16 w3-center"><%=((Event)request.getAttribute("event")).getAvailableTickets()%></p>
       		<label>Fecha y hora</label>
       		<% LocalDateTime dateTime =  ((Event)request.getAttribute("event")).getEventDate();%>
       		<p class="w3-border w3-padding-large w3-padding-16 w3-center"><%=dateTime.toLocalDate() %><br><%=dateTime.toLocalTime() %>h</p>
