@@ -22,7 +22,7 @@ public class LoginHandler implements IRequestHandler {
 		ArrayList<String> errorLogin = new ArrayList<String>();
 		boolean loginSuccess = true;
 		
-		UserDAO loginDAO = new UserDAO();
+		UsrDAO loginDAO = new UsrDAO();
 		
 		Usr user = loginDAO.readUser(email);
 		

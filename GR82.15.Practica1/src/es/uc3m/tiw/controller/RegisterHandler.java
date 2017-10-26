@@ -50,7 +50,7 @@ public class RegisterHandler implements IRequestHandler {
 		//insert user into database
 		
 		if(registerSuccess){
-			UserDAO registerDAO = new UserDAO();
+			UsrDAO registerDAO = new UsrDAO();
 			
 			if(registerDAO.readUser(email) != null){
 				
