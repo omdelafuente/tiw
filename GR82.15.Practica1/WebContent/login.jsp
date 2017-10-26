@@ -43,7 +43,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 			    <div class="w3-modal-content w3-animate-opacity">
     	  			<div class="w3-container">
         				<i onclick="document.getElementById('registerSuccess').style.display='none'" class="fa fa-remove w3-right w3-button w3-transparent w3-large"></i>
-        				<p>!Enhorabuena¡ Te has registrado en Instaticket con éxito.</p>
+        				<p>¡Enhorabuena! Te has registrado en Instaticket con éxito.</p>
       				</div>
    				</div>
   			</div>

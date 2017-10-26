@@ -32,34 +32,43 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
    		</p>
  	</header>
  	
- 	<div class="w3-container">
+ 	<div class="w3-container w3-center">
  		
  		<% List<Event> events = (List<Event>)request.getAttribute("events");
- 		for(int i = 0; i < events.size(); i++) {
- 		LocalDateTime dateTime =  events.get(i).getEventDate();%>
  		
-		 <div class="w3-row">
-		 	<hr class="w3-border">
-		 	<div class="w3-col w3-display-container" style="width:40%">
-		 		<img src="<% StringBuilder sb = new StringBuilder();
+ 		if(events.isEmpty()){%>
+ 			
+ 			No has creado ningún evento todavía.
+ 		<%}
+ 		else {%>
+ 		
+ 		Estos son los eventos que has creado:
+ 		
+ 		<%for(int i = 0; i < events.size(); i++) {
+ 		LocalDateTime dateTime =  events.get(i).getEventDate();%>
+ 		 
+		 <div class="w3-row" style="display:flexbox">
+		 	<br>
+		 	<div class="w3-col w3-hover-shadow" style="width:40%">
+		 		<a href="event?id=<%=events.get(i).getId()%>"><img src="<% StringBuilder sb = new StringBuilder();
 						sb.append("data:image/png;base64,");
 						sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(events.get(i).getImage(), false)));
-						out.print(sb.toString()); %>" style="max-width:100%; max-height:100%">
-						<div class="w3-display-middle w3-display-hover w3-animate-opacity w3-large w3-hover-opacity-off">
-      						<button class="w3-btn w3-light-grey">Ver evento</button>
-    					</div>
+						out.print(sb.toString()); %>" style="max-width:100%; max-height:100%"></a>
 		 	</div>
-		 	<div class="w3-col w3-padding-small" style="width:60%">
+		 	<div class="w3-col" style="width:50%">
 		 		<p><b><%=events.get(i).getTitle()%></b></p>
 		 		<p><%=events.get(i).getCategory()%></p>
 		 		<p><%=events.get(i).getAvailableTickets()%> entradas disponibles a <%=events.get(i).getPrice()%> €</p>
 		 		<p><%=dateTime.toLocalDate()%> a las <%=dateTime.toLocalTime() %>h</p>
 		 		<p><%=events.get(i).getPlace()%></p>
 		 	</div>
+		 	<div class="w3-col" style="width:10%">
+		 	<a href="" class="w3-button"><i class="fa fa-gear"></i>   Config.</a>
+		 	</div>
 		 	
 		 </div>
 		 <hr class="w3-border">
-		 <%} %>
+		 <%} }%>
  	
  	</div>
  	
