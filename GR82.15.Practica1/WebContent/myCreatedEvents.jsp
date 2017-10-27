@@ -25,7 +25,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
  <!-- Top header -->
 	<header class="w3-container w3-xlarge">
-    	<p class="w3-left">Eventos creados</p>
+    	<p class="w3-left">Mis eventos</p>
     	<p class="w3-right">
     		<button class="w3-bar-item w3-button w3-hover-grey"><i class="fa fa-search"></i></button>
       		<input class="w3-border" type="text" name="search" style="padding: 8px; font-size:15px; float:left" placeholder="Buscar eventos...">
@@ -58,7 +58,12 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 		 	<div class="w3-col" style="width:50%">
 		 		<p><b><%=events.get(i).getTitle()%></b></p>
 		 		<p><%=events.get(i).getCategory()%></p>
-		 		<p><%=events.get(i).getAvailableTickets()%> entradas disponibles a <%=events.get(i).getPrice()%> €</p>
+		 		<%if(events.get(i).getState().equals("Disponible")){%>
+		 		<p class="w3-text-green"><%=events.get(i).getAvailableTickets()%> entradas disponibles a <%=events.get(i).getPrice()%> €</p>
+		 		<%}
+		 		else {%>
+		 		<<p class="w3-text-red">Evento <%=events.get(i).getState()%> </p>
+		 		<%}%>
 		 		<p><%=dateTime.toLocalDate()%> a las <%=dateTime.toLocalTime() %>h</p>
 		 		<p><%=events.get(i).getPlace()%></p>
 		 	</div>

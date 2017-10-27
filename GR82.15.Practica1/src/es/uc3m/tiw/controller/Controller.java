@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Controller
  */
-@WebServlet(urlPatterns ={"/index","/login","/register", "/search", "/logOut","/edit","/dropOut","/createEvent","/event","/myCreatedEvents","/editEvent"})
+@WebServlet(urlPatterns ={"/index","/login","/register", "/search", "/logOut","/edit","/dropOut","/createEvent","/event","/myCreatedEvents","/editEvent","/cancelEvent"})
 @MultipartConfig
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -34,6 +34,7 @@ public class Controller extends HttpServlet {
 		handlerHash.put("/event", new ShowEventHandler());
 		handlerHash.put("/myCreatedEvents", new MyCreatedEventsHandler());
 		handlerHash.put("/editEvent", new EditEventHandler());
+		handlerHash.put("/cancelEvent", new CancelEventHandler());
 	}
 
 	/**

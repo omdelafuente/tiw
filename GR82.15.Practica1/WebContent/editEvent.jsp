@@ -32,13 +32,17 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 		
 		<p>Edita los campos que desees modificar:</p>
 		<form method="post" action="editEvent" id="editForm">
+		
+		
+		
+		
 		</form>
 		<p><button class="w3-button w3-theme w3-grey" onclick="document.getElementById('confirmBox').style.display='block'">Confirmar cambios</button><p>
 	</div>
 	
 	<div class="w3-container w3-center">
 		<p>Si deseas cancelar el evento:</p>
-		<form method="post" id="deleteEventForm" action="deleteEvent">
+		<form method="post" id="cancelEventForm" action="cancelEvent">
 		</form><p><button class="w3-button w3-theme w3-red" onclick="document.getElementById('confirmBox2').style.display='block'">Cancelar evento</button><p>
 	</div>
 
@@ -58,7 +62,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 	<div class="w3-modal-content w3-animate-opacity w3-center" style="padding:16px">
 		<p>¿Estás seguro de que quieres cancelar el evento?</p>
 		<div class="w3-row">
-			<button class="w3-button w3-theme w3-grey w3-medium" type="submit" form="deleteEventForm">Sí</button>
+			<button class="w3-button w3-theme w3-grey w3-medium" type="submit" form="cancelEventForm">Sí</button>
 			<button class="w3-button w3-theme w3-grey w3-medium" onclick="document.getElementById('confirmBox2').style.display='none'">No</button>
 		</div>
 	</div>

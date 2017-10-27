@@ -109,6 +109,24 @@ public class EventManager {
 		return event;
 	}
 	
+	public List<Event> findEventsMatchingString(String str){
+		
+		List<Event> events = null;
+		EntityManager em = getEntityManager();
+		try {
+			Query query = em.createQuery("SELECT c FROM Event c WHERE c.title LIKE :str OR c.category LIKE :str OR c.price LIKE :str OR c.eventDate LIKE :str OR c.place LIKE :str OR c.description LIKE :str OR c.state LIKE :str");
+			query.setParameter("str", "%"+str+"%");
+			events = (List<Event>)query.getResultList();
+			
+		} finally {
+			
+			em.close();
+		}
+		return events;
+		
+		
+	}
+	
 	public List<Event> findEventsByCreator(Usr creator){
 		
 		List<Event> events = null;

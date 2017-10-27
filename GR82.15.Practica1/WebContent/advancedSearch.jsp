@@ -19,6 +19,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
       <i onclick="document.getElementById('searchModal').style.display='none'" class="fa fa-remove w3-right w3-button w3-transparent w3-xxlarge"></i>
       <h2 class="w3-wide">Búsqueda avanzada</h2>
       <form method="post" action="search">
+      	<input type="hidden" name="type" value="advanced">
       	<select name="category" class="w3-select w3-border" style="width:30%; display:inline-block">
       	<option value="" disabled selected>Escoge una categoría</option>
     	<option value="cine">Cine</option>
