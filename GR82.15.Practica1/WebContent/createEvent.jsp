@@ -58,7 +58,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
       		<p>Sala, recinto o lugar:</p>
     		<input class="w3-input w3-border w3-light-grey" style="width:50%; display:inline-block" type="text" name="place" placeholder="Mínimo un texto descriptivo de 8 letras" minlength="8" maxlength="25" required/><br>
     		<p>Entradas disponibles:</p>
-      		<input class="w3-input w3-border w3-light-grey" style="width:50%; display:inline-block" type="number" name="availableTickets" min="0" max="999999"required/><br>
+      		<input class="w3-input w3-border w3-light-grey" style="width:50%; display:inline-block" type="number" name="availableTickets" min="1" max="99999"required/><br>
     		<p>Descripción:</p>
     		<textarea class="w3-input w3-border w3-light-grey" rows="16" cols="60" name="description" form="createEventForm" required></textarea>
    			<p><button class="w3-button w3-theme w3-grey" type="submit">Crear evento</button><p>

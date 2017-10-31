@@ -1,5 +1,8 @@
 package es.uc3m.tiw.model;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -114,17 +117,38 @@ public class EventManager {
 		List<Event> events = null;
 		EntityManager em = getEntityManager();
 		try {
-			Query query = em.createQuery("SELECT c FROM Event c WHERE c.title LIKE :str OR c.category LIKE :str OR c.price LIKE :str OR c.eventDate LIKE :str OR c.place LIKE :str OR c.description LIKE :str OR c.state LIKE :str");
-			query.setParameter("str", "%"+str+"%");
+			Query query = em.createQuery("SELECT c FROM Event c WHERE c.title LIKE CONCAT('%',:str,'%') OR c.category LIKE CONCAT('%',:str,'%') OR c.price = :str OR function('date_format',c.eventDate, '%r %M %d %Y') LIKE CONCAT('%',:str,'%') OR c.place LIKE CONCAT('%',:str,'%') OR c.description LIKE CONCAT('%',:str,'%') OR c.state LIKE CONCAT('%',:str,'%')");
+			query.setParameter("str", str);
 			events = (List<Event>)query.getResultList();
 			
 		} finally {
-			
 			em.close();
 		}
 		return events;
+	}
+	
+	public List<Event> findEventsByMultipleFields(String title, String category, String place, String description, String state, BigDecimal priceMin, BigDecimal priceMax, LocalDateTime dateMin, LocalDateTime dateMax){
 		
-		
+		List<Event> events = null;
+		EntityManager em = getEntityManager();
+		try {
+			Query query = em.createQuery("SELECT c FROM Event c WHERE (:title IS NULL OR c.title LIKE CONCAT('%',:title,'%')) AND (:category IS NULL OR c.category = :category) AND (:place IS NULL OR c.place LIKE CONCAT('%',:place,'%')) AND (:description IS NULL OR c.description LIKE CONCAT('%',:description,'%')) AND (:state IS NULL OR c.state = :state) AND (:priceMin IS NULL OR c.price >= :priceMin) AND (:priceMax IS NULL OR c.price <= :priceMax) AND (:dateMin IS NULL OR c.eventDate >= :dateMin) AND (:dateMax IS NULL OR c.eventDate <= :dateMax)");
+			query.setParameter("title", title);
+			query.setParameter("category", category);
+			query.setParameter("place", place);
+			query.setParameter("description", description);
+			query.setParameter("state", state);
+			query.setParameter("priceMin", priceMin);
+			query.setParameter("priceMax", priceMax);
+			query.setParameter("dateMin", dateMin);
+			query.setParameter("dateMax", dateMax);
+			
+			events = (List<Event>)query.getResultList();
+			
+		} finally {
+			em.close();
+		}
+		return events;
 	}
 	
 	public List<Event> findEventsByCreator(Usr creator){
