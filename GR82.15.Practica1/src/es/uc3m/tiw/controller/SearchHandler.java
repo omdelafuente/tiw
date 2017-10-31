@@ -19,11 +19,12 @@ public class SearchHandler implements IRequestHandler {
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		
 		String type = request.getParameter("type");
 		
 		//advanced search
 		if(type.equals("advanced")){
+			
+			
 		}
 		
 		//simple search

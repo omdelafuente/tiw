@@ -30,36 +30,47 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   <!-- Top header -->
   <header class="w3-xlarge w3-container">
     <p class="w3-left">Información del evento</p>
-    <p class="w3-right">
-    	<input class="w3-border" type="text" name="search" style="padding: 8px; font-size:15px; float:left"" placeholder="Buscar eventos...">
-    	<button class="w3-bar-item w3-button w3-hover-grey"><i class="fa fa-search"></i></button>
-    </p>
+    <form action="search" method="post">
+    	<p class="w3-right">		
+    		<input type="hidden" name="type" value="simple">
+    		<input class="w3-border" type="text" name="search" style="padding: 8px; font-size:15px; float:left" placeholder="Buscar eventos..." required>
+    		<button class="w3-bar-item w3-button w3-hover-grey" type="submit"><i class="fa fa-search"></i></button>  	
+   		</p>
+    </form>
  
   </header>
+
+	<% Event event = (Event)request.getAttribute("event");%>
 
   <!-- Image header -->
   <div class="w3-container">
     <img src="<% StringBuilder sb = new StringBuilder();
 						sb.append("data:image/png;base64,");
-						sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(((Event)request.getAttribute("event")).getImage(), false)));
+						sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(event.getImage(), false)));
 						out.print(sb.toString()); %>" style="width:100%">
   </div>
   <br>
   <div class="w3-main">
 	<div class="w3-row">
 		<div class="w3-col s9 w3-center" style="padding-top:0.25em">
-			<h1><%= ((Event)request.getAttribute("event")).getTitle() %></h1>
+			<h1><%= event.getTitle() %></h1>
 		</div>
 		<div class="w3-col s3 w3-center">
+			<%if(event.getState().equals("Disponible")) 
+			{%>
 			<span class="w3-tag w3-large w3-padding-large w3-light-grey w3-center w3-hover-orange" style="cursor:pointer">
 			<strong>COMPRAR<br>ENTRADAS</strong></span>
+			<%} else {%>
+			<span class="w3-tag w3-large w3-padding-large w3-light-grey w3-center w3-hover-orange" style="cursor:pointer">
+			<strong>EVENTO<br><%=event.getState().toUpperCase()%></strong></span>	
+			<%}%>
 		</div>
 	</div>
 	<hr style="border:1px solid grey; width: 90%; margin-left: 5%">
 	
 	<div class="w3-row w3-padding-16" style="width: 90%; margin-left: 5%">
     	<div class="w3-twothird w3-container">
-    		<% String description =  ((Event)request.getAttribute("event")).getDescription();
+    		<% String description =  event.getDescription();
     		description = description.replaceAll("(\r\n|\r|\n|\n\r)", "<br>");%>
       		<h5>Descripción</h5>
      		<p style="text-align:justify"><%=description%></p>
@@ -67,16 +78,16 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     	<div class="w3-third w3-container">
     		<h5>Información del evento</h5>
     		<label>Categoría</label>
-    		<p class="w3-border w3-padding-large w3-padding-16 w3-center"><%=((Event)request.getAttribute("event")).getCategory()%></p>
+    		<p class="w3-border w3-padding-large w3-padding-16 w3-center"><%=event.getCategory()%></p>
     		<label>Precio</label>
-      		<p class="w3-border w3-padding-large w3-padding-16 w3-center"><%=((Event)request.getAttribute("event")).getPrice()%>€</p>
+      		<p class="w3-border w3-padding-large w3-padding-16 w3-center"><%=event.getPrice()%>€</p>
       		<label>Entradas disponibles</label>
-      		<p class="w3-border w3-padding-large w3-padding-16 w3-center"><%=((Event)request.getAttribute("event")).getAvailableTickets()%></p>
+      		<p class="w3-border w3-padding-large w3-padding-16 w3-center"><%=event.getAvailableTickets()%></p>
       		<label>Fecha y hora</label>
-      		<% LocalDateTime dateTime =  ((Event)request.getAttribute("event")).getEventDate();%>
+      		<% LocalDateTime dateTime = event.getEventDate();%>
       		<p class="w3-border w3-padding-large w3-padding-16 w3-center"><%=dateTime.toLocalDate() %><br><%=dateTime.toLocalTime() %>h</p>
       		<label>Lugar</label>
-      		<p class="w3-border w3-padding-large w3-padding-16 w3-center"><%=((Event)request.getAttribute("event")).getPlace()%></p>
+      		<p class="w3-border w3-padding-large w3-padding-16 w3-center"><%=event.getPlace()%></p>
     	</div>
   </div>
 	
