@@ -61,7 +61,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 			<span class="w3-tag w3-large w3-padding-large w3-light-grey w3-center w3-hover-orange" style="cursor:pointer">
 			<strong>COMPRAR<br>ENTRADAS</strong></span>
 			<%} else {%>
-			<span class="w3-tag w3-large w3-padding-large w3-light-grey w3-center w3-hover-orange" style="cursor:pointer">
+			<span class="w3-tag w3-large w3-padding-large w3-red w3-center" style="cursor:pointer">
 			<strong>EVENTO<br><%=event.getState().toUpperCase()%></strong></span>	
 			<%}%>
 		</div>

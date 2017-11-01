@@ -48,6 +48,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     			<option value="Deportes">Deportes</option>
     			<option value="Otros">Otros</option>
       			</select>
+
       			<label><b>Sala, recinto o lugar</b></label>
     			<input class="w3-input w3-border w3-light-grey w3-margin-bottom input-group" type="text" name="place" maxlength="25">
     			<div class="w3-row">
@@ -83,8 +84,10 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 	    		<option value="Finalizado">Finalizado</option>
 	    		<option value="Cancelado">Cancelado</option>
 	      		</select>
-	 			<button class="w3-center w3-button w3-block w3-grey w3-section w3-padding w3-left-align" type="submit"><i class="fa fa-search w3-margin-right"></i>Buscar evento</button>
-	 			
+	      		<div class="w3-container w3-light-grey w3-center">
+	 				<button class="w3-button w3-green" type="submit"><i class="fa fa-search w3-margin-right"></i>Buscar evento</button>
+	 				<button class="w3-button w3-grey" type="reset"><i class="fa fa-trash w3-margin-right"></i>Limpiar campos</button>
+      		 	</div>
       		 	</div>   		 
       		 </form>
 	

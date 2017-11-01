@@ -117,7 +117,7 @@ public class EventManager {
 		List<Event> events = null;
 		EntityManager em = getEntityManager();
 		try {
-			Query query = em.createQuery("SELECT c FROM Event c WHERE c.title LIKE CONCAT('%',:str,'%') OR c.category LIKE CONCAT('%',:str,'%') OR c.price = :str OR function('date_format',c.eventDate, '%r %M %d %Y') LIKE CONCAT('%',:str,'%') OR c.place LIKE CONCAT('%',:str,'%') OR c.description LIKE CONCAT('%',:str,'%') OR c.state LIKE CONCAT('%',:str,'%')");
+			Query query = em.createQuery("SELECT c FROM Event c WHERE c.title LIKE CONCAT('%',:str,'%') OR c.category LIKE CONCAT('%',:str,'%') OR c.price LIKE CONCAT('%',:str,'%') OR function('date_format',c.eventDate, '%r %M %d %Y') LIKE CONCAT('%',:str,'%') OR c.place LIKE CONCAT('%',:str,'%') OR c.description LIKE CONCAT('%',:str,'%') OR c.state LIKE CONCAT('%',:str,'%')");
 			query.setParameter("str", str);
 			events = (List<Event>)query.getResultList();
 			

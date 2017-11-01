@@ -31,7 +31,7 @@ public class Controller extends HttpServlet {
 		handlerHash.put("/edit", new EditProfileHandler());
 		handlerHash.put("/dropOut", new DropOutHandler());
 		handlerHash.put("/createEvent", new CreateEventHandler());
-		handlerHash.put("/event", new ShowEventHandler());
+		handlerHash.put("/event", new GetEventHandler());
 		handlerHash.put("/myCreatedEvents", new MyCreatedEventsHandler());
 		handlerHash.put("/editEvent", new EditEventHandler());
 		handlerHash.put("/cancelEvent", new CancelEventHandler());

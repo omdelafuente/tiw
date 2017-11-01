@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="java.util.ArrayList"%>
+    pageEncoding="ISO-8859-1" import="java.util.ArrayList, es.uc3m.tiw.model.Event"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -31,14 +31,26 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
    		</p>
     </form>
   </header>
+  
+  <%Event eventToEdit = (Event)request.getAttribute("event"); %>
 	<div class="w3-container w3-center">
 		
 		<p>Edita los campos que desees modificar:</p>
 		<form method="post" action="editEvent" id="editForm">
-		
-		
-		
-		
+			<input type="hidden" name="id" value="<%=eventToEdit.getId()%>">
+			<p>Título:</p>
+    		<input class="w3-input w3-border w3-light-grey" style="width:50%; display:inline-block" type="text" name="title" minlength="5" maxlength="30" value="<%=eventToEdit.getTitle()%>"/><br>
+			<p>Precio de la entrada:</p>
+      		<input class="w3-input w3-border w3-light-grey" style="width:50%; display:inline-block" type="number" name="price" min="0.0" max="9999.99" step=".01" value="<%=eventToEdit.getPrice()%>"><br>
+      		<p>Fecha y hora:</p>
+      		<input class="w3-input w3-border w3-light-grey" style="width:50%; display:inline-block" type="datetime-local" name="date" value="<%=eventToEdit.getEventDate()%>"/><br>
+      		<p>Sala, recinto o lugar:</p>
+    		<input class="w3-input w3-border w3-light-grey" style="width:50%; display:inline-block" type="text" name="place" minlength="8" maxlength="25" value="<%=eventToEdit.getPlace()%>"/><br>
+    		<p>Entradas disponibles:</p>
+      		<input class="w3-input w3-border w3-light-grey" style="width:50%; display:inline-block" type="number" name="availableTickets" min="1" max="99999" value="<%=eventToEdit.getAvailableTickets()%>"/><br>
+    		<p>Descripción:</p>
+    		<textarea class="w3-input w3-border w3-light-grey" rows="16" cols="60" name="description" form="editForm"><%=eventToEdit.getDescription()%></textarea>
+   			
 		</form>
 		<p><button class="w3-button w3-theme w3-grey" onclick="document.getElementById('confirmBox').style.display='block'">Confirmar cambios</button><p>
 	</div>
@@ -46,6 +58,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 	<div class="w3-container w3-center">
 		<p>Si deseas cancelar el evento:</p>
 		<form method="post" id="cancelEventForm" action="cancelEvent">
+		<input type="hidden" name="id" value="<%=eventToEdit.getId()%>">
 		</form><p><button class="w3-button w3-theme w3-red" onclick="document.getElementById('confirmBox2').style.display='block'">Cancelar evento</button><p>
 	</div>
 

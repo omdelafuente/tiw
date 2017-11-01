@@ -10,12 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import es.uc3m.tiw.model.*;
 
-public class ShowEventHandler implements IRequestHandler {
+public class GetEventHandler implements IRequestHandler {
 
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		int id = Integer.parseInt(request.getParameter("id"));
+		String type = request.getParameter("type");
 		Event event;
 		
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("GR82.15.Practica1");
@@ -25,7 +26,12 @@ public class ShowEventHandler implements IRequestHandler {
 		event = manager.findEventByID(id);
 		
 		request.setAttribute("event", event);
-		return "event.jsp";
+		
+		if(type != null){
+			return "editEvent.jsp";
+		} else {
+			return "event.jsp";
+		}
 	}
 
 }
