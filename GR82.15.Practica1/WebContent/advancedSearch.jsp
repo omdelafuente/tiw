@@ -84,7 +84,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 	    		<option value="Finalizado">Finalizado</option>
 	    		<option value="Cancelado">Cancelado</option>
 	      		</select>
-	      		<div class="w3-container w3-light-grey w3-center">
+	      		<div class="w3-container w3-center">
 	 				<button class="w3-button w3-green" type="submit"><i class="fa fa-search w3-margin-right"></i>Buscar evento</button>
 	 				<button class="w3-button w3-grey" type="reset"><i class="fa fa-trash w3-margin-right"></i>Limpiar campos</button>
       		 	</div>

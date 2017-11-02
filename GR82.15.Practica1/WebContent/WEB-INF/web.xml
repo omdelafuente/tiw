@@ -14,6 +14,7 @@
     <url-pattern>/createEvent.jsp</url-pattern>
     <url-pattern>/editEvent.jsp</url-pattern>
     <url-pattern>/myCreatedEvent.jsp</url-pattern>
+    <url-pattern>/buyTicket.jsp</url-pattern>
   </filter-mapping>
   <error-page>
   	<error-code>500</error-code>

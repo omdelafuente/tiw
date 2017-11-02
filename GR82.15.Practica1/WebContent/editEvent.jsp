@@ -54,7 +54,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 		</form>
 		<p><button class="w3-button w3-theme w3-grey" onclick="document.getElementById('confirmBox').style.display='block'">Confirmar cambios</button><p>
 	</div>
-	
+	<hr style="border:1px solid grey; width: 90%; margin-left: 5%">
 	<div class="w3-container w3-center">
 		<p>Si deseas cancelar el evento:</p>
 		<form method="post" id="cancelEventForm" action="cancelEvent">
