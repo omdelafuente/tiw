@@ -27,11 +27,16 @@ public class GetEventHandler implements IRequestHandler {
 		
 		request.setAttribute("event", event);
 		
-		if(type != null){
-			return "editEvent.jsp";
-		} else {
-			return "event.jsp";
+		if(type != null){				
+			if(type.equals("editEvent")){
+				return "editEvent.jsp";
+			} else if(type.equals("buyTicket")) {
+				return "buyTicket.jsp";
+			}
 		}
+
+		return "event.jsp";
+
 	}
 
 }

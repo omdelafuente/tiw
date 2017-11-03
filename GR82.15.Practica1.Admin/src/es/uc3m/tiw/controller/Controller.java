@@ -38,6 +38,6 @@ public void doGet (HttpServletRequest request, HttpServletResponse response) thr
 	
 public void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 	
-	IRequestHandler hr = ;
+	
 }
 }

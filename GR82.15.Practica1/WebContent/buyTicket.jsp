@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="es.uc3m.tiw.model.Event"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -46,6 +46,8 @@ body, h1, h2, h3, h4, h5, h6, .w3-wide {
 
 		</header>
 		
+		<% Event event = (Event)request.getAttribute("event");%>
+		
 		<div class="w3-container w3-center">
 		
 			<div class="w3-row w3-light-grey w3-border-top w3-border-bottom" style="width:100%">
@@ -60,17 +62,37 @@ body, h1, h2, h3, h4, h5, h6, .w3-wide {
 				</div>
 			</div>
 			
-			<div class="w3-row" style="width:100%">
+			<div class="w3-row w3-border-bottom" style="width:100%">
 				<div class="w3-container w3-half">
-					<p>Kase-O en concierto</p>
+					<p><%=event.getTitle()%></p>
 				</div>
 				<div class="w3-container w3-quarter">
-					<p>19.99€</p>
+					<p><%=event.getPrice()%>€</p>
 				</div>
 				<div class="w3-container w3-quarter">
-					<p><input type="number" min="1" value="1" style="text-align:center; max-width:50%"></p>
+					<p><input type="number" name="numberOfTickets" min="1" value="1" style="text-align:center; max-width:50%"></p>
 				</div>
 			</div>
+			<div class="w3-row" style="width:100%">
+				<div class="w3-container w3-half">
+					&nbsp;
+				</div>
+				<div class="w3-container w3-quarter">
+					<p><b>TOTAL(€)</b></p>
+				</div>
+				<div class="w3-container w3-quarter">
+					<p id="total"><%=event.getPrice()%></p>
+				</div>
+			</div>
+			
+			<script>
+				var price = <%=event.getPrice()%>;
+				$("input[name='numberOfTickets']").change(function() {
+					var total =  $("[name='numberOfTickets']").val();
+					var num = (total*price).toFixed(2);
+					$("#total").html(num);
+				});
+			</script>
 			
 			<div class="w3-row w3-padding-16" style="width:100%">
 				<a href="javascript:history.back()" class="w3-btn w3-white w3-border w3-left">Cancelar compra</a>
@@ -81,7 +103,7 @@ body, h1, h2, h3, h4, h5, h6, .w3-wide {
 		</div>
 		
 		<div class="w3-container w3-center" id="payment" style="display:none">
-		
+			<p><b>Método de pago</b></p>
 			<div class="payment-selector">
 				<input id="visa" type="radio" name="credit-card" value="visa" />
         		<label class="drinkcard-cc visa" for="visa"></label>
@@ -111,6 +133,20 @@ body, h1, h2, h3, h4, h5, h6, .w3-wide {
 					</div>
 				</form>			
 			</div>
+			
+			<div class="w3-container w3-border" id="payment-paypal" style="display:none">
+				<form method="post">
+					<div class="w3-row-padding w3-padding-16">
+						<label><b>Correo electrónico de PayPal:</b></label><br>
+						<input class="w3-input w3-border w3-light-grey" type="text" style="width:50%;display:inline-block;">
+					</div>
+					<div class="w3-row-padding w3-padding-16">	
+   						<label><b>Contraseña:</b></label><br>
+   						<input class="w3-input w3-border w3-light-grey" type="text" style="width:50%;display:inline-block;">
+   					</div>	
+   					<p><button class="w3-btn w3-green w3-border">Finalizar compra</button><p>							
+				</form>			
+			</div>
 		
 		</div>
 		<!-- End page content -->
@@ -127,6 +163,11 @@ $( document ).ready(function() {
 	$("[name='credit-card']").change(function () {
 		if($(this).val() == "visa"){		
 			$("#payment-cc").show();
+			$("#payment-paypal").hide();
+		}
+		if($(this).val() == "paypal"){		
+			$("#payment-paypal").show();
+			$("#payment-cc").hide();
 		}
 	});
 	

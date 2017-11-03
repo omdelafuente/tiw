@@ -15,29 +15,26 @@ public class LoginFilter implements Filter {
 
 	
 	public void destroy() {
-		
-
 	}
 
+	public void init(FilterConfig config) throws ServletException {
+	}
 	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
-		if(httpRequest.getSession(false) != null  && httpRequest.getSession(false).getAttribute("loggedUser") != null){
+		if(httpRequest.getSession(false) == null){
 			chain.doFilter(request, response);
 		}
 		else {
-			RequestDispatcher r = request.getRequestDispatcher("login.jsp");
-			request.setAttribute("notLogged", true);
+			RequestDispatcher r = request.getRequestDispatcher("index.jsp");
 			r.forward(request, response);
 		}
 
 	}
 
 	
-	public void init(FilterConfig config) throws ServletException {
-		
-	}
+	
 
 }

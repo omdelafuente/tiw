@@ -10,19 +10,17 @@
   </filter>
   <filter-mapping>
     <filter-name>LoginFilter</filter-name>
-    <url-pattern>/editProfile.jsp</url-pattern>
-    <url-pattern>/createEvent.jsp</url-pattern>
-    <url-pattern>/editEvent.jsp</url-pattern>
-    <url-pattern>/myCreatedEvent.jsp</url-pattern>
-    <url-pattern>/buyTicket.jsp</url-pattern>
+    <url-pattern>/login.jsp</url-pattern>
+    <url-pattern>/register.jsp</url-pattern>
+    <url-pattern>/login</url-pattern>
+    <url-pattern>/register</url-pattern>
   </filter-mapping>
   <error-page>
-  	<error-code>500</error-code>
-  	<location>/errorNotFound.jsp</location>
+    <error-code>500</error-code>
+    <location>/errorNotFound.jsp</location>
   </error-page>
   <error-page>
-  	<error-code>404</error-code>
-  	<location>/errorNotFound.jsp</location>
+    <error-code>404</error-code>
+    <location>/errorNotFound.jsp</location>
   </error-page>
-  
 </web-app>
