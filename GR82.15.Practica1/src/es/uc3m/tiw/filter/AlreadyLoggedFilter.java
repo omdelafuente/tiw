@@ -9,9 +9,11 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
-public class LoginFilter implements Filter {
+@WebFilter
+public class AlreadyLoggedFilter implements Filter {
 
 	
 	public void destroy() {
@@ -24,7 +26,7 @@ public class LoginFilter implements Filter {
 			throws IOException, ServletException {
 		
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
-		if(httpRequest.getSession(false) == null){
+		if(httpRequest.getSession(false).getAttribute("loggedUser") == null){
 			chain.doFilter(request, response);
 		}
 		else {
