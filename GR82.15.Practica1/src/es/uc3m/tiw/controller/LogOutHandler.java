@@ -13,7 +13,7 @@ public class LogOutHandler implements IRequestHandler {
 			throws ServletException, IOException {
 		
 		request.getSession().invalidate();
-		return "index.jsp";
+		return "/index";
 	}
 
 }

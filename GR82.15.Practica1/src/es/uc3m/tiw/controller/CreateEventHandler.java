@@ -67,7 +67,7 @@ public class CreateEventHandler implements IRequestHandler {
 			System.out.println("Descripcion: " + e.getMessage());
 		}
 		
-		return "event?id="+newEvent.getId();
+		return "myCreatedEvents";
 	}
 
 }

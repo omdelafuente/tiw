@@ -31,10 +31,14 @@ public class GetEventHandler implements IRequestHandler {
 			if(type.equals("editEvent")){
 				return "editEvent.jsp";
 			} else if(type.equals("buyTicket")) {
-				return "buyTicket.jsp";
+				
+				if(event.getCreator().equals(request.getSession().getAttribute("loggedUser"))){
+					request.setAttribute("cannotBuy", true);
+				} else {				
+					return "buyTicket.jsp";
+				}
 			}
 		}
-
 		return "event.jsp";
 
 	}

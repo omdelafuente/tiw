@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link href="resources/css/indexStyle.css" rel="stylesheet" type="text/css"/>
+<link href="resources/css/w3.css" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="resources/css/fonts.css">
 <title>Sign in</title>
 </head>

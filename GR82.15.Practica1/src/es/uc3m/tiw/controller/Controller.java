@@ -24,6 +24,7 @@ public class Controller extends HttpServlet {
 
 	public void init(ServletConfig config) throws ServletException {
 		
+		handlerHash.put("/index", new IndexHandler());
 		handlerHash.put("/login", new LoginHandler());
 		handlerHash.put("/register", new RegisterHandler());
 		handlerHash.put("/search", new SearchHandler());

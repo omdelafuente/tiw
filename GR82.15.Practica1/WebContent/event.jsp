@@ -24,6 +24,24 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   	<jsp:include page="sidebarNotLogged.jsp"/>
 <% } %>
 
+<% if((Boolean)request.getAttribute("cannotBuy") != null) {
+if((Boolean)request.getAttribute("cannotBuy") == true) { %>
+	<div id="cannotBuy" class="w3-modal">
+		<div class="w3-modal-content w3-animate-opacity">
+    		<div class="w3-container">
+        		<i onclick="document.getElementById('cannotBuy').style.display='none'" class="fa fa-remove w3-right w3-button w3-transparent w3-large"></i>
+        		<p>No puedes comprar entradas para un evento que tú mismo has creado.</p>
+      		</div>
+   		</div>
+ 	</div>
+ 	<script>
+		$(document).ready(function() {
+			$("#cannotBuy").css("display","block");
+			$("#cannotBuy").delay(2500).fadeOut();
+		});
+	</script>
+<%} }%>
+
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:250px">
   
@@ -43,11 +61,11 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 	<% Event event = (Event)request.getAttribute("event");%>
 
   <!-- Image header -->
-  <div class="w3-container">
+  <div class="w3-container w3-center" style="height:400px">
     <img src="<% StringBuilder sb = new StringBuilder();
 						sb.append("data:image/png;base64,");
 						sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(event.getImage(), false)));
-						out.print(sb.toString()); %>" style="width:100%">
+						out.print(sb.toString()); %>" style="max-width:100%;max-height:100%">
   </div>
   <br>
   <div class="w3-main">
@@ -87,7 +105,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
       		<% LocalDateTime dateTime = event.getEventDate();%>
       		<p class="w3-border w3-padding-large w3-padding-16 w3-center"><%=dateTime.toLocalDate() %><br><%=dateTime.toLocalTime() %>h</p>
       		<label>Lugar</label>
-      		<p class="w3-border w3-padding-large w3-padding-16 w3-center"><%=event.getPlace()%></p>
+      		<p class="w3-border w3-padding-large w3-padding-16 w3-center" style="word-break: break-all"><%=event.getPlace()%></p>
     	</div>
   </div>
 	

@@ -117,7 +117,7 @@ public class EditProfileHandler implements IRequestHandler {
 			
 			userDAO.updateUser(updatedUser);
 			request.getSession().setAttribute("loggedUser", updatedUser);
-			return "index.jsp";
+			return "/index";
 		} else {
 			
 			request.setAttribute("errorEdit", errorEdit);

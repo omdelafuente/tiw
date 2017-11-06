@@ -46,6 +46,14 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 		</div>
 		<%} }%>
 		
+		<% if((Boolean)request.getAttribute("dropOutSuccess") != null) {
+			if((Boolean)request.getAttribute("dropOutSuccess") == false) { %>				
+		<div class="w3-panel w3-red w3-card-4">
+	 		<p>No puedes darte de baja si has creado eventos y están disponibles.</p>
+		</div>
+		<%} }%>
+		
+		
 		
 		<p>Edita los campos que desees modificar:</p>
 		<form method="post" action="edit" id="editForm">

@@ -39,13 +39,13 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 		<form method="post" action="editEvent" id="editForm">
 			<input type="hidden" name="id" value="<%=eventToEdit.getId()%>">
 			<p>Título:</p>
-    		<input class="w3-input w3-border w3-light-grey" style="width:50%; display:inline-block" type="text" name="title" minlength="5" maxlength="30" value="<%=eventToEdit.getTitle()%>"/><br>
+    		<input class="w3-input w3-border w3-light-grey" style="width:50%; display:inline-block" type="text" name="title" minlength="5" maxlength="50" value="<%=eventToEdit.getTitle()%>"/><br>
 			<p>Precio de la entrada:</p>
       		<input class="w3-input w3-border w3-light-grey" style="width:50%; display:inline-block" type="number" name="price" min="0.0" max="9999.99" step=".01" value="<%=eventToEdit.getPrice()%>"><br>
       		<p>Fecha y hora:</p>
       		<input class="w3-input w3-border w3-light-grey" style="width:50%; display:inline-block" type="datetime-local" name="date" value="<%=eventToEdit.getEventDate()%>"/><br>
       		<p>Sala, recinto o lugar:</p>
-    		<input class="w3-input w3-border w3-light-grey" style="width:50%; display:inline-block" type="text" name="place" minlength="8" maxlength="25" value="<%=eventToEdit.getPlace()%>"/><br>
+    		<input class="w3-input w3-border w3-light-grey" style="width:50%; display:inline-block" type="text" name="place" minlength="8" maxlength="50" value="<%=eventToEdit.getPlace()%>"/><br>
     		<p>Entradas disponibles:</p>
       		<input class="w3-input w3-border w3-light-grey" style="width:50%; display:inline-block" type="number" name="availableTickets" min="1" max="99999" value="<%=eventToEdit.getAvailableTickets()%>"/><br>
     		<p>Descripción:</p>

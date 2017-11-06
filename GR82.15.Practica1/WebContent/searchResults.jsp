@@ -57,11 +57,11 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
  		 
 		 <div class="w3-row" style="display:flexbox">
 		 	<br>
-		 	<div class="w3-col w3-hover-shadow" style="width:40%">
+		 	<div class="w3-col" style="width:365px; height:205px">
 		 		<a href="event?id=<%=events.get(i).getId()%>"><img src="<% StringBuilder sb = new StringBuilder();
 						sb.append("data:image/png;base64,");
 						sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(events.get(i).getImage(), false)));
-						out.print(sb.toString()); %>" style="max-width:100%; max-height:100%"></a>
+						out.print(sb.toString()); %>" class="w3-hover-shadow" style="max-width:100%; max-height:100%"></a>
 		 	</div>
 		 	<div class="w3-col" style="width:60%">
 		 		<p><b><%=events.get(i).getTitle()%></b></p>

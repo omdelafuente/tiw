@@ -45,7 +45,7 @@ public class LoginHandler implements IRequestHandler {
 		if(loginSuccess){
 			
 			request.getSession().setAttribute("loggedUser", user);
-			return "index.jsp";
+			return "/index";
 		} else {
 			
 			request.setAttribute("errorLogin", errorLogin);

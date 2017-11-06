@@ -12,7 +12,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
-@WebFilter
+@WebFilter(urlPatterns ={"/login.jsp","/login", "/register.jsp","/register"})
 public class AlreadyLoggedFilter implements Filter {
 
 	

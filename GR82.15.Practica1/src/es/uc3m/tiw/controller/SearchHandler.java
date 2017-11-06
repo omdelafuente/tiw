@@ -20,7 +20,6 @@ import es.uc3m.tiw.model.EventManager;
 
 public class SearchHandler implements IRequestHandler {
 	
-	
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

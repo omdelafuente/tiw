@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.time.LocalDateTime, es.uc3m.tiw.model.Event, java.util.List, org.apache.commons.codec.binary.StringUtils, org.apache.commons.codec.binary.Base64"%>
  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -76,81 +76,101 @@ if((Boolean)request.getAttribute("editSuccess") == true) { %>
     </form>
  
   </header>
+  
+  <%List<Event> events =  (List<Event>)request.getAttribute("events");%>
 
   <!-- Image header -->
   <div class="w3-display-container w3-container">
-    <img class="event-img" src="resources/kaseo.jpg" alt="Jeans" style="width:100%">
-    <div class="w3-display-topleft w3-text-white" style="padding:24px 48px">
-      <h1 class="w3-jumbo">Kase-O en concierto</h1>
-      <h1>MADRID - 2017</h1>    
+    <a href="event?id=<%=events.get(0).getId()%>"><img class="event-img" src="<% StringBuilder sb = new StringBuilder();
+						sb.append("data:image/png;base64,");
+						sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(events.get(0).getImage(), false)));
+						out.print(sb.toString());%>"  style="width:100%"></a>
+    <div class="w3-display-topleft w3-text-red" style="padding:24px 48px">
+      <h1 class="w3-jumbo"><%=events.get(0).getTitle()%></h1>
+      <%LocalDateTime dateTime = events.get(0).getEventDate(); %>
+      <h1><%=dateTime.toLocalDate()%></h1>    
     </div>
   </div>
 
-  <div class="w3-container w3-text-grey" id="jeans">
-    <p>8 items</p>
+  <div class="w3-container">
+  	<p>&nbsp;</p>
   </div>
 
   <!-- Product grid -->
   <div class="w3-row">
     <div class="w3-col l3 s6">
       <div class="w3-container">
-        <img class="event-img" src="resources/kaseo.jpg" style="width:100%">
-        <p>Ripped Skinny Jeans<br><b>$24.99</b></p>
+        <a href="event?id=<%=events.get(1).getId()%>"><img class="event-img" src="<% StringBuilder sb1 = new StringBuilder();
+						sb1.append("data:image/png;base64,");
+						sb1.append(StringUtils.newStringUtf8(Base64.encodeBase64(events.get(1).getImage(), false)));
+						out.print(sb1.toString());%>" style="width:100%"></a>
+        <p><%=events.get(1).getTitle()%><br><b><%=events.get(1).getPrice()%>€</b></p>
       </div>
       <div class="w3-container">
-        <img class="event-img" src="resources/kaseo.jpg" style="width:100%">
-        <p>Mega Ripped Jeans<br><b>$19.99</b></p>
+        <a href="event?id=<%=events.get(2).getId()%>"><img class="event-img" src="<% StringBuilder sb2 = new StringBuilder();
+						sb2.append("data:image/png;base64,");
+						sb2.append(StringUtils.newStringUtf8(Base64.encodeBase64(events.get(2).getImage(), false)));
+						out.print(sb2.toString());%>" style="width:100%"></a>
+        <p><%=events.get(2).getTitle()%><br><b><%=events.get(2).getPrice()%>€</b></p>
       </div>
     </div>
 
     <div class="w3-col l3 s6">
       <div class="w3-container">
-        <div class="w3-display-container">
-          <img class="event-img" src="resources/kaseo.jpg" style="width:100%">
-          <span class="w3-tag w3-display-topleft">New</span>
-          <div class="w3-display-middle w3-display-hover">
-            <button class="w3-button w3-black">Buy now <i class="fa fa-shopping-cart"></i></button>
-          </div>
-        </div>
-        <p>Mega Ripped Jeans<br><b>$19.99</b></p>
+        <a href="event?id=<%=events.get(3).getId()%>"><img class="event-img" src="<% StringBuilder sb3 = new StringBuilder();
+						sb3.append("data:image/png;base64,");
+						sb3.append(StringUtils.newStringUtf8(Base64.encodeBase64(events.get(3).getImage(), false)));
+						out.print(sb3.toString());%>" style="width:100%"></a>
+        <p><%=events.get(3).getTitle()%><br><b><%=events.get(3).getPrice()%>€</b></p>
       </div>
       <div class="w3-container">
-        <img class="event-img" src="resources/kaseo.jpg" style="width:100%">
-        <p>Washed Skinny Jeans<br><b>$20.50</b></p>
+        <a href="event?id=<%=events.get(4).getId()%>"><img class="event-img" src="<% StringBuilder sb4 = new StringBuilder();
+						sb4.append("data:image/png;base64,");
+						sb4.append(StringUtils.newStringUtf8(Base64.encodeBase64(events.get(4).getImage(), false)));
+						out.print(sb4.toString());%>" style="width:100%"></a>
+        <p><%=events.get(4).getTitle()%><br><b><%=events.get(4).getPrice()%>€</b></p>
       </div>
     </div>
 
     <div class="w3-col l3 s6">
       <div class="w3-container">
-        <img class="event-img" src="resources/kaseo.jpg" style="width:100%">
-        <p>Washed Skinny Jeans<br><b>$20.50</b></p>
+        <a href="event?id=<%=events.get(5).getId()%>"><img class="event-img" src="<% StringBuilder sb5 = new StringBuilder();
+						sb5.append("data:image/png;base64,");
+						sb5.append(StringUtils.newStringUtf8(Base64.encodeBase64(events.get(5).getImage(), false)));
+						out.print(sb5.toString());%>" style="width:100%"></a>
+        <p><%=events.get(5).getTitle()%><br><b><%=events.get(5).getPrice()%>€</b></p>
       </div>
       <div class="w3-container">
-        <div class="w3-display-container">
-          <img class="event-img" src="resources/kaseo.jpg" style="width:100%">
-          <span class="w3-tag w3-display-topleft">Sale</span>
-          <div class="w3-display-middle w3-display-hover">
-            <button class="w3-button w3-black">Buy now <i class="fa fa-shopping-cart"></i></button>
-          </div>
-        </div>
-        <p>Vintage Skinny Jeans<br><b class="w3-text-red">$14.99</b></p>
+        <a href="event?id=<%=events.get(6).getId()%>"><img class="event-img" src="<% StringBuilder sb6 = new StringBuilder();
+						sb6.append("data:image/png;base64,");
+						sb6.append(StringUtils.newStringUtf8(Base64.encodeBase64(events.get(6).getImage(), false)));
+						out.print(sb6.toString());%>" style="width:100%"></a>
+        <p><%=events.get(6).getTitle()%><br><b><%=events.get(6).getPrice()%>€</b></p>
       </div>
     </div>
 
     <div class="w3-col l3 s6">
       <div class="w3-container">
-        <img class="event-img" src="resources/kaseo.jpg" style="width:100%">
-        <p>Vintage Skinny Jeans<br><b>$14.99</b></p>
+        <a href="event?id=<%=events.get(7).getId()%>"><img class="event-img" src="<% StringBuilder sb7 = new StringBuilder();
+						sb7.append("data:image/png;base64,");
+						sb7.append(StringUtils.newStringUtf8(Base64.encodeBase64(events.get(7).getImage(), false)));
+						out.print(sb7.toString());%>" style="width:100%"></a>
+        <p><%=events.get(7).getTitle()%><br><b><%=events.get(7).getPrice()%>€</b></p>
       </div>
       <div class="w3-container">
-        <img class="event-img" src="resources/kaseo.jpg" style="width:100%">
-        <p>Ripped Skinny Jeans<br><b>$24.99</b></p>
+       <a href="event?id=<%=events.get(8).getId()%>"><img class="event-img" src="<% StringBuilder sb8 = new StringBuilder();
+						sb8.append("data:image/png;base64,");
+						sb8.append(StringUtils.newStringUtf8(Base64.encodeBase64(events.get(8).getImage(), false)));
+						out.print(sb8.toString());%>" style="width:100%"></a>
+        <p><%=events.get(8).getTitle()%><br><b><%=events.get(8).getPrice()%>€</b></p>
       </div>
     </div>
+</div>
+<div class="w3-container">
+  	<p>&nbsp;</p>
   </div>
-
   <div class="w3-black w3-center w3-padding-24">Powered by Óscar Martín de la Fuente, Saúl Martín Rodríguez & Luis Miguel Sánchez</div>
-
+	
   <!-- End page content -->
 </div>
 

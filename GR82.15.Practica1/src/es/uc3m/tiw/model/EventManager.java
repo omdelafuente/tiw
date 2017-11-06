@@ -112,6 +112,19 @@ public class EventManager {
 		return event;
 	}
 	
+	public List<Event> findAll() {
+		
+		List<Event> events = null;
+		EntityManager em = getEntityManager();
+		try {
+			Query query = em.createQuery("SELECT c FROM Event c");
+			events = (List<Event>) query.getResultList();
+		} finally {
+			em.close();
+		}
+		return events;
+	}
+	
 	public List<Event> findEventsMatchingString(String str){
 		
 		List<Event> events = null;
@@ -157,6 +170,21 @@ public class EventManager {
 		EntityManager em = getEntityManager();
 		try {
 			Query query = em.createQuery("SELECT c FROM Event c WHERE c.creator = :creator");
+			query.setParameter("creator", creator);
+			events = (List<Event>)query.getResultList();
+			
+		} finally {
+			em.close();
+		}
+		return events;
+	}
+	
+public List<Event> findAvailableEventsByCreator(Usr creator){
+		
+		List<Event> events = null;
+		EntityManager em = getEntityManager();
+		try {
+			Query query = em.createQuery("SELECT c FROM Event c WHERE c.creator = :creator AND c.state = 'Disponible'");
 			query.setParameter("creator", creator);
 			events = (List<Event>)query.getResultList();
 			
