@@ -61,6 +61,23 @@ if((Boolean)request.getAttribute("editSuccess") == true) { %>
 	</script>
 <%} }%>
 
+<% if((Boolean)request.getAttribute("purchaseSuccess") != null) {
+if((Boolean)request.getAttribute("purchaseSuccess") == true) { %>
+	<div id="purchaseSuccess" class="w3-modal">
+		<div class="w3-modal-content w3-animate-opacity">
+    		<div class="w3-container">
+        		<i onclick="document.getElementById('purchaseSuccess').style.display='none'" class="fa fa-remove w3-right w3-button w3-transparent w3-large"></i>
+        		<p><i class="w3-text-green w3-large fa fa-check-square-o"></i>&nbsp;La transacción ha sido satisfactoria, ¡gracias por comprar en Instaticket!</p>
+      		</div>
+   		</div>
+ 	</div>
+ 	<script>
+		$(document).ready(function() {
+			$("#purchaseSuccess").css("display","block");
+			$("#purchaseSuccess").delay(2500).fadeOut();
+		});
+	</script>
+<%} }%>
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:250px">
   
@@ -85,10 +102,8 @@ if((Boolean)request.getAttribute("editSuccess") == true) { %>
 						sb.append("data:image/png;base64,");
 						sb.append(StringUtils.newStringUtf8(Base64.encodeBase64(events.get(0).getImage(), false)));
 						out.print(sb.toString());%>"  style="width:100%"></a>
-    <div class="w3-display-topleft w3-text-red" style="padding:24px 48px">
+    <div class="w3-display-topleft w3-text-light-gray" style="padding:24px 48px">
       <h1 class="w3-jumbo"><%=events.get(0).getTitle()%></h1>
-      <%LocalDateTime dateTime = events.get(0).getEventDate(); %>
-      <h1><%=dateTime.toLocalDate()%></h1>    
     </div>
   </div>
 

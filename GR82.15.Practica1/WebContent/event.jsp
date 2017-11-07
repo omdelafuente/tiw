@@ -76,7 +76,7 @@ if((Boolean)request.getAttribute("cannotBuy") == true) { %>
 		<div class="w3-col s3 w3-center">
 			<%if(event.getState().equals("Disponible")) 
 			{%>
-			<a href="event?id=<%=event.getId()%>&type=buyTicket"><span class="w3-tag w3-large w3-padding-large w3-light-grey w3-center w3-hover-orange" style="cursor:pointer">
+			<a href="buyTicket?id=<%=event.getId()%>"><span class="w3-tag w3-large w3-padding-large w3-light-grey w3-center w3-hover-orange" style="cursor:pointer">
 			<strong>COMPRAR<br>ENTRADAS</strong></span></a>
 			<%} else {%>
 			<span class="w3-tag w3-large w3-padding-large w3-red w3-center" style="cursor:pointer">

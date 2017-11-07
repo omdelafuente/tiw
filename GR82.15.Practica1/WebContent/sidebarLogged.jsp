@@ -26,7 +26,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   <div class="w3-padding-32 w3-large w3-text-grey" style="font-weight:bold">
   	<p class="w3-bar-item"> ¡Hola, <%= ((Usr)session.getAttribute("loggedUser")).getName()%>!</p>
   	<a href="editProfile.jsp" class="w3-bar-item w3-button">Editar perfil</a>
-    <a href="#" class="w3-bar-item w3-button">Cartera de entradas</a>
+    <a href="purchasedTickets" class="w3-bar-item w3-button">Cartera de entradas</a>
     <a href="createEvent.jsp" class="w3-bar-item w3-button">Crear un evento</a>
     <a href="myCreatedEvents" class="w3-bar-item w3-button">Mis eventos</a>
     <a onclick="document.getElementById('searchModal').style.display='block'"class="w3-button w3-block w3-left-align" id="searchMenuBtn">

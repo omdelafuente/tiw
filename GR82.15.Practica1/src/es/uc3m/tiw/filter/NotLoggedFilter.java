@@ -11,7 +11,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
-@WebFilter(urlPatterns ={"/createEvent.jsp","/createEvent", "/editEvent.jsp","/editEvent","/editEvent","/cancelEvent","/editProfile.jsp","/edit","/myCreatedEvents.jsp","/myCreatedEvents","/sidebarLogged.jsp","/buyTicket.jsp"})
+@WebFilter(urlPatterns ={"/createEvent.jsp","/createEvent", "/editEvent.jsp","/editEvent","/editEvent","/cancelEvent","/editProfile.jsp","/edit","/myCreatedEvents.jsp","/myCreatedEvents","/sidebarLogged.jsp","/buyTicket.jsp","/buyTicket"})
 public class NotLoggedFilter implements Filter {
 
 

@@ -70,7 +70,7 @@ body, h1, h2, h3, h4, h5, h6, .w3-wide {
 					<p><%=event.getPrice()%>€</p>
 				</div>
 				<div class="w3-container w3-quarter">
-					<p><input type="number" name="numberOfTickets" min="1" value="1" style="text-align:center; max-width:50%"></p>
+					<p><input type="number" id="numberOfTickets" min="1" value="1" style="text-align:center; max-width:50%"></p>
 				</div>
 			</div>
 			<div class="w3-row" style="width:100%">
@@ -87,12 +87,21 @@ body, h1, h2, h3, h4, h5, h6, .w3-wide {
 			
 			<script>
 				var price = <%=event.getPrice()%>;
-				$("input[name='numberOfTickets']").change(function() {
-					var total =  $("[name='numberOfTickets']").val();
+				$("#numberOfTickets").change(function() {
+					var total =  $("#numberOfTickets").val();
 					var num = (total*price).toFixed(2);
 					$("#total").html(num);
+					$("#ccTickets").val($("#numberOfTickets").val());
+					$("#paypalTickets").val($("#numberOfTickets").val());			
 				});
 			</script>
+			
+			<% if((Boolean)request.getAttribute("purchaseSuccess") != null) {
+			if((Boolean)request.getAttribute("purchaseSuccess") == false) { %>			
+			<div class="w3-panel w3-red w3-card-4">
+	 			<p>No puedes comprar más entradas de las que hay disponibles.</p>
+			</div>
+			<%} }%>
 			
 			<div class="w3-row w3-padding-16" style="width:100%">
 				<a href="javascript:history.back()" class="w3-btn w3-white w3-border w3-left">Cancelar compra</a>
@@ -112,39 +121,47 @@ body, h1, h2, h3, h4, h5, h6, .w3-wide {
 			</div>
 			
 			<div class="w3-container w3-border" id="payment-cc" style="display:none">
-				<form method="post">
+				<div class="w3-panel w3-red w3-card-4 form-errors" style="display:none">     		
+      			</div>
+				<form method="post" id="creditCardForm" action="buyTicket">
+					<input type="hidden" name="tickets" id="ccTickets">
+					<input type="hidden" name="id" value="<%=event.getId()%>">
+					<input type="hidden" name="buy">
 					<div class="w3-row-padding w3-padding-16">
 		    			<label><b>Número de la tarjeta de crédito</b></label><br>
-		    			<input class="w3-input w3-border w3-light-grey" type="text" style="width:50%;display:inline-block;">	  				
+		    			<input class="w3-input w3-border w3-light-grey" name="cc" type="text" style="width:50%;display:inline-block;" required>	  				
 					</div>
 					<div class="w3-row-padding w3-padding-16">
 						<div class="w3-quarter">&nbsp;</div>			
 		  				<div class="w3-quarter">
 		   					<label><b>Código CV</b></label>
-		    				<input class="w3-input w3-border w3-light-grey" type="text">
+		    				<input class="w3-input w3-border w3-light-grey" name="cvc" type="text" pattern="^[0-9]{3,4}$" required>
 		  				</div>		  				
 		  				<div class="w3-quarter">
 		    				<label><b>Fecha de expiración</b></label>
-		    				<input class="w3-input w3-border w3-light-grey" type="text">
+		    				<input class="w3-input w3-border w3-light-grey" name="date" type="date" required>
 		  				</div>		  				
 					</div>
 					<div class="w3-row w3-padding-16">
-						<button class="w3-btn w3-green w3-border">Finalizar compra</button>
+						<button class="w3-btn w3-green w3-border" type="submit">Finalizar compra</button>
 					</div>
 				</form>			
 			</div>
 			
 			<div class="w3-container w3-border" id="payment-paypal" style="display:none">
-				<form method="post">
+				<form method="post" action="buyTicket">
+					<input type="hidden" name="tickets" id="paypalTickets">
+					<input type="hidden" name="id" value="<%=event.getId()%>">
+					<input type="hidden" name="buy">
 					<div class="w3-row-padding w3-padding-16">
 						<label><b>Correo electrónico de PayPal:</b></label><br>
-						<input class="w3-input w3-border w3-light-grey" type="text" style="width:50%;display:inline-block;">
+						<input class="w3-input w3-border w3-light-grey" type="email" style="width:50%;display:inline-block;" required>
 					</div>
 					<div class="w3-row-padding w3-padding-16">	
    						<label><b>Contraseña:</b></label><br>
-   						<input class="w3-input w3-border w3-light-grey" type="text" style="width:50%;display:inline-block;">
+   						<input class="w3-input w3-border w3-light-grey" minlength="4" type="password" style="width:50%;display:inline-block;" required>
    					</div>	
-   					<p><button class="w3-btn w3-green w3-border">Finalizar compra</button><p>							
+   					<p><button class="w3-btn w3-green w3-border" type="submit">Finalizar compra</button><p>							
 				</form>			
 			</div>
 		
@@ -155,6 +172,9 @@ body, h1, h2, h3, h4, h5, h6, .w3-wide {
 <script>
 
 $( document ).ready(function() {
+	
+	$("#ccTickets").val($("#numberOfTickets").val());
+	$("#paypalTickets").val($("#numberOfTickets").val());
     
 	$("#checkout").click(function() {
 		$("#payment").show();
@@ -168,6 +188,29 @@ $( document ).ready(function() {
 		if($(this).val() == "paypal"){		
 			$("#payment-paypal").show();
 			$("#payment-cc").hide();
+		}
+	});
+	
+	$("#creditCardForm").validate({	
+		errorLabelContainer: ".form-errors",
+		wrapper: "p",
+		rules: {
+			cc : {
+				creditcard: true
+			}
+		},
+		messages: {
+			cc : {
+				required: "Debes indicar una tarjeta de cŕedito.",
+				creditcard: "Por favor, introduce un número de tarjeta válido."
+			},
+			cvc : {
+				required: "Debes indicar el código CV de la tarjeta.",
+				pattern: "El código CVV no es correcto."
+			},
+			date : {
+				required: "Debes indicar la fecha de expiración de la tarjeta."
+			}
 		}
 	});
 	
