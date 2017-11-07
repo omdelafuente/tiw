@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="java.util.List, es.uc3m.tiw.model.Purchase, es.uc3m.tiw.model.Event, es.uc3m.tiw.model.Usr, java.time.LocalDateTime"%>
+	pageEncoding="UTF-8" import="java.math.BigDecimal, java.util.List, es.uc3m.tiw.model.Purchase, es.uc3m.tiw.model.Event, es.uc3m.tiw.model.Usr, java.time.LocalDateTime"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -57,6 +57,35 @@ body, h1, h2, h3, h4, h5, h6, .w3-wide {
  		else {%>
  		
  			<p>Entradas que se han vendido del evento <%=purchases.get(0).getEvent().getTitle()%>:</p>
+ 			
+ 			<%int availableTickets = purchases.get(0).getEvent().getAvailableTickets();
+ 			int soldTickets = 0;
+ 			
+ 			for(int i=0; i < purchases.size(); i++){				
+ 				soldTickets += purchases.get(i).getTickets(); 				
+ 			}%>		
+ 			
+ 			<div class="w3-row w3-border">
+ 				<div class="w3-row w3-light-grey">
+ 					<p class="w3-text-grey"><b>ESTADÍSTICAS TOTALES</b></p>
+ 				</div>
+ 				<div class="w3-row">
+	 				<div class="w3-container w3-third">
+	 					<p>Entradas disponibles:</p>
+	 					<p><%=availableTickets%></p>
+	 				</div>
+	 				<div class="w3-container w3-third">
+	 					<p>Entradas vendidas:</p>
+	 					<p><%=soldTickets%></p>
+	 				</div>
+	 				<div class="w3-container w3-third">
+	 					<p>Beneficios:</p>
+	 					<p><%=purchases.get(0).getEvent().getPrice().multiply(new BigDecimal(soldTickets))%>€</p>
+	 				</div>
+	 			</div>
+			</div>
+			
+			<p>Detalle de compras:</p>			
 		
 			<div class="w3-row w3-light-grey w3-border-top w3-border-bottom" style="width:100%">
 				<div class="w3-container w3-quarter">
