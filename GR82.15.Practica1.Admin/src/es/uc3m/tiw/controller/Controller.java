@@ -38,6 +38,20 @@ public void doGet (HttpServletRequest request, HttpServletResponse response) thr
 	
 public void doPost (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 	
+	IRequestHandler rh = (IRequestHandler) handlerHash.get(request.getServletPath());
 	
+	if (rh == null) {
+		response.sendError(HttpServletResponse.SC_NOT_FOUND);
+	} else {
+			
+		String url = rh.handleRequest(request, response);
+			
+		if (url == null) {
+			response.sendError(HttpServletResponse.SC_NOT_FOUND);
+		} else {
+			request.getRequestDispatcher(url).forward(request, response);
+		}
+		
+	}
 }
 }
