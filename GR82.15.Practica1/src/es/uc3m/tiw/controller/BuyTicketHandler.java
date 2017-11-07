@@ -36,7 +36,7 @@ public class BuyTicketHandler implements IRequestHandler  {
 		else {	
 			
 			int availableTickets = event.getAvailableTickets();
-			Usr client = (Usr)request.getAttribute("loggedUser");
+			Usr client = (Usr)request.getSession().getAttribute("loggedUser");
 			int tickets = Integer.parseInt(request.getParameter("tickets"));
 			int newTickets = availableTickets - tickets;
 			

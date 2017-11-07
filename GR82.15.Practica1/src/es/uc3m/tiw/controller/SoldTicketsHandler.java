@@ -9,24 +9,34 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import es.uc3m.tiw.model.*;
+import es.uc3m.tiw.model.Event;
+import es.uc3m.tiw.model.EventManager;
+import es.uc3m.tiw.model.Purchase;
+import es.uc3m.tiw.model.PurchaseManager;
 
-public class PurchasedTicketsHandler  implements IRequestHandler  {
+public class SoldTicketsHandler implements IRequestHandler {
 
+	
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		Usr user = (Usr) request.getSession().getAttribute("loggedUser");
+		int eventId = Integer.parseInt(request.getParameter("id"));
+		Event event; 
 		
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("GR82.15.Practica1");
 		
-		PurchaseManager manager = new PurchaseManager();
+		EventManager manager = new EventManager();
 		manager.setEntityManagerFactory(factory);
 		
-		List<Purchase> purchases = manager.findPurchasesByUser(user);
+		event = manager.findEventByID(eventId);
+		
+		PurchaseManager pManager = new PurchaseManager();
+		pManager.setEntityManagerFactory(factory);
+		
+		List<Purchase> purchases = pManager.findPurchasesByEvent(event);
 		
 		request.setAttribute("purchases", purchases);
-		return "purchasedTickets.jsp";
+		return "soldTickets.jsp";
 	}
 
 }

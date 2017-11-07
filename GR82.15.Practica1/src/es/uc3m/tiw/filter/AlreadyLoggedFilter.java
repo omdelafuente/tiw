@@ -30,7 +30,7 @@ public class AlreadyLoggedFilter implements Filter {
 			chain.doFilter(request, response);
 		}
 		else {
-			RequestDispatcher r = request.getRequestDispatcher("index.jsp");
+			RequestDispatcher r = request.getRequestDispatcher("/index");
 			r.forward(request, response);
 		}
 

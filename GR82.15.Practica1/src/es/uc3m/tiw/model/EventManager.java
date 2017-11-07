@@ -178,7 +178,7 @@ public class EventManager {
 		return events;
 	}
 	
-public List<Event> findAvailableEventsByCreator(Usr creator){
+	public List<Event> findAvailableEventsByCreator(Usr creator){
 		
 		List<Event> events = null;
 		EntityManager em = getEntityManager();

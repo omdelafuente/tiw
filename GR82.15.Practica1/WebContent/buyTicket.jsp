@@ -69,8 +69,8 @@ body, h1, h2, h3, h4, h5, h6, .w3-wide {
 				<div class="w3-container w3-quarter">
 					<p><%=event.getPrice()%>€</p>
 				</div>
-				<div class="w3-container w3-quarter">
-					<p><input type="number" id="numberOfTickets" min="1" value="1" style="text-align:center; max-width:50%"></p>
+				<div class="w3-container w3-quarter w3-padding">
+					<input type="number" id="numberOfTickets" min="1" value="1" style="text-align:center; max-width:50%">
 				</div>
 			</div>
 			<div class="w3-row" style="width:100%">

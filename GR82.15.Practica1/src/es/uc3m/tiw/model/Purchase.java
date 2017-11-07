@@ -1,7 +1,9 @@
 package es.uc3m.tiw.model;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -14,6 +16,8 @@ public class Purchase implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id private int id;
+	@Convert(converter = LocalDateTimeAttributeConverter.class)
+	private LocalDateTime date;
 	private int tickets;
 	@ManyToOne
     @JoinColumn(name = "event")
@@ -32,6 +36,14 @@ public class Purchase implements Serializable{
 		this.event = event;
 		this.client = client;
 	}
+	public int getId() {
+		return id;
+	}
+
+	public LocalDateTime getDate() {
+		return date;
+	}
+
 	public int getTickets() {
 		return tickets;
 	}

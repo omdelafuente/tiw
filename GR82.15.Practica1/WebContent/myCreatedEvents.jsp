@@ -71,7 +71,8 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 		 		<p><%=events.get(i).getPlace()%></p>
 		 	</div>
 		 	<div class="w3-col" style="width:10%">
-		 	<a href="event?id=<%=events.get(i).getId()%>&type=editEvent" class="w3-button"><i class="fa fa-gear"></i>   Config.</a>
+		 		<a href="event?id=<%=events.get(i).getId()%>&type=editEvent" class="w3-button"><i class="fa fa-gear"></i>   Config.</a>
+		 		<a href="soldTickets?id=<%=events.get(i).getId()%>" class="w3-button"><i class="fa fa-ticket"></i>   Ventas</a>
 		 	</div>
 		 	
 		 </div>

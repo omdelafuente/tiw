@@ -1,7 +1,10 @@
 package es.uc3m.tiw.model;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 
 public class PurchaseManager {
 	
@@ -103,6 +106,36 @@ public class PurchaseManager {
 			em.close();
 		}
 		return purchase;
+	}
+	
+	public List<Purchase> findPurchasesByUser(Usr user){
+		
+		List<Purchase> purchases = null;
+		EntityManager em = getEntityManager();
+		try {
+			Query query = em.createQuery("SELECT c FROM Purchase c WHERE c.client = :user");
+			query.setParameter("user", user);
+			purchases = (List<Purchase>)query.getResultList();
+			
+		} finally {
+			em.close();
+		}
+		return purchases;
+	}
+	
+	public List<Purchase> findPurchasesByEvent(Event event){
+		
+		List<Purchase> purchases = null;
+		EntityManager em = getEntityManager();
+		try {
+			Query query = em.createQuery("SELECT c FROM Purchase c WHERE c.event = :event");
+			query.setParameter("event", event);
+			purchases = (List<Purchase>)query.getResultList();
+			
+		} finally {
+			em.close();
+		}
+		return purchases;
 	}
 
 }

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="java.util.List, es.uc3m.tiw.model.Purchase, es.uc3m.tiw.model.Event"%>
+	pageEncoding="UTF-8" import="java.util.List, es.uc3m.tiw.model.Purchase, es.uc3m.tiw.model.Event, es.uc3m.tiw.model.Usr, java.time.LocalDateTime"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="resources/css/fonts.css">
 <link rel="stylesheet" href="resources/css/font-awesome-4.7.0/css/font-awesome.min.css">
 <script src="lib/jquery-3.2.1.min.js"></script>
-<title>Cartera de entradas</title>
+<title>Estadística de ventas</title>
 
 <style>
 .w3-sidebar a {
@@ -31,7 +31,7 @@ body, h1, h2, h3, h4, h5, h6, .w3-wide {
 
 		<!-- Top header -->
 		<header class="w3-xlarge w3-container">
-		<p class="w3-left">Cartera de entradas</p>
+		<p class="w3-left">Estadística de ventas</p>
 		<form action="search" method="post">
 			<p class="w3-right">
 				<input type="hidden" name="type" value="simple"> <input
@@ -44,9 +44,7 @@ body, h1, h2, h3, h4, h5, h6, .w3-wide {
 			</p>
 		</form>
 
-		</header>
-		
-					
+		</header>		
 		
 		<div class="w3-container w3-center">
 		
@@ -54,44 +52,45 @@ body, h1, h2, h3, h4, h5, h6, .w3-wide {
  		
  		if(purchases.isEmpty()){%>
  			
- 			No has comprado ninguna entrada todavía.
+ 			No se han vendido entradas de este evento todavía.
  		<%}
  		else {%>
  		
- 			<p>A continuación puedes ver las entradas que has adquirido:</p>
+ 			<p>Entradas que se han vendido del evento <%=purchases.get(0).getEvent().getTitle()%>:</p>
 		
 			<div class="w3-row w3-light-grey w3-border-top w3-border-bottom" style="width:100%">
 				<div class="w3-container w3-quarter">
 					<p class="w3-text-grey"><b>ID DE TICKET</b></p>
 				</div>
 				<div class="w3-container w3-quarter">
-					<p class="w3-text-grey"><b>EVENTO</b></p>
+					<p class="w3-text-grey"><b>COMPRADOR</b></p>
 				</div>
 				<div class="w3-container w3-quarter">
 					<p class="w3-text-grey"><b>Nº ENTRADAS</b></p>
 				</div>
 				<div class="w3-container w3-quarter">
-					<p></p>
+					<p class="w3-text-grey"><b>FECHA DE COMPRA</b></p>
 				</div>
 			</div>
 			
 			<%for(int i = 0; i < purchases.size(); i++){ 
 				
 				Purchase purchase = purchases.get(i);
-				Event event = purchase.getEvent();%>
+				Usr client = purchase.getClient();
+				LocalDateTime dateTime = purchase.getDate();%>
 			
 			<div class="w3-row w3-border-bottom" style="width:100%">
 				<div class="w3-container w3-quarter">
 					<p><%=purchase.getId()%></p>
 				</div>
 				<div class="w3-container w3-quarter">
-					<p><%=event.getTitle()%></p>
+					<p><%=client.getName()%> <%=client.getSurname()%></p>
 				</div>
 				<div class="w3-container w3-quarter">
 					<p><%=purchase.getTickets()%></p>
 				</div>
-				<div class="w3-container w3-quarter w3-padding">
-					<a href="event?id=<%=event.getId()%>" class="w3-border w3-button">Ver evento</a>
+				<div class="w3-container w3-quarter">
+					<p><%=dateTime.toLocalDate()%></p>
 				</div>
 			</div>
 			<%}

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.time.LocalDateTime, es.uc3m.tiw.model.Event, java.util.List, org.apache.commons.codec.binary.StringUtils, org.apache.commons.codec.binary.Base64"%>
+    pageEncoding="UTF-8" import="java.math.BigDecimal, java.time.LocalDateTime, es.uc3m.tiw.model.Event, java.util.List, org.apache.commons.codec.binary.StringUtils, org.apache.commons.codec.binary.Base64"%>
  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -74,7 +74,6 @@ if((Boolean)request.getAttribute("purchaseSuccess") == true) { %>
  	<script>
 		$(document).ready(function() {
 			$("#purchaseSuccess").css("display","block");
-			$("#purchaseSuccess").delay(2500).fadeOut();
 		});
 	</script>
 <%} }%>
@@ -119,14 +118,22 @@ if((Boolean)request.getAttribute("purchaseSuccess") == true) { %>
 						sb1.append("data:image/png;base64,");
 						sb1.append(StringUtils.newStringUtf8(Base64.encodeBase64(events.get(1).getImage(), false)));
 						out.print(sb1.toString());%>" style="width:100%"></a>
+						<%if(events.get(1).getPrice().compareTo(BigDecimal.ZERO) != 0) {%>
         <p><%=events.get(1).getTitle()%><br><b><%=events.get(1).getPrice()%>€</b></p>
+        <%} else { %>
+        <p><%=events.get(1).getTitle()%><br><b>Gratis</b></p>
+        <%} %>
       </div>
       <div class="w3-container">
         <a href="event?id=<%=events.get(2).getId()%>"><img class="event-img" src="<% StringBuilder sb2 = new StringBuilder();
 						sb2.append("data:image/png;base64,");
 						sb2.append(StringUtils.newStringUtf8(Base64.encodeBase64(events.get(2).getImage(), false)));
 						out.print(sb2.toString());%>" style="width:100%"></a>
+       					 <%if(events.get(2).getPrice().compareTo(BigDecimal.ZERO) != 0) {%>
         <p><%=events.get(2).getTitle()%><br><b><%=events.get(2).getPrice()%>€</b></p>
+        <%} else { %>
+        <p><%=events.get(2).getTitle()%><br><b>Gratis</b></p>
+        <%} %>
       </div>
     </div>
 
@@ -136,14 +143,22 @@ if((Boolean)request.getAttribute("purchaseSuccess") == true) { %>
 						sb3.append("data:image/png;base64,");
 						sb3.append(StringUtils.newStringUtf8(Base64.encodeBase64(events.get(3).getImage(), false)));
 						out.print(sb3.toString());%>" style="width:100%"></a>
+        <%if(events.get(3).getPrice().compareTo(BigDecimal.ZERO) != 0) {%>
         <p><%=events.get(3).getTitle()%><br><b><%=events.get(3).getPrice()%>€</b></p>
+        <%} else { %>
+        <p><%=events.get(3).getTitle()%><br><b>Gratis</b></p>
+        <%} %>
       </div>
       <div class="w3-container">
         <a href="event?id=<%=events.get(4).getId()%>"><img class="event-img" src="<% StringBuilder sb4 = new StringBuilder();
 						sb4.append("data:image/png;base64,");
 						sb4.append(StringUtils.newStringUtf8(Base64.encodeBase64(events.get(4).getImage(), false)));
 						out.print(sb4.toString());%>" style="width:100%"></a>
+        <%if(events.get(4).getPrice().compareTo(BigDecimal.ZERO) != 0) {%>
         <p><%=events.get(4).getTitle()%><br><b><%=events.get(4).getPrice()%>€</b></p>
+        <%} else { %>
+        <p><%=events.get(4).getTitle()%><br><b>Gratis</b></p>
+        <%} %>
       </div>
     </div>
 
@@ -153,14 +168,22 @@ if((Boolean)request.getAttribute("purchaseSuccess") == true) { %>
 						sb5.append("data:image/png;base64,");
 						sb5.append(StringUtils.newStringUtf8(Base64.encodeBase64(events.get(5).getImage(), false)));
 						out.print(sb5.toString());%>" style="width:100%"></a>
+        <%if(events.get(5).getPrice().compareTo(BigDecimal.ZERO) != 0) {%>
         <p><%=events.get(5).getTitle()%><br><b><%=events.get(5).getPrice()%>€</b></p>
+        <%} else { %>
+        <p><%=events.get(5).getTitle()%><br><b>Gratis</b></p>
+        <%} %>
       </div>
       <div class="w3-container">
         <a href="event?id=<%=events.get(6).getId()%>"><img class="event-img" src="<% StringBuilder sb6 = new StringBuilder();
 						sb6.append("data:image/png;base64,");
 						sb6.append(StringUtils.newStringUtf8(Base64.encodeBase64(events.get(6).getImage(), false)));
 						out.print(sb6.toString());%>" style="width:100%"></a>
+        <%if(events.get(6).getPrice().compareTo(BigDecimal.ZERO) != 0) {%>
         <p><%=events.get(6).getTitle()%><br><b><%=events.get(6).getPrice()%>€</b></p>
+        <%} else { %>
+        <p><%=events.get(6).getTitle()%><br><b>Gratis</b></p>
+        <%} %>
       </div>
     </div>
 
@@ -170,14 +193,22 @@ if((Boolean)request.getAttribute("purchaseSuccess") == true) { %>
 						sb7.append("data:image/png;base64,");
 						sb7.append(StringUtils.newStringUtf8(Base64.encodeBase64(events.get(7).getImage(), false)));
 						out.print(sb7.toString());%>" style="width:100%"></a>
+        <%if(events.get(7).getPrice().compareTo(BigDecimal.ZERO) != 0) {%>
         <p><%=events.get(7).getTitle()%><br><b><%=events.get(7).getPrice()%>€</b></p>
+        <%} else { %>
+        <p><%=events.get(7).getTitle()%><br><b>Gratis</b></p>
+        <%} %>
       </div>
       <div class="w3-container">
        <a href="event?id=<%=events.get(8).getId()%>"><img class="event-img" src="<% StringBuilder sb8 = new StringBuilder();
 						sb8.append("data:image/png;base64,");
 						sb8.append(StringUtils.newStringUtf8(Base64.encodeBase64(events.get(8).getImage(), false)));
 						out.print(sb8.toString());%>" style="width:100%"></a>
+        <%if(events.get(8).getPrice().compareTo(BigDecimal.ZERO) != 0) {%>
         <p><%=events.get(8).getTitle()%><br><b><%=events.get(8).getPrice()%>€</b></p>
+        <%} else { %>
+        <p><%=events.get(8).getTitle()%><br><b>Gratis</b></p>
+        <%} %>
       </div>
     </div>
 </div>

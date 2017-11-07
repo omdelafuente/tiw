@@ -33,7 +33,7 @@ public class EditProfileHandler implements IRequestHandler {
 		if(!name.isEmpty()){
 			
 			if(!name.equals(user.getName())){
-				if(!name.matches("^[ A-Za-z]+$")){
+				if(!name.matches("^[\\p{Space}\\p{L}]+$")){
 					editSuccess = false;
 					errorEdit.add("El nombre solo puede contener letras.");
 				}
@@ -49,7 +49,7 @@ public class EditProfileHandler implements IRequestHandler {
 		if(!surname.isEmpty()){
 			
 			if(!surname.equals(user.getSurname())){
-				if(!surname.matches("^[ A-Za-z]+$")){
+				if(!surname.matches("^[\\p{Space}\\p{L}]+$")){
 					editSuccess = false;
 					errorEdit.add("Los apellidos solo pueden contener letras.");
 				}

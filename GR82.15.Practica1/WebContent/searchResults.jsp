@@ -70,7 +70,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 		 		<p class="w3-text-green"><%=events.get(i).getAvailableTickets()%> entradas disponibles a <%=events.get(i).getPrice()%> €</p>
 		 		<%}
 		 		else {%>
-		 		<<p class="w3-text-red">Evento <%=events.get(i).getState()%> </p>
+		 		<p class="w3-text-red"><%=events.get(i).getState()%> </p>
 		 		<%}%>
 		 		<p><%=dateTime.toLocalDate()%> a las <%=dateTime.toLocalTime() %>h</p>
 		 		<p><%=events.get(i).getPlace()%></p>
