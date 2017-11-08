@@ -22,8 +22,7 @@ public class Controller extends HttpServlet{
 public void init (ServletConfig config) throws ServletException {
 	
 	handlerHash.put("/login", new LoginHandler());
-	handlerHash.put("/search", new SearchHandler());
-	handlerHash.put("/logOut", new LogOutHandler());
+	
 
 }
 
