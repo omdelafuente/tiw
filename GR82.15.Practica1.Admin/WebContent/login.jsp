@@ -18,7 +18,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
 <body class="w3-content" style="max-width:1200px">
 
-<jsp:include page="sidebar.jsp"/>
+<jsp:include page="sidebarNotLogged.jsp"/>
 
 <div class="w3-main" style="margin-left:250px">
 

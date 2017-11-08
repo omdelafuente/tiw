@@ -16,6 +16,9 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 </style>
 
 <body>
+
+	<%if(session.getAttribute("loggedUser") != null) {%>
+	
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="sidebar">
 <div class="w3-container w3-display-container w3-padding-16">
@@ -35,5 +38,6 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     <a href="logOut" class="w3-bar-item w3-button">Cerrar sesión</a>
   </div>
 </nav>
+	<%} %>
 </body>
 </html>
