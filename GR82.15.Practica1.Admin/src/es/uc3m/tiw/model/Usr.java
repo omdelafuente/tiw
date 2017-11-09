@@ -1,10 +1,13 @@
 package es.uc3m.tiw.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 
 @Entity
 @Table (name="USR")
@@ -17,6 +20,9 @@ public class Usr implements Serializable{
 	private String surname;
 	private String password;
 	@Id private String email;
+	//bi-directional many-to-one association to Event
+	@OneToMany(mappedBy="creator")
+	private List<Event> events;
 	
 	public Usr(String name, String surname, String password, String email) {
 		this.name = name;
@@ -58,6 +64,14 @@ public class Usr implements Serializable{
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public List<Event> getEvents() {
+		return this.events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
 	}
 	
 

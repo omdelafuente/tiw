@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 import es.uc3m.tiw.model.Event;
 import es.uc3m.tiw.model.EventManager;
 import es.uc3m.tiw.model.Usr;
+import es.uc3m.tiw.model.UsrManager;
 
 public class ChatHandler implements IRequestHandler {
 
@@ -36,16 +37,14 @@ public class ChatHandler implements IRequestHandler {
 		
 		if(type == null){
 			
-			EntityManagerFactory factory = Persistence.createEntityManagerFactory("GR82.15.Practica1");
+			EntityManagerFactory factory = Persistence.createEntityManagerFactory("GR82.15.Practica1.Admin");
 			
-			EventManager manager = new EventManager();
+			UsrManager manager = new UsrManager();
 			manager.setEntityManagerFactory(factory);
 			
-			List<Event> events = manager.findEventsByCreator(user);
+			List<Usr> users = manager.findUsersWithCreatedEvents();
 			
-			if(events.isEmpty()){
-				request.setAttribute("creator", false);
-			}	
+			request.setAttribute("users", users);		
 			
 		}
 		else {

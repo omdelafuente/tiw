@@ -28,13 +28,16 @@ public class IndexHandler implements IRequestHandler {
 		
 		List<Event> events = manager.findAll();
 		List<Event> eventsToShow = new ArrayList<Event>();
+		List<Integer> randomNums = null;
 		
-		List<Integer> randomNums = ThreadLocalRandom.current().ints(0,events.size()).distinct().limit(9).boxed().collect(Collectors.toList());
-		
-		for(int i = 0; i < randomNums.size(); i++){			
-			eventsToShow.add(events.get(randomNums.get(i)));		
+		if(events.size() > 0){
+			randomNums = ThreadLocalRandom.current().ints(0,events.size()).distinct().limit(9).boxed().collect(Collectors.toList());
+			
+			for(int i = 0; i < randomNums.size(); i++){			
+				eventsToShow.add(events.get(randomNums.get(i)));		
+			}
 		}
-		
+			
 		request.setAttribute("events", eventsToShow);
 		return "index.jsp";
 	}

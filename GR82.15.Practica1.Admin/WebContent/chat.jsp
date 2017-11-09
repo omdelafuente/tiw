@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="es.uc3m.tiw.model.Usr, java.util.List"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -40,8 +40,11 @@ body, h1, h2, h3, h4, h5, h6, .w3-wide {
 			</p>
 		</form>
 		</header>
+		<%List<Usr> users = (List<Usr>) request.getAttribute("users"); %>
 		
-		<%if(request.getAttribute("creator") == null){ %>
+		<%for(int i = 0; i < users.size();i++) {%>
+			<p><%=users.get(i).getEmail()%>
+		<%} %>
 		
 		<div class="w3-container w3-center">
 			
@@ -70,12 +73,6 @@ body, h1, h2, h3, h4, h5, h6, .w3-wide {
 		<%} %>
 		
 		</div>
-		<%}
-		else {%>
-		<div class="w3-container w3-center">
-			<p>Sólo los usuarios que hayan creado eventos pueden ponerse en contacto con el administrador.</p>
-		</div>
-		<%} %>
 		
 		
 		
