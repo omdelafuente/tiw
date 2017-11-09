@@ -32,7 +32,10 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     <a onclick="document.getElementById('searchModal').style.display='block'"class="w3-button w3-block w3-left-align" id="searchMenuBtn">
       Búsqueda avanzada &nbsp;&nbsp;<i class="fa fa-caret-right"></i>
     </a>
-    <a href="logOut" class="w3-bar-item w3-button">Cerrar sesión</a>
+  </div>
+  <div class="w3-padding-32 w3-large w3-text-grey" style="font-weight:bold">
+  	<a href="chat.jsp" class="w3-bar-item w3-button">Contactar al administrador</a>
+  	<a href="logOut" class="w3-bar-item w3-button">Cerrar sesión</a>
   </div>
 </nav>
 
