@@ -36,7 +36,7 @@ public class LoginHandler implements IRequestHandler {
 				errorLogin.add("La contraseña introducida es incorrecta.");
 				
 		}
-			if (!user.getEmail().equals(email)){
+			if (!user.getEmail().equals("admin@admin.com")){
 				loginSuccess = false;
 				errorLogin.add("No tienes acceso a esta página");
 				
@@ -47,12 +47,12 @@ public class LoginHandler implements IRequestHandler {
 		
 		if(loginSuccess){
 			request.getSession().setAttribute("loggedUser", user);
-			return "/home";
+			return "index.jsp";
 		}
 		
 		else{
 			request.setAttribute("errorLogin", errorLogin);
-			return "/login.jsp";
+			return "login.jsp";
 		}
 			
 	}

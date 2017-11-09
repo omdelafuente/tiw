@@ -34,12 +34,8 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 	
 	<div class="w3-container w3-center">
  	
- 	<%if((Boolean)request.getAttribute("notLogged") != null) {
- 		if((Boolean)request.getAttribute("notLogged") == true) {%>
- 			<div class="w3-card-4 w3-panel w3-leftbar w3-border-blue">
- 				<p>Debes iniciar sesión para continuar.</p>
- 			</div>
- 	<%} }%>
+ 	<!--  Faltan cosas del filtro  -->
+ 	
  	</div>
  	
  	<div class="w3-container w3-center">	
