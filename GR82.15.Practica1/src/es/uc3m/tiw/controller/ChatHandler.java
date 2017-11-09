@@ -64,34 +64,29 @@ public class ChatHandler implements IRequestHandler {
 				try {
 					
 					context = new InitialContext();
-					
-					//recuperamos la QueueConnectionFactory
+
 					factory = (ConnectionFactory) context.lookup("jms/tiw");
 					
-					//recuperamos la cola
 					queue = (Destination) context.lookup("jms/queuetiw");
-					
-					//creamos la QueueConnection			
+			
 					connection = factory.createConnection();
-					
-					//iniciamos la conexión
+
 					connection.start();
-					
-					//creamos una sesión
+
 					session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 					
 					messageProducer = session.createProducer(queue);
 					
-					//envíamos mensajes a la cola
-					
 					TextMessage message = session.createTextMessage();
 					message.setText(request.getParameter("msg"));
-					message.setJMSCorrelationID(user.getEmail());
+					message.setJMSCorrelationID(user.getEmail()+"-admin");
 					messageProducer.send(message);
 					
 					messageProducer.close();
 					session.close();
 					connection.close();
+					
+					request.setAttribute("sendSuccess", true);
 				
 					
 				} catch (Exception e) {
@@ -118,7 +113,7 @@ public class ChatHandler implements IRequestHandler {
 					
 					session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 					
-					messageConsumer = session.createConsumer(queue, "JMSCorrelationID = '"+user.getEmail()+"'");
+					messageConsumer = session.createConsumer(queue, "JMSCorrelationID = 'admin-"+user.getEmail()+"'");
 					
 					connection.start();
 					
@@ -133,7 +128,7 @@ public class ChatHandler implements IRequestHandler {
 								TextMessage msg = (TextMessage) message;
 								Date date = new Date(msg.getJMSTimestamp());
 								SimpleDateFormat formatter = new SimpleDateFormat("E dd.MM.yyyy hh:mm:ss a");
-								messageBuffer.append(formatter.format(date)+" | "+msg.getJMSCorrelationID()+" : "+msg.getText()+"<br>");
+								messageBuffer.append(formatter.format(date)+" | admin : "+msg.getText()+"<br>");
 							}
 						}
 						else {

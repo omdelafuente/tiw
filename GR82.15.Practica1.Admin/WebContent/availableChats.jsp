@@ -42,51 +42,40 @@ body, h1, h2, h3, h4, h5, h6, .w3-wide {
 		</form>
 		</header>
 		
-		<p class="w3-center">Conversación con <b><%=request.getAttribute("userEmail")%></b></p>
+		<%if(request.getAttribute("noUsers") != null){ %>	
+			<div class="w3-container w3-center">
+				<p>No hay usuarios que hayan creado eventos todavía</p>
+			</div>
+		<%}
+		
+		else {%>
 		
 		<div class="w3-container w3-center">
+			<p>A continuación, los usuarios creadores de eventos con los que se puede comunicar:</p>
 			
-			<div class="w3-container w3-border">
-				<p>Escribe a continuación tu mensaje:</p>
-				<form method="post" action="chat" autocomplete="off">
-					<input type="hidden" name="userEmail" value="<%=request.getAttribute("userEmail")%>">		
-					<input type="hidden" name="type" value="write">
-					<input class="w3-input w3-border w3-light-grey" name="msg" type="text" required>
-					<p><button class="w3-btn w3-border" type="submit">Enviar</button><p>
-				</form>
+		<%List<Usr> users = (List<Usr>) request.getAttribute("users"); %>
+		
+		<%for(int i = 0; i < users.size();i++) {%>
+			<div class="w3-row w3-border-bottom">			
+				<div class="w3-container w3-third">
+					<p><%=users.get(i).getName()%> <%=users.get(i).getSurname()%></p>
+				</div>
+				<div class="w3-container w3-third">
+					<p><%=users.get(i).getEmail()%></p>
+				</div>
+				<div class="w3-container w3-third">
+					<form action="chat" method="post">
+						<input type="hidden" name="userEmail" value="<%=users.get(i).getEmail()%>">
+						<p><button class="w3-btn w3-border">Ver conversación</button><p>
+					</form>
+				</div>
 			</div>
-			
-			<form method="post" action="chat">
-				<input type="hidden" name="userEmail" value="<%=request.getAttribute("userEmail")%>">	
-				<input type="hidden" name="type" value="read">
-				<p><button class="w3-btn w3-border" type="submit"><i class="fa fa-refresh">&nbsp;</i>Actualizar conversación</button><p>
-			</form>	
-			
+		<%} 
+		}%>
 		</div>
 		
-		<%if(request.getAttribute("sendSuccess") != null) {%>	
-			<div class="w3-container w3-center">
-				<p>¡Mensaje enviado!</p>
-			</div>
-		<%} %>
-		
-		<%if(request.getAttribute("messages") != null) {%>
-		<div class="w3-container w3-left" style="width:100%">
-			<hr>
-			<%=request.getAttribute("messages")%>
-			<hr>
+		<!-- End page content -->
 		</div>
-		<%} %>		
-	<!-- End page content -->
-	</div>
-	
-<script>
-$( document ).ready(function() {
-	
-	
-});
-
-</script>	
 
 </body>
 </html>

@@ -33,22 +33,9 @@ public class ChatHandler implements IRequestHandler {
 			throws ServletException, IOException {
 		
 		String type = request.getParameter("type");
-		Usr user = (Usr)request.getSession().getAttribute("loggedUser");
+		String userEmail = request.getParameter("userEmail");
 		
-		if(type == null){
-			
-			EntityManagerFactory factory = Persistence.createEntityManagerFactory("GR82.15.Practica1.Admin");
-			
-			UsrManager manager = new UsrManager();
-			manager.setEntityManagerFactory(factory);
-			
-			List<Usr> users = manager.findUsersWithCreatedEvents();
-			
-			request.setAttribute("users", users);		
-			
-		}
-		else {
-		
+		if(type != null){
 		
 			Context context;
 			ConnectionFactory factory;
@@ -63,34 +50,29 @@ public class ChatHandler implements IRequestHandler {
 				try {
 					
 					context = new InitialContext();
-					
-					//recuperamos la QueueConnectionFactory
+
 					factory = (ConnectionFactory) context.lookup("jms/tiw");
-					
-					//recuperamos la cola
+
 					queue = (Destination) context.lookup("jms/queuetiw");
-					
-					//creamos la QueueConnection			
+		
 					connection = factory.createConnection();
-					
-					//iniciamos la conexión
+
 					connection.start();
-					
-					//creamos una sesión
+
 					session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 					
 					messageProducer = session.createProducer(queue);
-					
-					//envíamos mensajes a la cola
-					
+				
 					TextMessage message = session.createTextMessage();
 					message.setText(request.getParameter("msg"));
-					message.setJMSCorrelationID(user.getEmail());
+					message.setJMSCorrelationID("admin-"+userEmail);
 					messageProducer.send(message);
 					
 					messageProducer.close();
 					session.close();
 					connection.close();
+					
+					request.setAttribute("sendSuccess", true);
 				
 					
 				} catch (Exception e) {
@@ -117,7 +99,7 @@ public class ChatHandler implements IRequestHandler {
 					
 					session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 					
-					messageConsumer = session.createConsumer(queue, "JMSCorrelationID = '"+user.getEmail()+"'");
+					messageConsumer = session.createConsumer(queue, "JMSCorrelationID = '"+userEmail+"-admin'");
 					
 					connection.start();
 					
@@ -132,7 +114,7 @@ public class ChatHandler implements IRequestHandler {
 								TextMessage msg = (TextMessage) message;
 								Date date = new Date(msg.getJMSTimestamp());
 								SimpleDateFormat formatter = new SimpleDateFormat("E dd.MM.yyyy hh:mm:ss a");
-								messageBuffer.append(formatter.format(date)+" | "+msg.getJMSCorrelationID()+" : "+msg.getText()+"<br>");
+								messageBuffer.append(formatter.format(date)+" | "+userEmail+" : "+msg.getText()+"<br>");
 							}
 						}
 						else {
@@ -160,6 +142,7 @@ public class ChatHandler implements IRequestHandler {
 			}
 			
 		}
+		request.setAttribute("userEmail", userEmail);
 		return "chat.jsp";
 	}
 

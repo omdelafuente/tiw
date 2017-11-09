@@ -61,15 +61,21 @@ body, h1, h2, h3, h4, h5, h6, .w3-wide {
 			
 		</div>
 		
-		<div class="w3-container w3-left" style="width:100%">
+		<%if(request.getAttribute("sendSuccess") != null) {%>	
+			<div class="w3-container w3-center">
+				<p>¡Mensaje enviado!</p>
+			</div>
+		<%} %>
 		
 		<%if(request.getAttribute("messages") != null) {%>
+		<div class="w3-container w3-left" style="width:100%">
 			<hr>
 			<%=request.getAttribute("messages")%>
 			<hr>
+		</div>
 		<%} %>
 		
-		</div>
+		
 		<%}
 		else {%>
 		<div class="w3-container w3-center">

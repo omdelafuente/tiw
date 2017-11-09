@@ -120,7 +120,7 @@ public class UsrManager {
 		List<Usr> users = null;
 		EntityManager em = getEntityManager();
 		try {
-			Query query = em.createQuery("SELECT DISTINCT c FROM User c JOIN c.events e WHERE c.email=e.creator");
+			Query query = em.createQuery("SELECT DISTINCT c FROM Usr c JOIN c.events e WHERE c=e.creator");
 			users = (List<Usr>)query.getResultList();
 			
 		} finally {

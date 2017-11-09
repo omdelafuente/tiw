@@ -3,6 +3,8 @@ package es.uc3m.tiw.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,8 +23,11 @@ public class LoginHandler implements IRequestHandler {
 		ArrayList<String> errorLogin = new ArrayList<String>();
 		boolean loginSuccess = true;
 		
-		UsrDAO loginDAO = new UsrDAO();
-		Usr user = loginDAO.readUser(email);
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("GR82.15.Practica1.Admin");
+		UsrManager manager = new UsrManager();
+		manager.setEntityManagerFactory(factory);
+		Usr user = manager.findUserByEmail(email);
+		
 		
 		if(user == null){
 			
