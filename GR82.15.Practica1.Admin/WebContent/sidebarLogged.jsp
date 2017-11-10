@@ -27,7 +27,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   </div>
   <div class="w3-padding-32 w3-large w3-text-grey" style="font-weight:bold">
    <a href="users" class="w3-bar-item w3-button">Gestión de usuarios</a>
-    <a href="#" class="w3-bar-item w3-button">Gestión de eventos</a><br>    
+    <a href="events" class="w3-bar-item w3-button">Gestión de eventos</a><br>    
     <a href="availableChats" class="w3-bar-item w3-button">Buzón de conversaciones</a>
     <a href="logOut" class="w3-bar-item w3-button">Cerrar sesión</a>
   </div>
