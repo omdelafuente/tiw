@@ -17,7 +17,7 @@ public class LoginHandler implements IRequestHandler {
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		String email = request.getParameter("email");
+		String email = "admin@admin.com";
 		String password = request.getParameter("psw");
 		
 		ArrayList<String> errorLogin = new ArrayList<String>();
@@ -41,11 +41,7 @@ public class LoginHandler implements IRequestHandler {
 				errorLogin.add("La contraseña introducida es incorrecta.");
 				
 		}
-			if (!user.getEmail().equals("admin@admin.com")){
-				loginSuccess = false;
-				errorLogin.add("No tienes acceso a esta página");
-				
-			}
+			
 		}
 		
 		request.setAttribute("loginSuccess", loginSuccess);

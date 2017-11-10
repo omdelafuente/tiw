@@ -74,7 +74,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 		<p>Inica sesión en Instaticket:</p>
 		<form method="post" action="login">
      		<p>Correo electrónico:</p>
-   			<input class="w3-input w3-border w3-light-grey" style="width:30%; display:inline-block" maxlength="30" type="email" name="email" required><br>
+   			<input class="w3-input w3-border w3-light-grey" style="width:30%; display:inline-block" maxlength="30" type="text" name="user" value="admin" disabled><br>
      		<p>Contraseña:</p>
    			<input class="w3-input w3-border w3-light-grey" style="width:30%; display:inline-block" maxlength="30" type="password" name="psw" value="" required/><br>
    			<p><button class="w3-button w3-theme w3-grey" type="submit">Acceder</button><p>

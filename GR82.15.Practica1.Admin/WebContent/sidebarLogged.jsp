@@ -23,17 +23,11 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="sidebar">
 <div class="w3-container w3-display-container w3-padding-16">
     <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
-    <a href="index.jsp"  style="text-decoration:none"><h3 class="w3-wide"><b>INSTATICKET</b></h3></a>
+    <a href="index.jsp"  style="text-decoration:none"><h3 class="w3-wide"><b>INSTATICKET<br><b style= "font-size: 0.4em ">Administración</b></b></h3></a>
   </div>
   <div class="w3-padding-32 w3-large w3-text-grey" style="font-weight:bold">
-  	<p class="w3-bar-item"> ¡Hola</p>
-  	<a href="editProfile.jsp" class="w3-bar-item w3-button">Editar perfil</a>
-    <a href="#" class="w3-bar-item w3-button">Cartera de entradas</a>
-    <a href="createEvent.jsp" class="w3-bar-item w3-button">Crear un evento</a>
-    <a href="myCreatedEvents" class="w3-bar-item w3-button">Mis eventos</a>
-    <a onclick="document.getElementById('searchModal').style.display='block'"class="w3-button w3-block w3-left-align" id="searchMenuBtn">
-      Búsqueda avanzada &nbsp;&nbsp;<i class="fa fa-caret-right"></i>
-    </a>
+   <a href="#" class="w3-bar-item w3-button">Lista de usuarios</a>
+    <a href="#" class="w3-bar-item w3-button">Lista de eventos</a><br>    
     <a href="availableChats" class="w3-bar-item w3-button">Buzón de conversaciones</a>
     <a href="logOut" class="w3-bar-item w3-button">Cerrar sesión</a>
   </div>
