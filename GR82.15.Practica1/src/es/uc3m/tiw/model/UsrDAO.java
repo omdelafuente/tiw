@@ -18,17 +18,19 @@ public class UsrDAO {
 		String surname = user.getSurname();
 		String email = user.getEmail();
 		String psw = user.getPassword();
+		boolean isActive = user.isActive();
 
 		Connection con = connectDatabase();	
 
 			
 		PreparedStatement userStatement;
 		try {
-			userStatement = con.prepareStatement("INSERT INTO USR (name, surname, email, password) VALUES (?,?,?,?)");
+			userStatement = con.prepareStatement("INSERT INTO USR (name, surname, email, password, isActive) VALUES (?,?,?,?,?)");
 			userStatement.setString(1, name);
 			userStatement.setString(2, surname);
 			userStatement.setString(3, email);		
 			userStatement.setString(4, psw);
+			userStatement.setBoolean(5, isActive);
 			
 			userStatement.executeUpdate();
 					
@@ -80,16 +82,18 @@ public class UsrDAO {
 		String surname = user.getSurname();
 		String email = user.getEmail();
 		String psw = user.getPassword();
+		boolean isActive = user.isActive();
 		
 		Connection con = connectDatabase();	
 		
 		try {
 			
-			PreparedStatement userStatement = con.prepareStatement("UPDATE USR SET name=?, surname=?, password=? WHERE email=?");			
+			PreparedStatement userStatement = con.prepareStatement("UPDATE USR SET name=?, surname=?, password=?, isActive=? WHERE email=?");			
 			userStatement.setString(1, name);
 			userStatement.setString(2, surname);
 			userStatement.setString(3, psw);
-			userStatement.setString(4, email);
+			userStatement.setString(5, email);
+			userStatement.setBoolean(4, isActive);
 				
 			userStatement.executeUpdate();
 				
@@ -125,6 +129,7 @@ public class UsrDAO {
 				user.setName(rs.getString("name"));
 				user.setPassword(rs.getString("password"));
 				user.setSurname(rs.getString("surname"));
+				user.setActive(rs.getBoolean("isActive"));
 				
 			} else {
 

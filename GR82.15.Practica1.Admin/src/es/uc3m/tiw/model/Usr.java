@@ -20,15 +20,17 @@ public class Usr implements Serializable{
 	private String surname;
 	private String password;
 	@Id private String email;
+	private boolean isActive;
 	//bi-directional many-to-one association to Event
 	@OneToMany(mappedBy="creator")
 	private List<Event> events;
 	
-	public Usr(String name, String surname, String password, String email) {
+	public Usr(String name, String surname, String password, String email, boolean isActive) {
 		this.name = name;
 		this.surname = surname;
 		this.password = password;
 		this.email = email;
+		this.isActive = isActive;
 	}
 	
 	public Usr(){
@@ -66,6 +68,14 @@ public class Usr implements Serializable{
 		this.email = email;
 	}
 	
+	public boolean isActive() {
+		return isActive;
+	}
+
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+
 	public List<Event> getEvents() {
 		return this.events;
 	}

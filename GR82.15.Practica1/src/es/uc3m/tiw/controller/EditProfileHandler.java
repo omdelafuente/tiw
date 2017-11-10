@@ -25,6 +25,7 @@ public class EditProfileHandler implements IRequestHandler {
 		Usr user = (Usr)request.getSession().getAttribute("loggedUser");
 		Usr updatedUser = new Usr();
 		updatedUser.setEmail(user.getEmail());
+		updatedUser.setActive(true);
 		UsrDAO userDAO = new UsrDAO();
 		
 		ArrayList<String> errorEdit = new ArrayList<String>();

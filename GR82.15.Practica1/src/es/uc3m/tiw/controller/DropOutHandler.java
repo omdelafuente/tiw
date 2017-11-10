@@ -32,7 +32,8 @@ public class DropOutHandler implements IRequestHandler{
 		}
 		else {
 			UsrDAO userDAO = new UsrDAO();
-			userDAO.deleteUser(user);
+			user.setActive(false);
+			userDAO.updateUser(user);
 			
 			request.setAttribute("dropOutSuccess", true);
 			request.getSession().invalidate();

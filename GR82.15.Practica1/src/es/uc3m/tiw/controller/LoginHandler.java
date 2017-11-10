@@ -31,12 +31,20 @@ public class LoginHandler implements IRequestHandler {
 			errorLogin.add("No se encontró ninguna cuenta con ese e-mail, por favor regístrate si no lo has hecho o introduce una cuenta existente.");
 		} else {
 			
-			if(!user.getPassword().equals(password)){
+			if(user.isActive()){
+				
+				if(!user.getPassword().equals(password)){
+					
+					loginSuccess = false;
+					errorLogin.add("La contraseña introducida es incorrecta.");
+					
+				}
+			} else {
 				
 				loginSuccess = false;
-				errorLogin.add("La contraseña introducida es incorrecta.");
-				
+				errorLogin.add("La cuenta especificada ha sido eliminada.");
 			}
+			
 			
 		}
 		

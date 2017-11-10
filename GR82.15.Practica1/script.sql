@@ -4,6 +4,7 @@ name  VARCHAR(30) NOT NULL,
 surname VARCHAR(30) NOT NULL,
 email VARCHAR(30) NOT NULL,
 password VARCHAR(30) NOT NULL,
+isActive BOOLEAN NOT NULL,
 PRIMARY KEY (email)
 );
 
