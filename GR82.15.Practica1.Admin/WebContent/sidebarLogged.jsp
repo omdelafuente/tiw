@@ -17,7 +17,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
 <body>
 
-	<!--   <%if(session.getAttribute("loggedUser") != null) {%> -->
+	  <%if(session.getAttribute("loggedUser") != null) {%>
 	
 <!-- Sidebar/menu -->
 <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index:3;width:250px" id="sidebar">
@@ -26,8 +26,8 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
     <a href="index.jsp"  style="text-decoration:none"><h3 class="w3-wide"><b>INSTATICKET<br><b style= "font-size: 0.4em ">Administración</b></b></h3></a>
   </div>
   <div class="w3-padding-32 w3-large w3-text-grey" style="font-weight:bold">
-   <a href="#" class="w3-bar-item w3-button">Lista de usuarios</a>
-    <a href="#" class="w3-bar-item w3-button">Lista de eventos</a><br>    
+   <a href="users" class="w3-bar-item w3-button">Gestión de usuarios</a>
+    <a href="#" class="w3-bar-item w3-button">Gestión de eventos</a><br>    
     <a href="availableChats" class="w3-bar-item w3-button">Buzón de conversaciones</a>
     <a href="logOut" class="w3-bar-item w3-button">Cerrar sesión</a>
   </div>

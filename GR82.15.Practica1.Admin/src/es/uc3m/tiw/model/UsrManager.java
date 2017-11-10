@@ -120,7 +120,7 @@ public class UsrManager {
 		List<Usr> users = null;
 		EntityManager em = getEntityManager();
 		try {
-			Query query = em.createQuery("SELECT DISTINCT c FROM Usr c JOIN c.events e WHERE c=e.creator");
+			Query query = em.createQuery("SELECT DISTINCT c FROM Usr c JOIN c.events e WHERE c=e.creator AND c.isActive=true");
 			users = (List<Usr>)query.getResultList();
 			
 		} finally {
@@ -128,5 +128,22 @@ public class UsrManager {
 		}
 		return users;
 	}
+	
+	public List<Usr> findAllActiveUsers (){
+		List<Usr> users = null;
+		EntityManager em = getEntityManager();
+		try {
+			Query query = em.createQuery("SELECT c FROM Usr c WHERE c.isActive=true");
+			users = (List<Usr>)query.getResultList();
+			
+		} finally {
+			em.close();
+		}
+		return users;
+		
+	}
+	
+	
+	
 
 }

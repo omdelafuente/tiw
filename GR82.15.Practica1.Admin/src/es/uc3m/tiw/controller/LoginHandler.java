@@ -20,7 +20,7 @@ public class LoginHandler implements IRequestHandler {
 		String email = "admin@admin.com";
 		String password = request.getParameter("psw");
 		
-		ArrayList<String> errorLogin = new ArrayList<String>();
+		String errorLogin = null;
 		boolean loginSuccess = true;
 		
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("GR82.15.Practica1.Admin");
@@ -28,20 +28,11 @@ public class LoginHandler implements IRequestHandler {
 		manager.setEntityManagerFactory(factory);
 		Usr user = manager.findUserByEmail(email);
 		
-		
-		if(user == null){
-			
-			loginSuccess = false;
-			errorLogin.add("No se encontró ninguna cuenta con ese e-mail, por favor regístrate si no lo has hecho o introduce una cuenta existente.");
-		
-		} else{
-			if(!user.getPassword().equals(password)){
+		if(!user.getPassword().equals(password)){
 				
 				loginSuccess = false;
-				errorLogin.add("La contraseña introducida es incorrecta.");
+				errorLogin = "La contraseña introducida es incorrecta.";
 				
-		}
-			
 		}
 		
 		request.setAttribute("loginSuccess", loginSuccess);

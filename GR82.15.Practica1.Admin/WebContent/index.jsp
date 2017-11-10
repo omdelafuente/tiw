@@ -24,7 +24,7 @@
 	
 	<!-- Top header -->
   <header class="w3-xlarge w3-container">
-    <p class="w3-left">Bienvenido administrador</p>
+    <p class="w3-left">Bienvenido, administrador</p>
     <form action="search" method="post">
     	<p class="w3-right">		
     		<input type="hidden" name="type" value="simple">
@@ -45,14 +45,14 @@
 	
 	<% if (session.getAttribute("loggedUser") != null) {%>
 		<div class="w3-container w3-half">
-			<button class="w3-button w3-border w3-hover-grey w3-right" type="submit">Usuarios</i></button>
+			<a href="users"><button class="w3-button w3-border w3-hover-grey w3-right">Usuarios</i></button></a>
 		</div>
 		<div class="w3-container w3-half">
-			<button class="w3-button w3-border w3-hover-grey w3-left" type="submit">Eventos</i></button>
+			<a href=""><button class="w3-button w3-border w3-hover-grey w3-left">Eventos</i></button></a>
 		</div>
 	<% } else{ %>
 		<div class="w3-container w3-center">
-			<a href="login.jsp"><button class="w3-button w3-border w3-hover-grey" type="submit">Iniciar Sesion</i></button></a>
+			<a href="login.jsp"><button class="w3-button w3-border w3-hover-grey">Iniciar sesión</i></button></a>
 		</div>
 	<%} %>
 	</div>
