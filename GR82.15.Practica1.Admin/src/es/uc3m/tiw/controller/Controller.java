@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = {"/index","/login","/logOut","/event","/chat","/availableChats"})
+@WebServlet(urlPatterns = {"/index","/login","/logOut","/events","/chat","/availableChats"})
 @MultipartConfig
 public class Controller extends HttpServlet{
 	private static final long serialVersionUID = 1L;
@@ -23,6 +23,7 @@ public void init (ServletConfig config) throws ServletException {
 	
 	handlerHash.put("/login", new LoginHandler());
 	handlerHash.put("/logOut", new LogOutHandler());
+	handlerHash.put("/events", new EventListHandler());
 	handlerHash.put("/chat", new ChatHandler());
 	handlerHash.put("/availableChats", new AvailableChatsHandler());
 

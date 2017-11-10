@@ -5,6 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="resources/css/w3.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="resources/css/fonts.css">
+<link rel="stylesheet" href="resources/css/font-awesome-4.7.0/css/font-awesome.min.css">
 <title>Instaticket</title>
 </head>
 <body class="w3-content" style="max-width:1200px">
