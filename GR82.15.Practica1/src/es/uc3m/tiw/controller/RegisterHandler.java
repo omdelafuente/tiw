@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class RegisterHandler implements IRequestHandler {
 	
+	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		

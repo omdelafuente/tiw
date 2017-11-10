@@ -12,7 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import es.uc3m.tiw.model.*;
 
 public class PurchasedTicketsHandler  implements IRequestHandler  {
-
+	
+	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		

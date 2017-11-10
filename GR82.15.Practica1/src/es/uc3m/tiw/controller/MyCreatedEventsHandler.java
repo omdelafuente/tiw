@@ -13,7 +13,7 @@ import es.uc3m.tiw.model.*;
 
 public class MyCreatedEventsHandler implements IRequestHandler {
 
-	
+	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		

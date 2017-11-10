@@ -27,7 +27,7 @@ import es.uc3m.tiw.model.Usr;
 
 public class ChatHandler implements IRequestHandler {
 
-	
+	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		

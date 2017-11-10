@@ -16,7 +16,7 @@ import es.uc3m.tiw.model.PurchaseManager;
 
 public class SoldTicketsHandler implements IRequestHandler {
 
-	
+	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		

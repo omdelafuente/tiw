@@ -18,6 +18,7 @@ import es.uc3m.tiw.model.EventManager;
 
 public class IndexHandler implements IRequestHandler {
 	
+	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		

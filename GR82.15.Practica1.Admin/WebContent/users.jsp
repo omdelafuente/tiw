@@ -47,16 +47,26 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 	
 		<%List<Usr> users = (List<Usr>) request.getAttribute("users"); %>
 		
-		<%for(int i = 0; i < users.size();i++) {%>
-			<div class="w3-row w3-border">			
+		<%for(int i = 0; i < users.size();i++) {
+			Usr user = users.get(i);%>
+			<div class="w3-row w3-border w3-section">			
 				<div class="w3-container w3-half">
 					&nbsp;
-					<p>Nombre y apellidos: <%=users.get(i).getName()%> <%=users.get(i).getSurname()%></p>
-					<p>Correo electrónico: <%=users.get(i).getEmail()%></p>
+					<p><b>Nombre y apellidos: </b><%=user.getName()%> <%=user.getSurname()%></p>
+					<p><b>Correo electrónico: </b><%=user.getEmail()%></p>
 				</div>
 				<div class="w3-container w3-half">
-					<p><a class="w3-button w3-border">Modificar datos</a></p>
-					<p><a class="w3-button w3-border">Dar de baja</a></p>
+					<form method="post" action="editUser">
+						<input type="hidden" name="type" value="userToEdit">
+						<input type="hidden" name="email" value="<%=user.getEmail()%>">
+						<p><button class="w3-button w3-border" style="width:50%">Modificar datos</button></p>
+					</form>
+					
+					<form method="post" action="deleteUser">
+						<input type="hidden" name="type" value="userToDelete">
+						<input type="hidden" name="email" value="<%=user.getEmail()%>">
+						<p><button class="w3-button w3-hover-red w3-border" style="width:50%">Dar de baja</button></p>
+					</form>
 				</div>
 			</div>
 		<%}%>
