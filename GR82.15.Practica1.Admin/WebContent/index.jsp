@@ -52,7 +52,7 @@
 			<a href="users"><button class="w3-button w3-border w3-hover-grey w3-right">Usuarios</i></button></a>
 		</div>
 		<div class="w3-container w3-half">
-			<a href=""><button class="w3-button w3-border w3-hover-grey w3-left">Eventos</i></button></a>
+			<a href="events"><button class="w3-button w3-border w3-hover-grey w3-left">Eventos</i></button></a>
 		</div>
 	<% } else{ %>
 		<div class="w3-container w3-center">

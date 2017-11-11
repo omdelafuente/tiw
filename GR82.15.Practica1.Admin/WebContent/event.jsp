@@ -20,24 +20,6 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 <!-- Sidebar/menu -->
     <jsp:include page="sidebarLogged.jsp"/>
 
-<% if((Boolean)request.getAttribute("cannotBuy") != null) {
-if((Boolean)request.getAttribute("cannotBuy") == true) { %>
-	<div id="cannotBuy" class="w3-modal">
-		<div class="w3-modal-content w3-animate-opacity">
-    		<div class="w3-container">
-        		<i onclick="document.getElementById('cannotBuy').style.display='none'" class="fa fa-remove w3-right w3-button w3-transparent w3-large"></i>
-        		<p>No puedes comprar entradas para un evento que tú mismo has creado.</p>
-      		</div>
-   		</div>
- 	</div>
- 	<script>
-		$(document).ready(function() {
-			$("#cannotBuy").css("display","block");
-			$("#cannotBuy").delay(2500).fadeOut();
-		});
-	</script>
-<%} }%>
-
 <!-- !PAGE CONTENT! -->
 <div class="w3-main" style="margin-left:250px">
   
@@ -72,7 +54,7 @@ if((Boolean)request.getAttribute("cannotBuy") == true) { %>
 		<div class="w3-col s3 w3-center">
 			<%if(event.getState().equals("Disponible")) 
 			{%>
-			<a href="#"><span class="w3-tag w3-large w3-padding-large w3-light-grey w3-center w3-hover-grey" style="cursor:pointer">
+			<a href="chat?userEmail=<%=event.getCreator().getEmail()%>"><span class="w3-tag w3-large w3-padding-large w3-light-grey w3-center w3-hover-grey" style="cursor:pointer">
 			<strong>CONTACTAR CON<br>EL CREADOR</strong></span></a>
 			<%} else {%>
 			<span class="w3-tag w3-large w3-padding-large w3-red w3-center" style="cursor:pointer">

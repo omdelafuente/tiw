@@ -72,6 +72,7 @@ body, h1, h2, h3, h4, h5, h6, .w3-wide {
 		
 		<%if(request.getAttribute("messages") != null) {%>
 		<div class="w3-container w3-left" style="width:100%">
+			<p>Mensajes</p>
 			<hr>
 			<%=request.getAttribute("messages")%>
 			<hr>
@@ -79,14 +80,6 @@ body, h1, h2, h3, h4, h5, h6, .w3-wide {
 		<%} %>		
 	<!-- End page content -->
 	</div>
-	
-<script>
-$( document ).ready(function() {
-	
-	
-});
-
-</script>	
 
 </body>
 </html>

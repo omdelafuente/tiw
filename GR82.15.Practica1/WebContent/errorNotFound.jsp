@@ -7,7 +7,7 @@
 <link href="resources/css/w3.css" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="resources/css/fonts.css">
 <link rel="stylesheet" href="resources/css/font-awesome-4.7.0/css/font-awesome.min.css">
-<title>Error</title>
+<title>Error: no encontrado</title>
 </head>
 
 <style>

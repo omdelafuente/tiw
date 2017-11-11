@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="es.uc3m.tiw.model.Usr"%>
+    pageEncoding="ISO-8859-1" import="es.uc3m.tiw.model.Event"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="resources/css/w3.css" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="resources/css/fonts.css">
-<title>Eliminar usuario</title>
+<title>Cancelar evento</title>
 </head>
 
 <style>
@@ -23,7 +23,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 
  <!-- Top header -->
   <header class="w3-container w3-xlarge">
-    <p class="w3-left">Eliminar usuario</p>
+    <p class="w3-left">Cancelar evento usuario</p>
     <form action="search" method="post">
     	<p class="w3-right">		
     		<input type="hidden" name="type" value="simple">
@@ -35,15 +35,15 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
   
 	<div class="w3-container w3-center">
 	
-		<%Usr user = (Usr)request.getAttribute("user");%>
+		<%Event event = (Event)request.getAttribute("event");%>
 		
-		<p>¿Estás seguro de que quieres eliminar este usuario?</p>
-		<p>El usuario no podrá volver a acceder al portal.</p>
-		<form method="post" action="deleteUser" id="deleteForm">
-			<input type="hidden" name="email" value="<%=user.getEmail()%>">
+		<p>¿Estás seguro de que quieres cancelar el evento <b><%=event.getTitle()%></b>?</p>
+		
+		<form method="post" action="cancelEvent" id="cancelForm">
+			<input type="hidden" name="id" value="<%=event.getId()%>">
 		</form>
 		<div class="w3-row">
-			<button class="w3-button w3-theme w3-grey w3-medium" type="submit" form="deleteForm">Sí</button>
+			<button class="w3-button w3-theme w3-grey w3-medium" type="submit" form="cancelForm">Sí</button>
 			<a href="javascript:history.back()" class="w3-button w3-theme w3-grey w3-medium">No</a>
 		</div>
   

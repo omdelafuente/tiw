@@ -26,6 +26,14 @@ import es.uc3m.tiw.model.EventManager;
 import es.uc3m.tiw.model.Usr;
 
 public class ChatHandler implements IRequestHandler {
+	
+	private Context context;
+	private ConnectionFactory factory;
+	private Connection connection;
+	private Session session;
+	private Destination queue;
+	private MessageProducer messageProducer;
+	private MessageConsumer messageConsumer;
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
@@ -45,118 +53,122 @@ public class ChatHandler implements IRequestHandler {
 			
 			if(events.isEmpty()){
 				request.setAttribute("creator", false);
-			}	
+			}
+			else {					
+				request.setAttribute("messages", this.readFromQueue(user.getEmail()));
+			}
 			
 		}
 		else {
 		
-		
-			Context context;
-			ConnectionFactory factory;
-			Connection connection;
-			Session session;
-			Destination queue;
-			MessageProducer messageProducer;
-			MessageConsumer messageConsumer;
-			
 			if(type.equals("write")){
 				
-				try {
-					
-					context = new InitialContext();
-
-					factory = (ConnectionFactory) context.lookup("jms/tiw");
-					
-					queue = (Destination) context.lookup("jms/queuetiw");
-			
-					connection = factory.createConnection();
-
-					connection.start();
-
-					session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-					
-					messageProducer = session.createProducer(queue);
-					
-					TextMessage message = session.createTextMessage();
-					message.setText(request.getParameter("msg"));
-					message.setJMSCorrelationID(user.getEmail()+"-admin");
-					messageProducer.send(message);
-					
-					messageProducer.close();
-					session.close();
-					connection.close();
-					
-					request.setAttribute("sendSuccess", true);
-				
-					
-				} catch (Exception e) {
-					
-					System.out
-					.println("JHC *************************************** Error Exception: "
-							+ e.getMessage());
-				}
+				request.setAttribute("sendSuccess", this.writeToQueue(user.getEmail(), request.getParameter("msg")));
 				
 			}
 			else if(type.equals("read")){
 				
-				StringBuffer messageBuffer = new StringBuffer(64);
-				
-				try {
-					
-					context = new InitialContext();
-					
-					factory = (ConnectionFactory) context.lookup("jms/tiw");
-					
-					queue = (Destination) context.lookup("jms/queuetiw");
-					
-					connection = factory.createConnection();
-					
-					session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-					
-					messageConsumer = session.createConsumer(queue, "JMSCorrelationID = 'admin-"+user.getEmail()+"'");
-					
-					connection.start();
-					
-					Message message;
-					
-					while(true){
-						
-						message = messageConsumer.receive(1);
-						
-						if(message != null){
-							if(message instanceof TextMessage){
-								TextMessage msg = (TextMessage) message;
-								Date date = new Date(msg.getJMSTimestamp());
-								SimpleDateFormat formatter = new SimpleDateFormat("E dd.MM.yyyy hh:mm:ss a");
-								messageBuffer.append(formatter.format(date)+" | admin : "+msg.getText()+"<br>");
-							}
-						}
-						else {
-							if(messageBuffer.length() == 0){
-								messageBuffer.append("No tienes ningún mensaje.");
-							}
-							break;
-						}
-					}
-					
-					messageConsumer.close();
-					session.close();
-					connection.close();
-					
-					request.setAttribute("messages", messageBuffer);
-				
-				
-				} catch (Exception e){
-	
-				System.out
-				.println("JHC *************************************** Error Exception: "
-						+ e.getMessage());
-				}
+				request.setAttribute("messages", this.readFromQueue(user.getEmail()));
 			
 			}
 			
 		}
 		return "chat.jsp";
+	}
+	
+	private boolean writeToQueue(String email, String msg){
+		
+		try {
+			
+			this.context = new InitialContext();
+
+			this.factory = (ConnectionFactory) this.context.lookup("jms/tiw");
+			
+			this.queue = (Destination) this.context.lookup("jms/queuetiw");
+	
+			this.connection = this.factory.createConnection();
+
+			this.connection.start();
+
+			this.session = this.connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+			
+			this.messageProducer = this.session.createProducer(this.queue);
+			
+			TextMessage message = this.session.createTextMessage();
+			message.setText(msg);
+			message.setJMSCorrelationID(email+"-admin");
+			messageProducer.send(message);
+			
+			messageProducer.close();
+			session.close();
+			connection.close();
+			
+			return true;
+		
+			
+		} catch (Exception e) {
+			
+			System.out
+			.println("JHC *************************************** Error Exception: "
+					+ e.getMessage());
+			return false;
+		}
+	}
+	
+	private StringBuffer readFromQueue (String email){
+		
+		StringBuffer messageBuffer = new StringBuffer(64);
+		
+		try {
+			
+			this.context = new InitialContext();
+			
+			this.factory = (ConnectionFactory) this.context.lookup("jms/tiw");
+			
+			this.queue = (Destination) this.context.lookup("jms/queuetiw");
+			
+			this.connection = this.factory.createConnection();
+			
+			this.session = this.connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+			
+			this.messageConsumer = this.session.createConsumer(this.queue, "JMSCorrelationID = 'admin-"+email+"'");
+			
+			this.connection.start();
+			
+			Message message;
+			
+			while(true){
+				
+				message = messageConsumer.receive(1);
+				
+				if(message != null){
+					if(message instanceof TextMessage){
+						TextMessage msg = (TextMessage) message;
+						Date date = new Date(msg.getJMSTimestamp());
+						SimpleDateFormat formatter = new SimpleDateFormat("E dd.MM.yyyy hh:mm:ss a");
+						messageBuffer.append(formatter.format(date)+" | admin : "+msg.getText()+"<br>");
+					}
+				}
+				else {
+					if(messageBuffer.length() == 0){
+						messageBuffer.append("No tienes ningún mensaje.");
+					}
+					break;
+				}
+			}
+			
+			messageConsumer.close();
+			session.close();
+			connection.close();
+		
+		} catch (Exception e){
+
+		System.out
+		.println("JHC *************************************** Error Exception: "
+				+ e.getMessage());
+		}
+
+		return messageBuffer;
 	}
 
 }

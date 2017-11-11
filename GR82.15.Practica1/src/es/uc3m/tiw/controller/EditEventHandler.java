@@ -56,7 +56,7 @@ public class EditEventHandler implements IRequestHandler {
 		
 		Event eventToUpdate = manager.findEventByID(id);
 		
-		if(request.getPart("image") != null){
+		if(request.getPart("image").getSize() > 0){
 			Part filePart = request.getPart("image");
 			byte[] image = new byte[(int) filePart.getSize()];
 		    filePart.getInputStream().read(image, 0, image.length);
