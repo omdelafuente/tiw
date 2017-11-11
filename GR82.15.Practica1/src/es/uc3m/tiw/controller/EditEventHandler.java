@@ -12,6 +12,7 @@ import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import es.uc3m.tiw.model.Event;
 import es.uc3m.tiw.model.EventManager;
@@ -55,6 +56,12 @@ public class EditEventHandler implements IRequestHandler {
 		
 		Event eventToUpdate = manager.findEventByID(id);
 		
+		if(request.getPart("image") != null){
+			Part filePart = request.getPart("image");
+			byte[] image = new byte[(int) filePart.getSize()];
+		    filePart.getInputStream().read(image, 0, image.length);
+		    eventToUpdate.setImage(image);
+		}
 		
 		if(!title.isEmpty() && !title.equals(eventToUpdate.getTitle())){
 			eventToUpdate.setTitle(title);
