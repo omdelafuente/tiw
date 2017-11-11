@@ -139,51 +139,12 @@ public class EventManager {
 		return events;
 	}
 	
-	public List<Event> findEventsByMultipleFields(String title, String category, String place, String description, String state, BigDecimal priceMin, BigDecimal priceMax, LocalDateTime dateMin, LocalDateTime dateMax){
-		
-		List<Event> events = null;
-		EntityManager em = getEntityManager();
-		try {
-			Query query = em.createQuery("SELECT c FROM Event c WHERE (:title IS NULL OR c.title LIKE CONCAT('%',:title,'%')) AND (:category IS NULL OR c.category = :category) AND (:place IS NULL OR c.place LIKE CONCAT('%',:place,'%')) AND (:description IS NULL OR c.description LIKE CONCAT('%',:description,'%')) AND (:state IS NULL OR c.state = :state) AND (:priceMin IS NULL OR c.price >= :priceMin) AND (:priceMax IS NULL OR c.price <= :priceMax) AND (:dateMin IS NULL OR c.eventDate >= :dateMin) AND (:dateMax IS NULL OR c.eventDate <= :dateMax)");
-			query.setParameter("title", title);
-			query.setParameter("category", category);
-			query.setParameter("place", place);
-			query.setParameter("description", description);
-			query.setParameter("state", state);
-			query.setParameter("priceMin", priceMin);
-			query.setParameter("priceMax", priceMax);
-			query.setParameter("dateMin", dateMin);
-			query.setParameter("dateMax", dateMax);
-			
-			events = (List<Event>)query.getResultList();
-			
-		} finally {
-			em.close();
-		}
-		return events;
-	}
-	
 	public List<Event> findEventsByCreator(Usr creator){
 		
 		List<Event> events = null;
 		EntityManager em = getEntityManager();
 		try {
 			Query query = em.createQuery("SELECT c FROM Event c WHERE c.creator = :creator");
-			query.setParameter("creator", creator);
-			events = (List<Event>)query.getResultList();
-			
-		} finally {
-			em.close();
-		}
-		return events;
-	}
-	
-	public List<Event> findAvailableEventsByCreator(Usr creator){
-		
-		List<Event> events = null;
-		EntityManager em = getEntityManager();
-		try {
-			Query query = em.createQuery("SELECT c FROM Event c WHERE c.creator = :creator AND c.state = 'Disponible'");
 			query.setParameter("creator", creator);
 			events = (List<Event>)query.getResultList();
 			

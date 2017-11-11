@@ -129,6 +129,21 @@ public class UsrManager {
 		return users;
 	}
 	
+	public List<Usr> findUsersMatchingString (String str){
+		
+		List<Usr> users = null;
+		EntityManager em = getEntityManager();
+		try {
+			Query query = em.createQuery("SELECT c FROM Usr c WHERE c.name LIKE CONCAT('%',:str,'%') OR c.surname LIKE CONCAT('%',:str,'%')");
+			query.setParameter("str", str);
+			users = (List<Usr>)query.getResultList();
+			
+		} finally {
+			em.close();
+		}
+		return users;
+	}
+	
 	public List<Usr> findAllActiveUsers (){
 		List<Usr> users = null;
 		EntityManager em = getEntityManager();

@@ -25,10 +25,6 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 	
 	<header class="w3-container w3-xlarge">
 		<p class=w3-left>Acceder</p>
-		<p class=w3-right>
-			<button class="w3-bar-item w3-button w3-hover-grey"><i class="fa fa-search"></i></button>
-    	<input class="w3-border" type="text" name="search" style="padding: 8px; font-size:15px; float:left" placeholder="Buscar...">
-   	</p>
 	</header>
 	
 	<div class="w3-container w3-center">

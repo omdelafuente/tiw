@@ -29,6 +29,8 @@
 	<!-- Top header -->
   <header class="w3-xlarge w3-container">
     <p class="w3-left">Bienvenido, administrador</p>
+    
+    <% if (session.getAttribute("loggedUser") != null) {%>
     <form action="search" method="post">
     	<p class="w3-right">		
     		<input type="hidden" name="type" value="simple">
@@ -36,7 +38,7 @@
     		<button class="w3-bar-item w3-button w3-hover-grey" type="submit"><i class="fa fa-search"></i></button>  	
    		</p>
     </form>
- 
+    <%} %>
   </header>
   
   	<!-- Body content -->
