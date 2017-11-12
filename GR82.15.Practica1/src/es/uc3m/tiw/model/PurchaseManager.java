@@ -30,6 +30,7 @@ public class PurchaseManager {
 		return emf.createEntityManager();
 	}
 	
+	//añade una nueva compra a la base de datos
 	public String createPurchase(Purchase purchase) throws Exception {
 		EntityManager em = getEntityManager();
 		try {
@@ -52,6 +53,7 @@ public class PurchaseManager {
 		return "";
 	}
 
+	//elimina una compra de la base de datos
 	public String deletePurchase(Purchase purchase) throws Exception {
 		EntityManager em = getEntityManager();
 		try {
@@ -75,6 +77,7 @@ public class PurchaseManager {
 		return "";
 	}
 
+	//actualiza los datos de una compra
 	public String updatePurchase(Purchase purchase) throws Exception {
 		EntityManager em = getEntityManager();
 		try {
@@ -97,6 +100,7 @@ public class PurchaseManager {
 		return "";
 	}
 	
+	//busca una compra por su id 
 	public Purchase findPurchaseByID(int id) {
 		Purchase purchase = null;
 		EntityManager em = getEntityManager();
@@ -108,6 +112,7 @@ public class PurchaseManager {
 		return purchase;
 	}
 	
+	//busca las compras realizadas por un usuario
 	public List<Purchase> findPurchasesByUser(Usr user){
 		
 		List<Purchase> purchases = null;
@@ -123,6 +128,7 @@ public class PurchaseManager {
 		return purchases;
 	}
 	
+	//busca las compras de un determinado evento
 	public List<Purchase> findPurchasesByEvent(Event event){
 		
 		List<Purchase> purchases = null;

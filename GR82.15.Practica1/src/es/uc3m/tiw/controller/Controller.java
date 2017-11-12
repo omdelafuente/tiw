@@ -12,9 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class Controller
- */
 @WebServlet(urlPatterns ={"/index","/login","/register", "/search", "/logOut","/edit","/dropOut","/createEvent","/event","/myCreatedEvents","/editEvent","/cancelEvent", "/buyTicket","/purchasedTickets","/soldTickets","/chat"})
 @MultipartConfig
 public class Controller extends HttpServlet {
@@ -42,24 +39,15 @@ public class Controller extends HttpServlet {
 		handlerHash.put("/chat", new ChatHandler());
 	}
 
-	/**
-	 * @see Servlet#destroy()
-	 */
 	public void destroy() {
 
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		

@@ -36,12 +36,14 @@ public class ChatHandler implements IRequestHandler {
 	private MessageConsumer messageConsumer;
 
 	@Override
+	//chat entre usuario y administrador mediante JMS
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		String type = request.getParameter("type");
 		Usr user = (Usr)request.getSession().getAttribute("loggedUser");
 		
+		//si type no existe se está accediendo al chat
 		if(type == null){
 			
 			EntityManagerFactory factory = Persistence.createEntityManagerFactory("GR82.15.Practica1");
@@ -59,6 +61,7 @@ public class ChatHandler implements IRequestHandler {
 			}
 			
 		}
+		//si type existe, se ha solicitado leer/escribir en la cola
 		else {
 		
 			if(type.equals("write")){
@@ -76,6 +79,7 @@ public class ChatHandler implements IRequestHandler {
 		return "chat.jsp";
 	}
 	
+	//escritura de un mensaje en la cola
 	private boolean writeToQueue(String email, String msg){
 		
 		try {
@@ -115,6 +119,7 @@ public class ChatHandler implements IRequestHandler {
 		}
 	}
 	
+	//lectura de los mensajes de la cola
 	private StringBuffer readFromQueue (String email){
 		
 		StringBuffer messageBuffer = new StringBuffer(64);

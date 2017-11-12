@@ -19,6 +19,7 @@ import es.uc3m.tiw.model.EventManager;
 public class IndexHandler implements IRequestHandler {
 	
 	@Override
+	//muestra un serie aleatoria de eventos en la pagina principal
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		

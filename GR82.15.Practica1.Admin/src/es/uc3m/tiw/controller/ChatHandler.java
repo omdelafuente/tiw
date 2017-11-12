@@ -3,7 +3,6 @@ package es.uc3m.tiw.controller;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
@@ -15,16 +14,9 @@ import javax.jms.Session;
 import javax.jms.TextMessage;
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import es.uc3m.tiw.model.Event;
-import es.uc3m.tiw.model.EventManager;
-import es.uc3m.tiw.model.Usr;
-import es.uc3m.tiw.model.UsrManager;
 
 public class ChatHandler implements IRequestHandler {
 
@@ -37,6 +29,7 @@ public class ChatHandler implements IRequestHandler {
 	private MessageConsumer messageConsumer;
 	
 	@Override
+	//chat administrador-usuarios con escritura/lectura de una cola con JMS
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
@@ -66,6 +59,7 @@ public class ChatHandler implements IRequestHandler {
 		return "chat.jsp";
 	}
 	
+	//escritura en la cola
 	private boolean writeToQueue(String email, String msg){
 		
 		try {
@@ -105,6 +99,7 @@ public class ChatHandler implements IRequestHandler {
 		}
 	}
 	
+	//lectura de la cola
 	private StringBuffer readFromQueue (String email){
 		
 		StringBuffer messageBuffer = new StringBuffer(64);

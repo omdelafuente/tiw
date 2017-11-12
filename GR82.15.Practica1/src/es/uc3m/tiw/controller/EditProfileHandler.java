@@ -13,6 +13,7 @@ import es.uc3m.tiw.model.*;
 public class EditProfileHandler implements IRequestHandler {
 
 	@Override
+	//modifica los datos del usuario
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
@@ -31,6 +32,8 @@ public class EditProfileHandler implements IRequestHandler {
 		ArrayList<String> errorEdit = new ArrayList<String>();
 		boolean editSuccess = true;
 
+		//validacion del formulario de editar perfil
+			
 		if(!name.isEmpty()){
 			
 			if(!name.equals(user.getName())){

@@ -21,6 +21,7 @@ import es.uc3m.tiw.model.EventManager;
 public class SearchHandler implements IRequestHandler {
 	
 	@Override
+	//realiza tanto la búsqueda avanzada como la simple y devuelve los resultados
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -32,7 +33,7 @@ public class SearchHandler implements IRequestHandler {
 		
 		List<Event> retrievedEvents = null;
 		
-		//advanced search
+		//busqueda avanzada
 		if(type.equals("advanced")){
 			
 			String title = request.getParameter("title");
@@ -50,6 +51,8 @@ public class SearchHandler implements IRequestHandler {
 			}
 			LocalDateTime dateMin = null;
 			LocalDateTime dateMax = null;
+			
+			//se toman las fechas con el formato correcto para la busqueda
 			try {
 		    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		    	if(!request.getParameter("dateMin").isEmpty()){
@@ -69,7 +72,7 @@ public class SearchHandler implements IRequestHandler {
 
 		}
 		
-		//simple search
+		//busqueda simple
 		else if(type.equals("simple")){		
 			String value = request.getParameter("search");	
 			

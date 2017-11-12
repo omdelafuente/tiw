@@ -17,6 +17,7 @@ import es.uc3m.tiw.model.UsrManager;
 public class SearchHandler implements IRequestHandler{
 	
 	@Override
+	//realiza una búsqueda en los eventos y los usuarios
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		

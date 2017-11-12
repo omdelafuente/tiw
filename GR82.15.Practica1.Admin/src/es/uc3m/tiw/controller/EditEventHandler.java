@@ -2,7 +2,6 @@ package es.uc3m.tiw.controller;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -20,6 +19,7 @@ import es.uc3m.tiw.model.EventManager;
 public class EditEventHandler implements IRequestHandler {
 
 	@Override
+	//edita los datos de un evento
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		

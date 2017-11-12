@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 public class LogOutHandler implements IRequestHandler {
 
 	@Override
+	//cierra la sesión actual
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		

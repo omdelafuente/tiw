@@ -33,6 +33,7 @@ public class EventManager {
 		return emf.createEntityManager();
 	}
 	
+	//añade un evento nuevo a la base de datos
 	public String createEvent(Event event) throws Exception {
 		EntityManager em = getEntityManager();
 		try {
@@ -55,6 +56,7 @@ public class EventManager {
 		return "";
 	}
 
+	//elimina un evento de la base de datos
 	public String deleteEvent(Event event) throws Exception {
 		EntityManager em = getEntityManager();
 		try {
@@ -78,6 +80,7 @@ public class EventManager {
 		return "";
 	}
 
+	//modifica los datos de un evento en la base de datos
 	public String updateEvent(Event event) throws Exception {
 		EntityManager em = getEntityManager();
 		try {
@@ -100,6 +103,7 @@ public class EventManager {
 		return "";
 	}
 
+	//devuelve el evento al que corresponde un id
 	public Event findEventByID(int id) {
 		Event event = null;
 		EntityManager em = getEntityManager();
@@ -111,6 +115,7 @@ public class EventManager {
 		return event;
 	}
 	
+	//devuelve una lista con todos los eventos
 	public List<Event> findAll() {
 		
 		List<Event> events = null;
@@ -124,6 +129,7 @@ public class EventManager {
 		return events;
 	}
 	
+	//busca eventos cuyos atributos contengan un determinado string
 	public List<Event> findEventsMatchingString(String str){
 		
 		List<Event> events = null;
@@ -139,6 +145,7 @@ public class EventManager {
 		return events;
 	}
 	
+	//busca eventos que coincidan con los campos introducidos
 	public List<Event> findEventsByMultipleFields(String title, String category, String place, String description, String state, BigDecimal priceMin, BigDecimal priceMax, LocalDateTime dateMin, LocalDateTime dateMax){
 		
 		List<Event> events = null;
@@ -163,6 +170,7 @@ public class EventManager {
 		return events;
 	}
 	
+	//devuelve los eventos creados por el usuario indicado
 	public List<Event> findEventsByCreator(Usr creator){
 		
 		List<Event> events = null;
@@ -178,6 +186,7 @@ public class EventManager {
 		return events;
 	}
 	
+	//devuelve los eventos disponibles creados por el usuario indicado
 	public List<Event> findAvailableEventsByCreator(Usr creator){
 		
 		List<Event> events = null;

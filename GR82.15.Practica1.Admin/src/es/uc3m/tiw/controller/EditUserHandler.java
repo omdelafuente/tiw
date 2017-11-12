@@ -15,6 +15,7 @@ import es.uc3m.tiw.model.UsrManager;
 public class EditUserHandler implements IRequestHandler {
 
 	@Override
+	//modifica los datos de un usuario
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 public class RegisterHandler implements IRequestHandler {
 	
 	@Override
+	//registro de un usuario y validacion del formulario de registro
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
@@ -26,7 +27,7 @@ public class RegisterHandler implements IRequestHandler {
 		
 		Usr user = new Usr(name,surname,password,email,true);
 		
-		//user data validation
+		//validacion de los datos introducidos
 		
 		if(!password.equals(checkPassword)){
 			
@@ -48,7 +49,8 @@ public class RegisterHandler implements IRequestHandler {
 		}
 		
 		
-		//insert user into database
+		//si no ha habido errores, se registra al usuario en la base de datos y se le manda al login
+		//si ha ha habido errores, se echa para atrás el registro y se devuelven los errores 
 		
 		if(registerSuccess){
 			UsrDAO registerDAO = new UsrDAO();

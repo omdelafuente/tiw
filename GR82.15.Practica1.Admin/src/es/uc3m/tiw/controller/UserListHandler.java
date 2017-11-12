@@ -14,7 +14,7 @@ import es.uc3m.tiw.model.UsrManager;
 
 public class UserListHandler implements IRequestHandler {
 
-	
+	//devuelve la lista de todos los usuarios existentes
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		

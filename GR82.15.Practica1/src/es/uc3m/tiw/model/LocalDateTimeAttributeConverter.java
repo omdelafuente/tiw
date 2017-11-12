@@ -7,6 +7,7 @@ import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
 @Converter(autoApply = true)
+//conversión entre timestamp y localdatetime ya que este no lo soporta JPA
 public class LocalDateTimeAttributeConverter implements AttributeConverter<LocalDateTime, Timestamp> {
 
     public Timestamp convertToDatabaseColumn(LocalDateTime locDateTime) {

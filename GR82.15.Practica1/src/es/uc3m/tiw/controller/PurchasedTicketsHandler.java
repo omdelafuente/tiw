@@ -14,6 +14,7 @@ import es.uc3m.tiw.model.*;
 public class PurchasedTicketsHandler  implements IRequestHandler  {
 	
 	@Override
+	//devuelve la lista de entradas que se han comprado
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		

@@ -12,6 +12,7 @@ import javax.sql.DataSource;
 
 public class UsrDAO {
 	
+	//crea un nuevo usuario en la base de datos
 	public void insertUser(Usr user){
 		
 		String name = user.getName();
@@ -49,6 +50,7 @@ public class UsrDAO {
 			
 	}
 	
+	//elimina un usuario de la base de datos
 	public void deleteUser(Usr user){
 		
 		String email = user.getEmail();
@@ -76,6 +78,7 @@ public class UsrDAO {
 		
 	}
 	
+	//modifica los datos de un usuario en la base de datos
 	public void updateUser(Usr user){
 		
 		String name = user.getName();
@@ -111,6 +114,7 @@ public class UsrDAO {
 
 	}
 	
+	//encuentra un usuario por su email
 	public Usr readUser(String email){
 		
 		Connection con = connectDatabase();	
@@ -153,6 +157,7 @@ public class UsrDAO {
 		return user;
 	}
 	
+	//método que realiza las operaciones de conexión a la base de datos mediante JDBC DataSource
 	private Connection connectDatabase(){
 		
 		InitialContext context;

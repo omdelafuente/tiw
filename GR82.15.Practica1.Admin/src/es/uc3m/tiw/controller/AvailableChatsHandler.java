@@ -14,7 +14,8 @@ import es.uc3m.tiw.model.UsrManager;
 
 public class AvailableChatsHandler implements IRequestHandler {
 
-	
+	@Override
+	//devuelve la lista de usuarios que han creado un evento y por tanto son elegibles para una conversación
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		

@@ -14,6 +14,7 @@ import es.uc3m.tiw.model.EventManager;
 public class CancelEventHandler implements IRequestHandler {
 
 	@Override
+	//modifica el estado de un evento a cancelado
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		

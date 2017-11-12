@@ -14,6 +14,7 @@ import es.uc3m.tiw.model.*;
 public class DropOutHandler implements IRequestHandler{
 
 	@Override
+	//dar de baja a un usuario
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		

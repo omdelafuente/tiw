@@ -12,6 +12,7 @@ import es.uc3m.tiw.model.*;
 public class LoginHandler implements IRequestHandler {
 
 	@Override
+	//comprueba los datos del usuario del formulario de login e inicia sesión
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		

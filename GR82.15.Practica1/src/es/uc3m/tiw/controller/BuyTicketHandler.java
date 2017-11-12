@@ -13,6 +13,7 @@ import es.uc3m.tiw.model.*;
 public class BuyTicketHandler implements IRequestHandler  {
 
 	@Override
+	//compra de entradas para un evento
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
@@ -27,6 +28,7 @@ public class BuyTicketHandler implements IRequestHandler  {
 		if(request.getParameter("buy") == null){
 				
 			request.setAttribute("event", event);
+			//si el usuario que intenta comprar es el que ha creado el evento, no puede
 			if(event.getCreator().equals(request.getSession().getAttribute("loggedUser"))){
 				request.setAttribute("cannotBuy", true);
 				return "event.jsp";
@@ -40,6 +42,8 @@ public class BuyTicketHandler implements IRequestHandler  {
 			Usr client = (Usr)request.getSession().getAttribute("loggedUser");
 			int tickets = Integer.parseInt(request.getParameter("tickets"));
 			int newTickets = availableTickets - tickets;
+			
+			//se verifica que haya entradas disponibles y se modifican las entradas que quedan
 			
 			if(newTickets < 0){
 				

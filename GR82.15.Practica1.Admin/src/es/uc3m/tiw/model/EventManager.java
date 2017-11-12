@@ -1,7 +1,5 @@
 package es.uc3m.tiw.model;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -33,6 +31,7 @@ public class EventManager {
 		return emf.createEntityManager();
 	}
 	
+	//añade un evento a la base de datos
 	public String createEvent(Event event) throws Exception {
 		EntityManager em = getEntityManager();
 		try {
@@ -55,6 +54,7 @@ public class EventManager {
 		return "";
 	}
 
+	//elimina un evento de la base de datos
 	public String deleteEvent(Event event) throws Exception {
 		EntityManager em = getEntityManager();
 		try {
@@ -78,6 +78,7 @@ public class EventManager {
 		return "";
 	}
 
+	//actualiza los datos de un evento
 	public String updateEvent(Event event) throws Exception {
 		EntityManager em = getEntityManager();
 		try {
@@ -100,6 +101,7 @@ public class EventManager {
 		return "";
 	}
 
+	//encuentra un evento por su id
 	public Event findEventByID(int id) {
 		Event event = null;
 		EntityManager em = getEntityManager();
@@ -111,6 +113,7 @@ public class EventManager {
 		return event;
 	}
 	
+	//encuentra todos los eventos creados
 	public List<Event> findAll() {
 		
 		List<Event> events = null;
@@ -124,6 +127,7 @@ public class EventManager {
 		return events;
 	}
 	
+	//busca un string en los campos de un evento
 	public List<Event> findEventsMatchingString(String str){
 		
 		List<Event> events = null;
@@ -139,6 +143,7 @@ public class EventManager {
 		return events;
 	}
 	
+	//busca todos los eventos creados por un usuario
 	public List<Event> findEventsByCreator(Usr creator){
 		
 		List<Event> events = null;

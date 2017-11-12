@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import es.uc3m.tiw.model.Event;
 import es.uc3m.tiw.model.EventManager;
-import es.uc3m.tiw.model.Usr;
 
 public class EventListHandler implements IRequestHandler{
 
 	@Override
+	//devuelve la lista de eventos creados
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		

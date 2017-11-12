@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
 @WebFilter(urlPatterns ={"/login.jsp","/login", "/register.jsp","/register"})
+//filtra que un usuario ya logeado no pueda acceder al logeo/registro
 public class AlreadyLoggedFilter implements Filter {
 
 	

@@ -30,6 +30,7 @@ public class UsrManager {
 		return emf.createEntityManager();
 	}
 	
+	//añade un usuario a la base de datos
 	public String createUser (Usr user) throws Exception {
 		EntityManager em = getEntityManager();
 		try {
@@ -52,6 +53,7 @@ public class UsrManager {
 		return "";
 	}
 	
+	//elimina un usuario de la base de datos
 	public String deleteUser(Usr user) throws Exception {
 		EntityManager em = getEntityManager();
 		try {
@@ -75,6 +77,7 @@ public class UsrManager {
 		return "";
 	}
 	
+	//actualiza los datos de un usuario
 	public String updateUser(Usr user) throws Exception {
 		EntityManager em = getEntityManager();
 		try {
@@ -104,6 +107,7 @@ public class UsrManager {
 		return user;
 	}
 	
+	//busca un usuario por su email
 	public Usr findUserByEmail(String email) {
 		Usr user = null;
 		EntityManager em = getEntityManager();
@@ -115,6 +119,7 @@ public class UsrManager {
 		return user;
 	}
 	
+	//busca todos los usuarios creadores de eventos
 	public List<Usr> findUsersWithCreatedEvents (){
 		
 		List<Usr> users = null;
@@ -129,6 +134,7 @@ public class UsrManager {
 		return users;
 	}
 	
+	//busca un string en los campos de un usuario
 	public List<Usr> findUsersMatchingString (String str){
 		
 		List<Usr> users = null;
@@ -144,6 +150,7 @@ public class UsrManager {
 		return users;
 	}
 	
+	//busca todos los usuarios activos
 	public List<Usr> findAllActiveUsers (){
 		List<Usr> users = null;
 		EntityManager em = getEntityManager();

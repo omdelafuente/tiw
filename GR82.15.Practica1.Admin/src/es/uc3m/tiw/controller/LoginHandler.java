@@ -1,7 +1,6 @@
 package es.uc3m.tiw.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -13,6 +12,8 @@ import es.uc3m.tiw.model.*;
 
 public class LoginHandler implements IRequestHandler {
 
+	@Override
+	//comprueba que el admin introduce correctamente la contraseña e inicia sesión
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		

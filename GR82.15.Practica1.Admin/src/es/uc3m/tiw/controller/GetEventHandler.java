@@ -12,6 +12,8 @@ import es.uc3m.tiw.model.*;
 
 public class GetEventHandler implements IRequestHandler {
 
+	@Override
+	//devuelve un evento para visualizarlo/editarlo
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		

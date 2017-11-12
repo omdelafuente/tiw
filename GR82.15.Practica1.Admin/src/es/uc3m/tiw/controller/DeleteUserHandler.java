@@ -14,6 +14,7 @@ import es.uc3m.tiw.model.UsrManager;
 public class DeleteUserHandler implements IRequestHandler {
 
 	@Override
+	//hace a un usuario inactivo en la plataforma
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		

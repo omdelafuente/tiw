@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="es.uc3m.tiw.model.Usr, java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
+	import="es.uc3m.tiw.model.Usr, java.util.List"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,18 +22,17 @@ body, h1, h2, h3, h4, h5, h6, .w3-wide {
 
 	<!-- Sidebar/menu -->
 	<jsp:include page="sidebarLogged.jsp" />
-	
+
 	<!-- !PAGE CONTENT! -->
 	<div class="w3-main" style="margin-left: 250px">
-	
+
 		<!-- Top header -->
 		<header class="w3-xlarge w3-container">
 		<p class="w3-left">Comunicación con usuarios</p>
 		<form action="search" method="post">
 			<p class="w3-right">
-				<input type="hidden" name="type" value="simple"> <input
-					class="w3-border" type="text" name="search"
-					style="padding: 8px; font-size: 15px; float: left"
+				<input type="hidden" name="type" value="simple">
+				<input class="w3-border" type="text" name="search" style="padding: 8px; font-size: 15px; float: left"
 					placeholder="Buscar eventos..." required>
 				<button class="w3-bar-item w3-button w3-hover-grey" type="submit">
 					<i class="fa fa-search"></i>
@@ -41,24 +40,25 @@ body, h1, h2, h3, h4, h5, h6, .w3-wide {
 			</p>
 		</form>
 		</header>
-		
-		<%if(request.getAttribute("noUsers") != null){ %>	
-			<div class="w3-container w3-center">
-				<p>No hay usuarios que hayan creado eventos todavía</p>
-			</div>
+
+		<%if(request.getAttribute("noUsers") != null){ %>
+		<div class="w3-container w3-center">
+			<p>No hay usuarios que hayan creado eventos todavía</p>
+		</div>
 		<%}
 		
 		else {%>
-		
+
 		<div class="w3-container w3-center">
 			<p>A continuación, los usuarios creadores de eventos con los que se puede comunicar:</p>
-			
-		<%List<Usr> users = (List<Usr>) request.getAttribute("users"); %>
-		
-		<%for(int i = 0; i < users.size();i++) {%>
-			<div class="w3-row w3-border-bottom">			
+
+			<%List<Usr> users = (List<Usr>) request.getAttribute("users"); %>
+
+			<%for(int i = 0; i < users.size();i++) {%>
+			<div class="w3-row w3-border-bottom">
 				<div class="w3-container w3-third">
-					<p><%=users.get(i).getName()%> <%=users.get(i).getSurname()%></p>
+					<p><%=users.get(i).getName()%>
+						<%=users.get(i).getSurname()%></p>
 				</div>
 				<div class="w3-container w3-third">
 					<p><%=users.get(i).getEmail()%></p>
@@ -66,16 +66,18 @@ body, h1, h2, h3, h4, h5, h6, .w3-wide {
 				<div class="w3-container w3-third">
 					<form action="chat" method="post">
 						<input type="hidden" name="userEmail" value="<%=users.get(i).getEmail()%>">
-						<p><button class="w3-btn w3-border">Ver conversación</button><p>
+						<p>
+							<button class="w3-btn w3-border">Ver conversación</button>
+						<p>
 					</form>
 				</div>
 			</div>
-		<%} 
+			<%} 
 		}%>
 		</div>
-		
+
 		<!-- End page content -->
-		</div>
+	</div>
 
 </body>
 </html>
